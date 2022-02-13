@@ -15,7 +15,7 @@ function App() {
         return token;
       })
       .then(token => {
-        connect(`${token}`, { name: 'cool room'})
+        connect(token, { name: 'cool room'})
         .then(room => {
           console.log(`Successfully joined a Room: ${room}`);
           room.on('participantConnected', participant => {
