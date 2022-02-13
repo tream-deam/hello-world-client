@@ -28,7 +28,7 @@ const usersRoutes = require("./routes/users");
 // Mount all resource routes
 app.use("/api/users", usersRoutes(db));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("skadoosh");
 });
 
