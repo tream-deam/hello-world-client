@@ -15,7 +15,11 @@ function App() {
         return token;
       })
       .then(token => {
-        connect(token, { name: 'dream-team' })
+        connect(token, { 
+          name: 'dream-team',
+          audio: true,
+          video: { width: 640 }
+        })
         .then(room => {
           console.log(`Successfully joined a Room: ${room}`);
           room.on('participantConnected', participant => {
