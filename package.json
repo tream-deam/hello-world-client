@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.17.5"
+  },
   "scripts": {
     "server": "cd backend-server && nodemon server.js",
     "start": "cd backend-server && node server.js"
