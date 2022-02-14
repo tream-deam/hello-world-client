@@ -1,0 +1,24 @@
+@import "../styles/variables.scss";
+
+#logo {
+  color: $orange;
+}  
+
+.nav-icon {
+  color: $unselected-gray
+}
+
+.side-nav{
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  min-width: 18rem;
+  padding: $spacing 0;
+
+}
+
+.OtherVideo {
+  border-style: solid;
+  max-width: 810px;
+  max-height: 925px;
+}
