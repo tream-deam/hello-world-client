@@ -10,11 +10,7 @@ export default function Video(props) {
     if (audioFeed) {
       document.getElementById(id).appendChild(audioFeed);
     }
-  }, [id, videoFeed, audioFeed])
+  }, [id, videoFeed, audioFeed]);
 
-  return (
-    <div id={id}>
-    </div>
-  );
-
+  return <div id={id}></div>;
 }
