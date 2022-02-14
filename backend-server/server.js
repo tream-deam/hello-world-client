@@ -7,6 +7,39 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
+// Twilio
+const twilio = require("twilio");
+const AccessToken = require('twilio').jwt.AccessToken;
+const VideoGrant = AccessToken.VideoGrant;
+
+const twilioAccountSid = process.env.TWILIO_ACCOUNT_SID;
+const twilioApiKey = process.env.TWILIO_API_KEY;
+const twilioApiSecret = process.env.TWILIO_API_SECRET;
+
+const identity = 'user';
+
+// Create Video Grant
+const videoGrant = new VideoGrant({
+  room: 'dream-team',
+});
+
+// create an access token which we will sign and return to the client,
+// containing the grant we just created
+const token = new AccessToken(
+  twilioAccountSid,
+  twilioApiKey,
+  twilioApiSecret,
+  { identity: identity }
+);
+token.addGrant(videoGrant);
+const myToken = token.toJwt();
+
+// serialize the token to a JWT string
+console.log('*********************');
+console.log('token:');
+console.log(token.toJwt());
+console.log('*********************');
+
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -29,7 +62,7 @@ const usersRoutes = require("./routes/users");
 app.use("/api/users", usersRoutes(db));
 
 app.get("/api", (req, res) => {
-  res.send("skadoosh");
+  res.send(myToken);
 });
 
 app.listen(PORT, () => {
