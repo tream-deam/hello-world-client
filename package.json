@@ -1,0 +1,25 @@
+{
+  "name": "hello-doc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd frontend-client && npm start",
+    "server": "cd backend-server && nodemon server.js",
+    "build": "cd frontend-client && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "cd backend-server && node server.js",
+    "heroku-postbuild": "cd frontend-client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tream-deam/hello-doc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tream-deam/hello-doc/issues"
+  },
+  "homepage": "https://github.com/tream-deam/hello-doc#readme"
+}
