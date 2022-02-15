@@ -40,14 +40,14 @@ export default function Call() {
             getVideoTrack()
               .then((videoTrack) => {
                 const videoElement = videoTrack.attach();
-                setState({ ...state, selfVideo: videoElement });
+                setState((prevState) => ({ ...prevState, selfVideo: videoElement }));
               })
               .catch((err) => console.error(err));
-
-            getAudioTrack()
+              
+              getAudioTrack()
               .then((audioTrack) => {
                 const audioElement = audioTrack.attach();
-                setState({ ...state, selfAudio: audioElement });
+                setState((prevState) => ({ ...prevState, selfAudio: audioElement }));
               })
               .catch((err) => console.error(err));
 

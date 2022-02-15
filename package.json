@@ -1,0 +1,24 @@
+{
+  "name": "hello-doc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "14.17.5"
+  },
+  "scripts": {
+    "server": "cd backend-server && nodemon server.js",
+    "start": "cd backend-server && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tream-deam/hello-doc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tream-deam/hello-doc/issues"
+  },
+  "homepage": "https://github.com/tream-deam/hello-doc#readme"
+}
