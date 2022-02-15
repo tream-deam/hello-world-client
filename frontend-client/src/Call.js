@@ -17,7 +17,7 @@ export default function Call() {
 
   const [userName, setUserName] = useState("");
   const [roomState, setRoomState] = useState({});
-  const [remoteParticipant, setRemoteParticipant] = useState(null);
+  // const [remoteParticipant, setRemoteParticipant] = useState(null);
   
   useEffect(() => {
     // console.log(roomState.participants);
