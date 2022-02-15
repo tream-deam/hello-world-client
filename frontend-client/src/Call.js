@@ -99,20 +99,20 @@ export default function Call() {
               // for all participants already in call, attach their remote tracks to DOM
               console.log('room participants: ', room.participants)
               room.participants.forEach(participant => {
-                participant.tracks.forEach(publication => {
+                participant.tracks.forEach(track => {
                   console.log('in room.participants.forEach:');
-                  console.log({publication});
+                  console.log({track});
                   console.log('--------')
-                  if (publication.track && publication.track.kind === 'audio') {
-                    const audioTrack = publication.track.attach();
+                  if (track.kind === 'audio') {
+                    const audioTrack = track.attach();
                     console.log({audioTrack});
-                    console.log('found previous participant audio track, adding to DOM!');
+                    console.log('in room.participants.forEach: found previous participant audio track, adding to DOM!');
                     setState((prevState) => ({ ...prevState, remoteAudio: audioTrack }));
                   }
-                  if (publication.track && publication.track.kind === 'video') {
-                    const videoTrack = publication.track.attach();
+                  if (track.kind === 'video') {
+                    const videoTrack = track.attach();
                     console.log({videoTrack});
-                    console.log('found previous participant video track, adding to DOM!');
+                    console.log('in room.participants.forEach: found previous participant video track, adding to DOM!');
                     setState((prevState) => ({ ...prevState, remoteAudio: videoTrack }));
                 }
               });
