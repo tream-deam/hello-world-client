@@ -87,20 +87,12 @@ export default function Call() {
 
                 // add remote participant user media that will eventually be streamed
                 participant.on('trackSubscribed', track => {
-                  console.log('remote participant joined room after local participant!');
-                  console.log('track before calling .attach():');
-                  const newTrack = track;
-                  console.log({newTrack});
-                  newTrack.attach();
-                  console.log('track after calling .attach():');
-                  console.log({newTrack});
-                  
-                  // // depending on incoming track type (video or audio)
-                  // // store them in a variable and attach them to dom
-                  // const videoTrack = track.kind === 'video' ? track.attach() : null;
-                  // const audioTrack = track.kind === 'audio' ? track.attach() : null;
-                  // // add remote video and audio to state
-                  // setState((prevState) => ({ ...prevState, remoteVideo: videoTrack, remoteAudio: audioTrack }));
+                  // depending on incoming track type (video or audio)
+                  // store them in a variable and attach them to dom
+                  const videoTrack = track.kind === 'video' ? track.attach() : null;
+                  const audioTrack = track.kind === 'audio' ? track.attach() : null;
+                  // add remote video and audio to state
+                  setState((prevState) => ({ ...prevState, remoteVideo: videoTrack, remoteAudio: audioTrack }));
                 });
             });
           },
