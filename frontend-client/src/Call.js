@@ -117,6 +117,11 @@ export default function Call() {
         videoFeed={state.selfVideo}
         audioFeed={state.selfAudio}
       />
+      <Video 
+        id="remote-video"
+        videoFeed={state.remoteVideo}
+        audioFeed={state.remoteAudio}
+      />
     </div>
   );
 }
