@@ -100,6 +100,9 @@ export default function Call() {
               console.log('room participants: ', room.participants)
               room.participants.forEach(participant => {
                 participant.tracks.forEach(publication => {
+                  console.log('in room.participants.forEach:');
+                  console.log({publication});
+                  console.log('--------')
                   if (publication.track && publication.track.kind === 'audio') {
                     const audioTrack = publication.track.attach();
                     console.log({audioTrack});
