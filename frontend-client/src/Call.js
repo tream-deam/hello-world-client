@@ -70,12 +70,13 @@ export default function Call() {
               room.on("participantConnected", (participant) => {
                 console.log(`A remote Participant connected: ${participant}`);
                 // setRemoteParticipant(participant);
+                
                 // if participant has already streamed any content in room
                 participant.tracks.forEach(publication => {
                   if (publication.isSubscribed) {
                     const track = publication.track;
                     console.log(track);
-                    setState((prevState) => ({ ...prevState, remoteVideo: track }))
+                    setState((prevState) => ({ ...prevState, remoteVideo: track }));
                   }
                 });
             });
