@@ -97,6 +97,7 @@ export default function Call() {
               });
               
               // for all participants already in call, attach their remote tracks to DOM
+              console.log('room participants: ', room.participants)
               room.participants.forEach(participant => {
                 participant.tracks.forEach(publication => {
                   if (publication.track && publication.track.kind === 'audio') {
