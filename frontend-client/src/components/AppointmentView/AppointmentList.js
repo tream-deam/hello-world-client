@@ -1,11 +1,12 @@
 import AppointmentListItem from "./AppointmentListItem";
+
 function AppointmentList (props) {
   return (
-    <>
-      <div className="convo-log">Appointment List Filler</div>
-      {/* map function to create appointmentlistitems */}
-      <AppointmentListItem/>
-    </>
+      <div className="appt-list">
+        Appointment List Filler Text
+        {/* map function to create appointmentlistitems */}
+        <AppointmentListItem/>
+      </div>
   );
 }
 export default AppointmentList;
