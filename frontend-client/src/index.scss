@@ -25,6 +25,10 @@ code {
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%; //so we can use REM units. 1rem = 10px, 1.6rem = 16px, etc..
+}
+
 body {
   font-family: $font-family;
 }
@@ -46,6 +50,6 @@ body {
 
 @media only screen and (max-width: 320px) {
   html {
-    font-size: 10px;
+    font-size: 62.5%; //so we can use REM units. 1rem = 10px, 1.6rem = 16px, etc..
   }
 }
