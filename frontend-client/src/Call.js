@@ -87,9 +87,12 @@ export default function Call() {
 
                 // add remote participant user media that will eventually be streamed
                 participant.on('trackSubscribed', track => {
-                  const videoTrack = track;
-                  track.attach();
-                  setState((prevState) => ({ ...prevState, remoteVideo: videoTrack }));
+                  // depending on incoming track type (video or audio)
+                  // store them in a variable and attach them to dom
+                  const videoTrack = track.kind === 'video' ? track.attach() : null;
+                  const audioTrack = track.kind === 'audio' ? track.attach() : null;
+                  // add remote video and audio to state
+                  setState((prevState) => ({ ...prevState, remoteVideo: videoTrack, remoteAudio: audioTrack }));
                 });
             });
           },
