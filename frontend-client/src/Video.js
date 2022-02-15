@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import useSpeechToText from 'react-hook-speech-to-text';
+
 export default function Video(props) {
   const { id, videoFeed, audioFeed } = props;
   useEffect(() => {
