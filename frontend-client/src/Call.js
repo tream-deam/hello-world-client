@@ -11,11 +11,19 @@ export default function Call() {
   const [state, setState] = useState({
     selfVideo: null,
     selfAudio: null,
+    remoteVideo: null,
+    remoteAudio: null
   });
-  const [userName, setUserName] = useState("");
 
+  const [userName, setUserName] = useState("");
+  const [roomState, setRoomState] = useState({});
+  const [remoteParticipant, setRemoteParticipant] = useState(null);
+  
   useEffect(() => {
-  }, []);
+    // console.log(roomState.participants);
+
+  }, [roomState])
+  
   
   const joinRoom = (e) => {
     e.preventDefault();
@@ -23,7 +31,7 @@ export default function Call() {
     axios
       .get(`/token/${userName}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         const token = response.data.myToken;
         return token;
       })
@@ -35,6 +43,7 @@ export default function Call() {
         }).then(
           (room) => {
             console.log(`Successfully joined a Room: ${room}`);
+            setRoomState(room);
             const getVideoTrack = async () => {
               const videoTrack = await createLocalVideoTrack();
               return videoTrack;
@@ -57,10 +66,10 @@ export default function Call() {
                 setState((prevState) => ({ ...prevState, selfAudio: audioElement }));
               })
               .catch((err) => console.error(err));
-  
-            room.on("participantConnected", (participant) => {
-              console.log(`A remote Participant connected: ${participant}`);
-
+              
+              room.on("participantConnected", (participant) => {
+                console.log(`A remote Participant connected: ${participant}`);
+                setRemoteParticipant(participant);
             });
           },
           (error) => {
