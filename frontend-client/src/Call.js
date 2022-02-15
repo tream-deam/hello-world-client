@@ -103,16 +103,16 @@ export default function Call() {
                   console.log('in room.participants.forEach:');
                   console.log({publication});
                   console.log('--------')
-                  if (publication.track && publication.track.kind === 'audio') {
+                  if (publication.track && publication.kind === 'audio') {
                     const audioTrack = publication.track.attach();
                     console.log({audioTrack});
-                    console.log('found previous participant audio track, adding to DOM!');
+                    console.log('in room.participants.forEach: found previous participant audio track, adding to DOM!');
                     setState((prevState) => ({ ...prevState, remoteAudio: audioTrack }));
                   }
-                  if (publication.track && publication.track.kind === 'video') {
+                  if (publication.track && publication.kind === 'video') {
                     const videoTrack = publication.track.attach();
                     console.log({videoTrack});
-                    console.log('found previous participant video track, adding to DOM!');
+                    console.log('in room.participants.forEach: found previous participant video track, adding to DOM!');
                     setState((prevState) => ({ ...prevState, remoteAudio: videoTrack }));
                 }
               });
