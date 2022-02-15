@@ -71,7 +71,7 @@ export default function Call() {
                 console.log(`A remote Participant connected: ${participant}`);
                 // setRemoteParticipant(participant);
 
-                // if participant has already streamed any content in room
+                // if participant has already published any content in room
                 participant.tracks.forEach(publication => {
                   if (publication.isSubscribed) {
                     console.log('remote participant already in room!');
