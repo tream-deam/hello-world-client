@@ -1,4 +1,6 @@
 import Button from "../Button";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
+
 
 function AppointmentListItem (props) {
   return (
@@ -14,7 +16,12 @@ function AppointmentListItem (props) {
             <p>3:00PM - Lisa Jansen</p>
             <p>Check up examination, shortness of breath.</p>
           </div>
-        <Button> Join Call</Button>
+        <Button> 
+          {/* must fix this text and icon styling- not sure how things will work with props.children yet when passed to button component */}
+          Join Call
+          <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
+        </Button>
+        
         </div>
       </div>
     
