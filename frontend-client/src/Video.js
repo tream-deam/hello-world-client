@@ -25,15 +25,9 @@ export default function Video(props) {
       document.getElementById(id).appendChild(audioFeed);
     }
   }, [id, videoFeed, audioFeed]);
-
-  useEffect(() => {
-    if (results) {
-    console.log(results);
-    }
-  }, [results])
   
   if (error) return <p>Web Speech API is not available in this browser :(</p>
-  
+
   return (
     <div id={id}>
       <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
