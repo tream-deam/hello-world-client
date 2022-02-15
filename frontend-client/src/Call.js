@@ -12,12 +12,19 @@ export default function Call() {
     selfVideo: null,
     selfAudio: null,
   });
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
+  }, []);
+  
+  const joinRoom = (e) => {
+    e.preventDefault();
+    
     axios
-      .get("/api")
+      .get(`/token/${userName}`)
       .then((response) => {
-        const token = response.data;
+        console.log(response.data);
+        const token = response.data.myToken;
         return token;
       })
       .then((token) => {
@@ -36,7 +43,7 @@ export default function Call() {
               const audioTrack = await createLocalAudioTrack();
               return audioTrack;
             };
-
+  
             getVideoTrack()
               .then((videoTrack) => {
                 const videoElement = videoTrack.attach();
@@ -50,21 +57,28 @@ export default function Call() {
                 setState((prevState) => ({ ...prevState, selfAudio: audioElement }));
               })
               .catch((err) => console.error(err));
-
+  
             room.on("participantConnected", (participant) => {
               console.log(`A remote Participant connected: ${participant}`);
+
             });
           },
           (error) => {
+            console.log(token)
             console.error(`Unable to connect to Room: ${error.message}`);
           }
         );
       })
       .catch((err) => console.log(err));
-  }, []);
+  }
 
   return (
     <div id="video-container">
+      <form onSubmit={joinRoom}>
+        Enter Your Name:
+        <input value={userName} onChange={(e) => setUserName(e.target.value)}/>
+        <button>Join Room</button>
+      </form>
       <Video
         id="self-video"
         videoFeed={state.selfVideo}
