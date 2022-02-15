@@ -1,3 +1,4 @@
+//This is the grey/black rounded labels used for users name layered ontop of video as well as 'Translation Log' (we may need to change that name)
 
 function Label (props) {
   return (
