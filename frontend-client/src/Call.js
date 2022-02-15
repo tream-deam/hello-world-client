@@ -69,7 +69,7 @@ export default function Call() {
               
               room.on("participantConnected", (participant) => {
                 console.log(`A remote Participant connected: ${participant}`);
-                setRemoteParticipant(participant);
+                // setRemoteParticipant(participant);
             });
           },
           (error) => {
