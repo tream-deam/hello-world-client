@@ -4,8 +4,14 @@
   color: $orange;
 }  
 
+
+.call-view {
+  display: flex;
+  flex-direction: column;
+}
 .nav-icon {
-  color: $unselected-gray
+  color: $unselected-gray;
+  padding: $spacing;
 }
 
 .side-nav{
@@ -13,12 +19,41 @@
   flex-direction: column;
   background-color: $white;
   min-width: 18rem;
-  padding: $spacing 0;
+  padding: $spacing;
+  justify-content: space-around;
+}
 
+.nav-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .OtherVideo {
   border-style: solid;
-  max-width: 810px;
-  max-height: 925px;
+  width: 810px;
+  height: 925px;
+  color: $yellow;
+  border-radius: $border-radius;
+}
+
+.SelfVideo {
+  border-style: solid;
+  width: 407px;
+  height: 234px;
+  color: $yellow;
+  border-radius: $border-radius;
+}
+
+.SelfVideo-log {
+  display: flex;
+  flex-direction: column;
+}
+
+.convo-log {
+  border-style: solid;
+  width: 407px;
+  height: 234px;
+  border-radius: $border-radius;
+  color: $yellow;
 }
