@@ -7,7 +7,6 @@
 
 .call-view {
   display: flex;
-  flex-direction: column;
 }
 .nav-icon {
   color: $unselected-gray;
@@ -18,9 +17,10 @@
   display: flex;
   flex-direction: column;
   background-color: $white;
-  min-width: 18rem;
-  padding: $spacing;
-  justify-content: space-around;
+  min-width: 5rem;
+  padding-left: 1rem;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .nav-icons {
@@ -28,32 +28,44 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
-.OtherVideo {
-  border-style: solid;
-  width: 810px;
-  height: 925px;
-  color: $yellow;
-  border-radius: $border-radius;
+.nav-icon:hover {
+  color: $orange;
 }
 
-.SelfVideo {
+.other-video {
   border-style: solid;
-  width: 407px;
-  height: 234px;
+  width: 60%;
   color: $yellow;
   border-radius: $border-radius;
+  align-self: stretch;
+  margin: $spacing 0;
+
+  
 }
 
-.SelfVideo-log {
+.self-video-container {
+  border-style: solid;
+  width: 28%;
+  height: 23%;
+  color: $yellow;
+  border-radius: $border-radius;
+  margin-left: $spacing;
+}
+
+.self-video-log {
   display: flex;
   flex-direction: column;
+  margin-top: $spacing;
 }
 
 .convo-log {
   border-style: solid;
   width: 407px;
-  height: 234px;
+  height: 661px;
   border-radius: $border-radius;
   color: $yellow;
+  margin: $spacing;
+}
+#username {
+  color: $orange;
 }
