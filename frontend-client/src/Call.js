@@ -16,11 +16,12 @@ export default function Call() {
 
   useEffect(() => {
     axios
-      .put("/api", {
+      .post("/api", {
         userIdentity: uuidV4()
       })
       .then((response) => {
         const token = response.data;
+        console.log(response);
         return token;
       })
       .then((token) => {
