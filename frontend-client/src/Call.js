@@ -87,13 +87,8 @@ export default function Call() {
 
                 // add remote participant user media that will eventually be streamed
                 participant.on('trackSubscribed', track => {
-                  console.log('remote participant joined room after local participant!');
-                  console.log('track before calling .attach():');
                   const videoTrack = track;
-                  console.log({track});
                   track.attach();
-                  console.log('track after calling .attach():');
-                  console.log({track});
                   setState((prevState) => ({ ...prevState, remoteVideo: videoTrack }));
                 });
             });
