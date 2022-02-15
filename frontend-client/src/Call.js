@@ -16,7 +16,9 @@ export default function Call() {
 
   useEffect(() => {
     axios
-      .get("/api")
+      .put("/api", {
+        userIdentity: uuidV4()
+      })
       .then((response) => {
         const token = response.data;
         return token;
