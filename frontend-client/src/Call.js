@@ -102,12 +102,14 @@ export default function Call() {
                   if (publication.track && publication.track.kind === 'audio') {
                     const audioTrack = publication.track.attach();
                     console.log({audioTrack});
-                    // setState((prevState) => ({ ...prevState, remoteAudio: audioTrack }));
-                }
+                    console.log('found previous participant audio track, adding to DOM!');
+                    setState((prevState) => ({ ...prevState, remoteAudio: audioTrack }));
+                  }
                   if (publication.track && publication.track.kind === 'video') {
                     const videoTrack = publication.track.attach();
                     console.log({videoTrack});
-                    // setState((prevState) => ({ ...prevState, remoteAudio: videoTrack }));
+                    console.log('found previous participant video track, adding to DOM!');
+                    setState((prevState) => ({ ...prevState, remoteAudio: videoTrack }));
                 }
               })
             });
