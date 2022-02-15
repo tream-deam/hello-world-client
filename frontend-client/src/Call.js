@@ -11,13 +11,28 @@ export default function Call() {
   const [state, setState] = useState({
     selfVideo: null,
     selfAudio: null,
+    remoteVideo: null,
+    remoteAudio: null
   });
 
+  const [userName, setUserName] = useState("");
+  const [roomState, setRoomState] = useState({});
+  // const [remoteParticipant, setRemoteParticipant] = useState(null);
+  
   useEffect(() => {
+    // console.log(roomState.participants);
+
+  }, [roomState])
+  
+  
+  const joinRoom = (e) => {
+    e.preventDefault();
+    
     axios
-      .get("/api")
+      .get(`/token/${userName}`)
       .then((response) => {
-        const token = response.data;
+        // console.log(response.data);
+        const token = response.data.myToken;
         return token;
       })
       .then((token) => {
@@ -28,6 +43,7 @@ export default function Call() {
         }).then(
           (room) => {
             console.log(`Successfully joined a Room: ${room}`);
+            setRoomState(room);
             const getVideoTrack = async () => {
               const videoTrack = await createLocalVideoTrack();
               return videoTrack;
@@ -36,7 +52,7 @@ export default function Call() {
               const audioTrack = await createLocalAudioTrack();
               return audioTrack;
             };
-
+  
             getVideoTrack()
               .then((videoTrack) => {
                 const videoElement = videoTrack.attach();
@@ -50,21 +66,28 @@ export default function Call() {
                 setState((prevState) => ({ ...prevState, selfAudio: audioElement }));
               })
               .catch((err) => console.error(err));
-
-            room.on("participantConnected", (participant) => {
-              console.log(`A remote Participant connected: ${participant}`);
+              
+              room.on("participantConnected", (participant) => {
+                console.log(`A remote Participant connected: ${participant}`);
+                // setRemoteParticipant(participant);
             });
           },
           (error) => {
+            console.log(token)
             console.error(`Unable to connect to Room: ${error.message}`);
           }
         );
       })
       .catch((err) => console.log(err));
-  }, []);
+  }
 
   return (
     <div id="video-container">
+      <form onSubmit={joinRoom}>
+        Enter Your Name:
+        <input value={userName} onChange={(e) => setUserName(e.target.value)}/>
+        <button>Join Room</button>
+      </form>
       <Video
         id="self-video"
         videoFeed={state.selfVideo}
