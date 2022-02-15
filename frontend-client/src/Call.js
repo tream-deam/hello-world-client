@@ -94,6 +94,22 @@ export default function Call() {
                   // add remote video and audio to state
                   setState((prevState) => ({ ...prevState, remoteVideo: videoTrack, remoteAudio: audioTrack }));
                 });
+              });
+              
+              // for all participants already in call, attach their remote tracks to DOM
+              room.participants.forEach(participant => {
+                participant.tracks.forEach(publication => {
+                  if (publication.track && publication.track.kind === 'audio') {
+                    const audioTrack = publication.track.attach();
+                    console.log({audioTrack});
+                    // setState((prevState) => ({ ...prevState, remoteAudio: audioTrack }));
+                }
+                  if (publication.track && publication.track.kind === 'video') {
+                    const videoTrack = publication.track.attach();
+                    console.log({videoTrack});
+                    // setState((prevState) => ({ ...prevState, remoteAudio: videoTrack }));
+                }
+              })
             });
           },
           (error) => {
