@@ -4,10 +4,61 @@
   color: $orange;
 }  
 
+#username {
+  color: $orange;
+}
 
+/* ------------------ CALLVIEW STYLES ------------------------- */
 .call-view {
   display: flex;
 }
+/* ------------------ APPOINTMENT VIEW STYLES ------------------------- */
+.appt-view {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .appt-section {
+
+} 
+
+
+.appt-header {
+
+}
+
+*/
+
+.appt-list{
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+.appt-list-item {
+
+}
+
+.appt-info-container {
+
+
+}
+*/
+
+.appt-date {
+  display:flex;
+  flex-direction: column;
+
+}
+
+.patient-name-notes {
+  display:flex;
+  flex-direction: column;
+}
+
+
+
+/* ------------------- NAV STYLES ----------------------------- */
 .nav-icon {
   color: $unselected-gray;
   padding: $spacing;
@@ -32,6 +83,8 @@
   color: $orange;
 }
 
+/* ------------------- OTHER VID STYLES ----------------------------- */
+
 .other-video {
   border-style: solid;
   width: 60%;
@@ -42,6 +95,7 @@
 
   
 }
+/* ------------------- SELF VIDEO STYLES ----------------------------- */
 
 .self-video-container {
   border-style: solid;
@@ -57,6 +111,7 @@
   flex-direction: column;
   margin-top: $spacing;
 }
+/* ------------------- CONVO LOG STYLES ----------------------------- */
 
 .convo-log {
   border-style: solid;
@@ -65,7 +120,4 @@
   border-radius: $border-radius;
   color: $yellow;
   margin: $spacing;
-}
-#username {
-  color: $orange;
 }
