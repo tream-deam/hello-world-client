@@ -74,15 +74,26 @@ export default function Call() {
                 // if participant has already streamed any content in room
                 participant.tracks.forEach(publication => {
                   if (publication.isSubscribed) {
+                    console.log('remote participant already in room!');
+                    console.log('track before calling .attach():');
                     const track = publication.track;
-                    console.log(track);
+                    console.log({track});
+                    track.attach();
+                    console.log('track after calling .attach():');
+                    console.log({track});
                     setState((prevState) => ({ ...prevState, remoteVideo: track }));
                   }
                 });
 
                 // add remote participant user media that will eventually be streamed
                 participant.on('trackSubscribed', track => {
-                  const videoTrack = track.attach();
+                  console.log('remote participant joined room after local participant!');
+                  console.log('track before calling .attach():');
+                  const videoTrack = track;
+                  console.log({track});
+                  track.attach();
+                  console.log('track after calling .attach():');
+                  console.log({track});
                   setState((prevState) => ({ ...prevState, remoteVideo: videoTrack }));
                 });
             });
