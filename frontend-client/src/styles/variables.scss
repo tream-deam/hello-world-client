@@ -1,8 +1,11 @@
+// Fonts
 $font-family: "Source Sans Pro", sans-serif;
+//also need Poppin
 
 $active-opacity: 1;
 $inactive-opacity: 0.15;
 
+// Colours
 $white: #fff;
 $black: #000;
 $orange: #D87F37;
@@ -20,6 +23,18 @@ $danger-color: #ee5253;
 $error-color: #ff9f43;
 $confirm-color: #10ac84;
 
+
+// Spacing
+$s-size: 1.6rem;
+$m-size: 2.4rem;
+$l-size: 3.6rem;
+$xl-size: 4.8rem;
+$xxl-size: 8rem;
 $spacing: 2rem;
 
 $border-radius: 1.5rem;
+
+//Rough guess breakpoints based off design not based on device
+$desktop-breakpoint: 1200px;
+$tablet-breakpoint: 950px;
+$mobile-breakpoint: 480px;
