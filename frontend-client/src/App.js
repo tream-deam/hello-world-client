@@ -1,7 +1,7 @@
 import Call from "./Call";
 import "./App.css";
 import AllComponents from "./components/AllComponents";
-import CallView from "./components/CallView";
+import CallView from "./components/CallView/CallView";
 import "./components/AllComponents.scss";
 import "normalize.css"
 

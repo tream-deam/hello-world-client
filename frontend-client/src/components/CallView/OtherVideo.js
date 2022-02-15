@@ -1,12 +1,10 @@
-import SelfVideo from "./SelfVideo";
+import Label from "./Label";
 
 function OtherVideo(props) {
   return (
     <>
       <div className="other-video">blah</div>
-      <div className="self-video-log">
-          <SelfVideo/>
-      </div>
+      <Label/>
     </>
   );
 }
