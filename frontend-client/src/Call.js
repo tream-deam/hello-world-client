@@ -111,9 +111,24 @@ export default function Call() {
                     console.log('found previous participant video track, adding to DOM!');
                     setState((prevState) => ({ ...prevState, remoteAudio: videoTrack }));
                 }
-              })
+              });
+
+              participant.on('trackSubscribed', track => {
+                if (track.kind === 'audio') {
+                  const audioTrack = track.attach();
+                  console.log({audioTrack});
+                  console.log('in trackSubscribed handler: found previous participant audio track, adding to DOM!');
+                  setState((prevState) => ({ ...prevState, remoteAudio: audioTrack }));
+                }
+                if (track.kind === 'video') {
+                  const videoTrack = track.attach();
+                  console.log({videoTrack});
+                  console.log('in trackSubscribed handler: found previous participant video track, adding to DOM!');
+                  setState((prevState) => ({ ...prevState, remoteAudio: videoTrack }));
+              }
+              });
             });
-          },
+            },
           (error) => {
             console.log(token)
             console.error(`Unable to connect to Room: ${error.message}`);
