@@ -95,24 +95,24 @@ export default function Call() {
               room.participants.forEach((participant) => {
 
                 // add remote participants tracks that are already subscribed to
-                participant.tracks.forEach((publication) => {
-                  if (publication.track && publication.kind === "audio") {
-                    console.log('this ran!')
-                    const audioTrack = publication.track.attach();
-                    setState((prevState) => ({
-                      ...prevState,
-                      remoteAudio: audioTrack,
-                    }));
-                  }
-                  if (publication.track && publication.kind === "video") {
-                    console.log('this ran!')
-                    const videoTrack = publication.track.attach();
-                    setState((prevState) => ({
-                      ...prevState,
-                      remoteAudio: videoTrack,
-                    }));
-                  }
-                });
+                // participant.tracks.forEach((publication) => {
+                //   if (publication.track && publication.kind === "audio") {
+                //     console.log('this ran!')
+                //     const audioTrack = publication.track.attach();
+                //     setState((prevState) => ({
+                //       ...prevState,
+                //       remoteAudio: audioTrack,
+                //     }));
+                //   }
+                //   if (publication.track && publication.kind === "video") {
+                //     console.log('this ran!')
+                //     const videoTrack = publication.track.attach();
+                //     setState((prevState) => ({
+                //       ...prevState,
+                //       remoteAudio: videoTrack,
+                //     }));
+                //   }
+                // });
 
                 participant.on("trackSubscribed", (track) => {
                   if (track.kind === "audio") {
