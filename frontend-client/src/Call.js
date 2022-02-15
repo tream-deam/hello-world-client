@@ -93,7 +93,9 @@ export default function Call() {
 
               // for all participants already in call, attach their remote tracks to DOM
               room.participants.forEach((participant) => {
-
+                // the following commented out code was in twilio tutorial but the app
+                // works as expected with it commented out so it may not be necessary
+                
                 // add remote participants tracks that are already subscribed to
                 // participant.tracks.forEach((publication) => {
                 //   if (publication.track && publication.kind === "audio") {
