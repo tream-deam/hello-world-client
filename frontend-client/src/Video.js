@@ -34,7 +34,7 @@ export default function Video(props) {
       method: "POST",
       url: "https://microsoft-translator-text.p.rapidapi.com/translate",
       params: {
-        to: "en",
+        to: "es",
         "api-version": "3.0",
         profanityAction: "NoAction",
         textType: "plain",
