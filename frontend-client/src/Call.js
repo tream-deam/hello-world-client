@@ -168,6 +168,7 @@ export default function Call() {
         videoFeed={state.selfVideo}
         audioFeed={state.selfAudio}
         muteAudioHandler={muteLocalAudio}
+        stopLocalVideo={stopLocalVideo}
       />
       <Video 
         id="remote-video"
