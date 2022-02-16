@@ -9,11 +9,12 @@ function CallView(props) {
     <div className="call-view">
       <NavBar/>
       <OtherVideo/>
-      <div className="self-video-log">
-          <ConvoLog/>
-          <SelfVideo/>
-        </div>
-      </div>
+      <section className= "self-video-log-panel"> 
+        <ConvoLog/>
+        <SelfVideo/>
+      </section>
+    </div>
+
   );
 }
 export default CallView;
