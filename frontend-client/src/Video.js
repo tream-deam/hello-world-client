@@ -47,18 +47,21 @@ export default function Video(props) {
     const socket = socketState;
 
     const lastResult = results.slice(-1);
-    console.log(lastResult[0]);
+    // console.log(lastResult[0]);
     if (lastResult[0]) {
-      socket.emit('transcriptionFinish', {msg: lastResult[0].transcript} )
+      // socket.emit('transcriptionFinish', {msg: lastResult[0].transcript} )
     }
   }, [socketState, results])
   
-  // useEffect(() => {
-  //   const socket = socketState;
-  //   setStateInterim(interimResult)
-  //   socket.emit('transcriptionFinish', {msg: interimResult} )
+  useEffect(() => {
+    const socket = socketState;
+    setStateInterim(interimResult);
+
+    if (socket) {
+      socket.emit('transcriptionFinish', {msg: interimResult} )
+    }
     
-  // }, [interimResult])
+  }, [socketState, interimResult])
 
 
 
