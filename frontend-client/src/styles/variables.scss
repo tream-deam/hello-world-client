@@ -1,9 +1,7 @@
 // Fonts
 $font-family: "Source Sans Pro", sans-serif;
-//also need Poppin
+$logo-font: 'Poppins', sans-serif;
 
-$active-opacity: 1;
-$inactive-opacity: 0.15;
 
 // Colours
 $white: #fff;
@@ -14,15 +12,6 @@ $peach: #E9B78E;
 $green-black: #3F4D42;
 $brown-black: #33250D;
 $unselected-gray: #BFBFBF;
-
-$dark-background: #222f3e;
-
-$weeks-colors: #54a0ff, #48dbfb, #1dd1a1, #5f27cd;
-$booked-color: #54a0ff;
-$danger-color: #ee5253;
-$error-color: #ff9f43;
-$confirm-color: #10ac84;
-
 
 // Spacing
 $s-size: 1.6rem;
@@ -38,3 +27,13 @@ $border-radius: 1.5rem;
 $desktop-breakpoint: 1200px;
 $tablet-breakpoint: 950px;
 $mobile-breakpoint: 480px;
+
+//Variables from Scheduler that might be handy for Appointment Stretch
+// $active-opacity: 1;
+// $inactive-opacity: 0.15;
+
+// $weeks-colors: 
+// $booked-color: 
+// $danger-color: 
+// $error-color: 
+// $confirm-color: 
