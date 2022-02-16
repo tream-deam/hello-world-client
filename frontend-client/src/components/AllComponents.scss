@@ -85,16 +85,35 @@
 
 /* ------------------- OTHER VID STYLES ----------------------------- */
 
+/* will need to play with position and z-index to layer captions and label */
+.other-video-container {
+  position: relative;
+}
+
 .other-video {
   border-style: solid;
   width: 60%;
   color: $yellow;
   border-radius: $border-radius;
   align-self: stretch;
-  margin: $spacing 0;
-
-  
+  margin: $spacing 0; 
+  position: absolute; 
+  z-index: 1;
 }
+
+.caption {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  font-size: 16px;
+  position: absolute;
+  z-index: 3;
+}
+
+.label {
+  position: absolute;
+  z-index: 2;
+}
+
 /* ------------------- SELF VIDEO STYLES ----------------------------- */
 
 .self-video-container {
