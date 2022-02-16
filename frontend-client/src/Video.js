@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useSpeechToText from 'react-hook-speech-to-text';
 
 export default function Video(props) {
@@ -13,6 +13,8 @@ export default function Video(props) {
     continuous: true,
     useLegacyResults: false,
   });
+
+  const [translation, setTranslation] = useState("");
 
   const { id, videoFeed, audioFeed } = props;
   useEffect(() => {
