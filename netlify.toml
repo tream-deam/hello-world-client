@@ -14,4 +14,3 @@
 [build.environment]
   REACT_APP_API_BASE_URL = "https://hello-doc-lhl.herokuapp.com/"
   REACT_APP_WEBSOCKET_URL = "wss://hello-doc-lhl.herokuapp.com/"
-  CHOKIDAR_USEPOLLING=true
