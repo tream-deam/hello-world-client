@@ -30,6 +30,13 @@ export default function Call() {
       publication.track.disable();
     });
   };
+
+  const stopLocalVideo = (e) => {
+    e.preventDefault();
+    roomState.localParticipant.videoTracks.forEach(publication => {
+      publication.track.disable();
+    });
+  };
   
   const joinRoom = (e) => {
     e.preventDefault();
