@@ -2,6 +2,7 @@ import NavBar from "../NavBar";
 import ConvoLog from "./ConvoLog";
 import OtherVideo from "./OtherVideo";
 import SelfVideo from "./SelfVideo";
+import Call from "./Call";
 
 
 function CallView(props) {
