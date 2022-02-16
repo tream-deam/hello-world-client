@@ -25,7 +25,7 @@ const Transcription = () => {
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
     // After initializing socket, save to state to be reused elsewhere
-    const socket = io("/");
+    const socket = io("https://620cbe7c94f2cb0007b43921--gracious-fermat-d56c12.netlify.app/");
     setSocketState(socket);
 
     socket.on("connect", () => {
