@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
-import axios from 'axios';
+import axios from "axios";
 
 const Transcription = () => {
   const {
@@ -27,8 +27,15 @@ const Transcription = () => {
 
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
+    // check if in development or production so appropriate socket url is used
+    const socketURL =
+      process.env.NODE_ENV === "development"
+        ? "/"
+        : "https://hello-doc-lhl.herokuapp.com";
+    console.log(socketURL); // remove later
+
     // After initializing socket, save to state to be reused elsewhere
-    const socket = io("https://hello-doc-lhl.herokuapp.com");
+    const socket = io(socketURL);
     setSocketState(socket);
 
     socket.on("connect", () => {
@@ -77,7 +84,7 @@ const Transcription = () => {
     }
   }, [socketState, interimResult]);
 
-  // Translation 
+  // Translation
   useEffect(() => {
     const options = {
       method: "POST",
@@ -104,8 +111,8 @@ const Transcription = () => {
       .request(options)
       .then((res) => {
         const result = res.data[0].translations[0].text;
-        console.log('original: ' + JSON.parse(res.config.data)[0].Text)
-        setTranslation(result)
+        console.log("original: " + JSON.parse(res.config.data)[0].Text);
+        setTranslation(result);
       })
       .catch((error) => console.error(error));
   }, [interimResult]);
