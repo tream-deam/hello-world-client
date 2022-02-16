@@ -1,0 +1,39 @@
+// Fonts
+$font-family: "Source Sans Pro", sans-serif;
+$logo-font: 'Poppins', sans-serif;
+
+
+// Colours
+$white: #fff;
+$black: #000;
+$orange: #D87F37;
+$yellow: #E5AC52;
+$peach: #E9B78E;
+$green-black: #3F4D42;
+$brown-black: #33250D;
+$unselected-gray: #BFBFBF;
+
+// Spacing
+$s-size: 1.6rem;
+$m-size: 2.4rem;
+$l-size: 3.6rem;
+$xl-size: 4.8rem;
+$xxl-size: 8rem;
+$spacing: 2rem;
+
+$border-radius: 1.5rem;
+
+//Rough guess breakpoints based off design not based on device
+$desktop-breakpoint: 1200px;
+$tablet-breakpoint: 950px;
+$mobile-breakpoint: 480px;
+
+//Variables from Scheduler that might be handy for Appointment Stretch
+// $active-opacity: 1;
+// $inactive-opacity: 0.15;
+
+// $weeks-colors: 
+// $booked-color: 
+// $danger-color: 
+// $error-color: 
+// $confirm-color: 

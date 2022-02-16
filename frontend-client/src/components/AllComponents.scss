@@ -1,0 +1,154 @@
+@import "../styles/variables.scss";
+
+#logo {
+  color: $orange;
+}  
+
+#username {
+  color: $orange;
+}
+
+/* ------------------ CALLVIEW STYLES ------------------------- */
+.call-view {
+  display: flex;
+}
+/* ------------------ APPOINTMENT VIEW STYLES ------------------------- */
+.appt-view {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .appt-section {
+
+} 
+
+
+.appt-header {
+
+}
+
+*/
+
+.appt-list{
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+.appt-list-item {
+
+}
+
+.appt-info-container {
+
+
+}
+*/
+
+.appt-date {
+  display:flex;
+  flex-direction: column;
+
+}
+
+.patient-name-notes {
+  display:flex;
+  flex-direction: column;
+}
+
+
+
+/* ------------------- NAV STYLES ----------------------------- */
+.nav-icon {
+  color: $unselected-gray;
+  padding: $spacing;
+}
+
+.side-nav{
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  min-width: 5rem;
+  padding-left: 1rem;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nav-icon:hover {
+  color: $orange;
+}
+
+/* ------------------- OTHER VID STYLES ----------------------------- */
+
+/* will need to play with position and z-index to layer captions and label */
+.other-video-container {
+  position: relative;
+}
+
+.other-video {
+  border-style: solid;
+  width: 60%;
+  color: $yellow;
+  border-radius: $border-radius;
+  align-self: stretch;
+  margin: $spacing 0; 
+  position: absolute; 
+  z-index: 1;
+  border-radius: 2.1rem;
+}
+
+.caption {
+  border-bottom-left-radius: 2.1rem;
+  border-bottom-right-radius: 2.1rem;
+  font-size: 16px;
+  position: absolute;
+  z-index: 3;
+}
+
+.label {
+  position: absolute;
+  z-index: 2;
+}
+/* Gotta add video ID to video once we know how things are returning twilio */
+#video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ------------------- SELF VIDEO STYLES ----------------------------- */
+
+.self-video-container {
+  border-style: solid;
+  width: 28%;
+  height: 23%;
+  color: $yellow;
+  border-radius: $border-radius;
+  margin-left: $spacing;
+}
+.self-video {
+  position: absolute; 
+  z-index: 1;
+  border-radius: 2.1rem;
+}
+
+.self-video-log-panel {
+  display: flex;
+  flex-direction: column;
+  margin-top: $spacing;
+}
+/* ------------------- CONVO LOG STYLES ----------------------------- */
+
+.convo-log {
+  border-style: solid;
+  width: 407px;
+  height: 661px;
+  border-radius: $border-radius;
+  color: $yellow;
+  margin: $spacing;
+}
