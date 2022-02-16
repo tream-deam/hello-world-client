@@ -1,4 +1,4 @@
-//import Call from "./Call";
+import Call from "./components/CallView/Call";
 import "./App.css";
 import AllComponents from "./components/AllComponents";
 //import CallView from "./components/CallView/CallView";
@@ -11,7 +11,7 @@ import AppointmentView from "./components/AppointmentView/AppointmentView"
 function App() {
   return (
     <>
- {/*      <Call /> */}
+      <Call />
       {/* Conditional rendering if logged in*/}
 
    {/*    <CallView/> */}

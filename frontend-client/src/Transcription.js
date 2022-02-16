@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
+import axios from 'axios';
 
 const Transcription = () => {
   const {
@@ -21,6 +22,8 @@ const Transcription = () => {
   const [stateInterim, setStateInterim] = useState([]);
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
   const [transcriptionResults, setTranscriptionResults] = useState([]);
+  // Translation state
+  const [translation, setTranslation] = useState("");
 
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
@@ -74,6 +77,39 @@ const Transcription = () => {
     }
   }, [socketState, interimResult]);
 
+  // Translation 
+  useEffect(() => {
+    const options = {
+      method: "POST",
+      url: "https://microsoft-translator-text.p.rapidapi.com/translate",
+      params: {
+        to: "es",
+        "api-version": "3.0",
+        profanityAction: "NoAction",
+        textType: "plain",
+      },
+      headers: {
+        "content-type": "application/json",
+        "x-rapidapi-host": "microsoft-translator-text.p.rapidapi.com",
+        "x-rapidapi-key": "538c8b93a1mshaefebc3f9e0d00ap14b70ejsn49bf6990464e",
+      },
+      data: [
+        {
+          Text: interimResult ? interimResult : " ",
+        },
+      ],
+    };
+
+    axios
+      .request(options)
+      .then((res) => {
+        const result = res.data[0].translations[0].text;
+        console.log('original: ' + JSON.parse(res.config.data)[0].Text)
+        setTranslation(result)
+      })
+      .catch((error) => console.error(error));
+  }, [interimResult]);
+
   if (error) {
     return <p> Web Speech API is not available in this browser :( </p>;
   }
@@ -93,6 +129,7 @@ const Transcription = () => {
       </button>
 
       <div id="transcription">
+        {translation && <li>{translation}</li>}
         {interimResult && <li>{interimResult}</li>}
         {results && <h2>My Transcription log:</h2>}
         {results.map((result) => {
