@@ -24,6 +24,12 @@ export default function Call() {
 
   }, [roomState])
   
+  const muteLocalAudio = (e) => {
+    e.preventDefault();
+    roomState.localParticipant.audioTracks.forEach(publication => {
+      publication.track.disable();
+    });
+  };
   
   const joinRoom = (e) => {
     e.preventDefault();
