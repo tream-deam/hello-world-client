@@ -7,7 +7,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 
-
 function NavBar() {
   // const { } = props
 
@@ -18,14 +17,13 @@ function NavBar() {
             Hello, <br></br>Doc!{" "}
           </h1>
           <section className="nav-icons">
-           
+
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faCalendarCheck}
                 size="2x"
               />
-           
-    
+                    	       
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faBookMedical}
@@ -35,7 +33,6 @@ function NavBar() {
               <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
   
           </section>
- 
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faUserCircle}

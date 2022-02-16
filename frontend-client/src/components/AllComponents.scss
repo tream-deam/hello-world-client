@@ -2,6 +2,7 @@
 
 #logo {
   color: $orange;
+  font-family: $logo-font;
 }  
 
 #username {
@@ -11,43 +12,60 @@
 /* ------------------ CALLVIEW STYLES ------------------------- */
 .call-view {
   display: flex;
+  height: 90vh;
 }
 /* ------------------ APPOINTMENT VIEW STYLES ------------------------- */
 .appt-view {
   display: flex;
-  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 }
 
-/* .appt-section {
 
+.appt-section {
+  border-style: solid;
+  border-width: thin;
+  flex: 1;
 } 
 
 
 .appt-header {
-
+  display: flex;
+  justify-content: space-between;
+  border-style: solid;
+  border-width: thin;
+  margin: 2.4rem;
+  font-weight: 600;
 }
 
-*/
+.welcome-msg {
+  font-size: 2.4rem;
+}
+
 
 .appt-list{
   display: flex;
   flex-direction: column;
+  padding: 2.4rem;
 }
 
-/*
-.appt-list-item {
 
+.appt-list-item {
+  border-style: solid;
+  border-width: thin;
+  border-radius: 1.2rem;
 }
 
 .appt-info-container {
-
-
+  display: flex;
 }
-*/
+
 
 .appt-date {
   display:flex;
   flex-direction: column;
+  font-weight: 600;
+  margin: 1.2rem;
 
 }
 
@@ -56,7 +74,14 @@
   flex-direction: column;
 }
 
-
+.join-button {
+  background-color: $orange;
+  width: 16.9rem; 
+  height: 6.9rem;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: white;
+}
 
 /* ------------------- NAV STYLES ----------------------------- */
 .nav-icon {
@@ -141,6 +166,8 @@
   display: flex;
   flex-direction: column;
   margin-top: $spacing;
+  flex: 0.3;
+  min-width: 100px;
 }
 /* ------------------- CONVO LOG STYLES ----------------------------- */
 

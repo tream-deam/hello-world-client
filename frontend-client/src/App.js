@@ -1,19 +1,23 @@
-import Call from "./Call";
+//import Call from "./Call";
 import "./App.css";
 import AllComponents from "./components/AllComponents";
-import CallView from "./components/CallView/CallView";
+//import CallView from "./components/CallView/CallView";
 import "./components/AllComponents.scss";
 import "normalize.css"
+import AppointmentView from "./components/AppointmentView/AppointmentView"
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div>
-      <Call />
+    <>
+ {/*      <Call /> */}
       {/* Conditional rendering if logged in*/}
 
-      <CallView/>
+   {/*    <CallView/> */}
       <AllComponents/>
-    </div>
+      <AppointmentView/>
+    </>
   );
 }
 export default App;

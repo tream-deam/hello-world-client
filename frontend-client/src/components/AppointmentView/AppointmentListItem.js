@@ -1,4 +1,5 @@
 import Button from "../Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -19,7 +20,7 @@ function AppointmentListItem (props) {
         <Button> 
           {/* must fix this text and icon styling- not sure how things will work with props.children yet when passed to button component */}
           Join Call
-          <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
+          <FontAwesomeIcon className="join-button" icon={faVideo} size="2x" />
         </Button>
         
         </div>
