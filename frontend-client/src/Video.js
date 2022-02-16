@@ -46,7 +46,7 @@ export default function Video(props) {
       },
       data: [
         {
-          Text: interimResult,
+          Text: interimResult ? interimResult : " ",
         },
       ],
     };
