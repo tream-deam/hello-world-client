@@ -15,7 +15,7 @@ export default function Video(props) {
     useLegacyResults: false,
   });
 
-  const [translation, setTranslation] = useState("");
+  const [translation, setTranslation] = useState(" ");
 
   const { id, videoFeed, audioFeed } = props;
   useEffect(() => {
