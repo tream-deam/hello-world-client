@@ -75,6 +75,8 @@ export default function Video(props) {
           return <li key={result.timestamp}> {result.transcript}</li>
         })}
       </div>
+      <button onClick={props.muteAudioHandler}>Mute</button>
+      <button onClick={props.stopVideoHandler}>Stop Video</button>
     </div>
   );
 }
