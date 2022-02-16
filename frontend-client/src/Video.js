@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useSpeechToText from 'react-hook-speech-to-text';
+import TranscriptionBroadcast from './TranscriptionBroadcast';
+import io from 'socket.io-client';
 
 export default function Video(props) {
   const {
@@ -13,6 +15,55 @@ export default function Video(props) {
     continuous: true,
     useLegacyResults: false,
   });
+  
+  const [socketState, setSocketState] = useState("");
+  const [transcriptions, setTranscriptions] = useState([]);
+  const [stateInterim, setStateInterim] = useState([]);
+  const [transcriptionResults, setTranscriptionResults] = useState([]);
+
+  useEffect(() => {
+    console.log("testing socket");
+    const socket = io('/');
+    setSocketState(socket);
+
+    socket.on('connect', () => {
+      console.log("connected!");
+    });
+
+    socket.on('transcriptionFinish', (msg) => {
+      console.log(msg);
+      setTranscriptionResults(msg);
+    });
+    
+    socket.on('disconnect', () => {
+      console.log("user disconnected!");
+    });
+    
+    // ensures we disconnect to avoid memory leaks
+    return () => socket.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const socket = socketState;
+
+    const lastResult = results.slice(-1);
+    console.log(lastResult[0]);
+    if (lastResult[0]) {
+      socket.emit('transcriptionFinish', {msg: lastResult[0].transcript} )
+    }
+  }, [socketState, results])
+  
+  // useEffect(() => {
+  //   const socket = socketState;
+  //   setStateInterim(interimResult)
+  //   socket.emit('transcriptionFinish', {msg: interimResult} )
+    
+  // }, [interimResult])
+
+
+
+  
+  
 
   const { id, videoFeed, audioFeed } = props;
   useEffect(() => {
@@ -30,6 +81,7 @@ export default function Video(props) {
 
   return (
     <div id={id}>
+       <TranscriptionBroadcast participantTranscription={transcriptionResults}/>
       <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
         {isRecording ? 'Stop Transcribing' : 'Start Transcribing'}
       </button>
