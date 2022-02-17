@@ -291,10 +291,13 @@
   border-radius: $border-radius;
   // margin-bottom: $spacing;
 }
-#self-video {
+
+.self-video--element {
   // position: absolute; 
   z-index: 1;
   border-radius: 2.1rem;
+  width: 100%;
+  height: 100%;
 }
 
 .self-video-log-panel {
