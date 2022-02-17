@@ -158,6 +158,7 @@ export default function Call() {
 
   const videoPlaceholder = <div className="video placeholder"></div>;
   const otherVideoPlaceholder = <div className="video placeholder"></div>;
+  const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
   return (
     <div className="call-view">
@@ -187,7 +188,10 @@ export default function Call() {
               <Transcription />
             </>
           ) : (
-            videoPlaceholder
+            <>
+              <div className="self-video-container">{videoPlaceholder}</div>
+              {transcriptPlaceholder}
+            </>
           )}
         </section>
       </div>
