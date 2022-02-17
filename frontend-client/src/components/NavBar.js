@@ -24,13 +24,13 @@ function NavBar() {
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faCalendarCheck}
-                size="2x"
+                size="3x"
               />
                     	       
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faBookMedical}
-                size="2x"
+                size="3x"
               />
      
               <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
@@ -39,9 +39,9 @@ function NavBar() {
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faUserCircle}
-                size="2x"
+                size="3x"
               />
-              <h4 id="username"> User Name</h4>
+              <h4 id="username"> Richard Bob</h4>
       
         </section>
     </div>

@@ -5,12 +5,15 @@
   font-family: $logo-font;
   font-size: 3.4rem;
   margin-right:1rem;
+  text-align: center;
+  
 }  
 #logo-hello {
   color: $orange;
   font-family: $logo-font;
   font-size: 3.4rem;
   margin-right:1rem;
+  margin-left:1rem;
   margin-bottom: 0;;
 }  
 #logo-doc {
@@ -19,11 +22,16 @@
   font-weight: 300;
   font-size: 3.4rem;
   margin-right:1rem;
+  margin-left:1rem;
   margin-top: 0;
+  
 }  
 
 #username {
   color: $orange;
+  font-size: 1.6rem;
+  margin-bottom: 6rem;
+  text-align: center;
 }
 
 /* ------------------ CALLVIEW STYLES ------------------------- */
@@ -114,8 +122,6 @@
 
 .appt-info-container {
   display: flex;
-
-  
 }
 
 
@@ -209,7 +215,8 @@
   flex-direction: column;
   background-color: $white;
   min-width: 5rem;
-  padding-left: 1rem;
+  max-width: 12.5rem;
+  padding: 0 1rem;
   justify-content: space-between;
   height: 100%;
 }
@@ -221,6 +228,11 @@
 }
 .nav-icon:hover {
   color: $orange;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
 }
 
 /* ------------------- OTHER VID STYLES ----------------------------- */
