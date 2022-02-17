@@ -235,6 +235,13 @@
   align-items: center;
 }
 
+.user-profile-nav-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+
 /* ------------------- OTHER VID STYLES ----------------------------- */
 
 /* will need to play with position and z-index to layer captions and label */

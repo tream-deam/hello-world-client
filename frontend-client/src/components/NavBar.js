@@ -36,13 +36,14 @@ function NavBar() {
               <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
   
           </section>
+            <div className="user-profile-nav-container">
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faUserCircle}
                 size="3x"
               />
               <h4 id="username"> Richard Bob</h4>
-      
+            </div>
         </section>
     </div>
   );
