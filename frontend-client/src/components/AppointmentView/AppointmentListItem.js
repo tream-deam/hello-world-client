@@ -1,9 +1,12 @@
 import Button from "../Button";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 
 
 function AppointmentListItem (props) {
+  const userName = props.name;
+
   return (
   <>
       <div className="appt-list-item-1">
@@ -19,13 +22,15 @@ function AppointmentListItem (props) {
             <p className="appt-notes">Check up examination, shortness of breath.</p>
           </div>
         </div>
-        <Button> 
-          {/* must fix this text and icon styling- not sure how things will work with props.children yet when passed to button component */}
-          <div className="join-call-label">
-            <FontAwesomeIcon className="join-video-icon" icon={faVideo} size="1x" />
-            <div className="join-call-text">Join Call</div>
-          </div>
-        </Button>
+        <Link to="/video-call">
+          <Button> 
+            {/* must fix this text and icon styling- not sure how things will work with props.children yet when passed to button component */}
+            <div className="join-call-label">
+              <FontAwesomeIcon className="join-video-icon" icon={faVideo} size="1x" />
+              <div className="join-call-text">Join Call</div>
+            </div>
+          </Button>
+        </Link>
       </div>
       <div className="appt-list-item">
         <div className="appt-info-container">
@@ -40,13 +45,15 @@ function AppointmentListItem (props) {
             <p className="appt-notes">Check up examination, shortness of breath.</p>
           </div>
         </div>
-        <Button> 
-          {/* must fix this text and icon styling- not sure how things will work with props.children yet when passed to button component */}
-          <div className="join-call-label">
-            <FontAwesomeIcon className="join-video-icon" icon={faVideo} size="1x" />
-            <div className="join-call-text">Join Call</div>
-          </div>
-        </Button>
+        <Link to="/video-call">
+          <Button> 
+            {/* must fix this text and icon styling- not sure how things will work with props.children yet when passed to button component */}
+            <div className="join-call-label">
+              <FontAwesomeIcon className="join-video-icon" icon={faVideo} size="1x" />
+              <div className="join-call-text">Join Call</div>
+            </div>
+          </Button>
+        </Link>
       </div>
       <div className="appt-list-item">
         <div className="appt-info-container">
@@ -61,13 +68,15 @@ function AppointmentListItem (props) {
             <p className="appt-notes">Check up examination, shortness of breath.</p>
           </div>
         </div>
-        <Button> 
-          {/* must fix this text and icon styling- not sure how things will work with props.children yet when passed to button component */}
-          <div className="join-call-label">
-            <FontAwesomeIcon className="join-video-icon" icon={faVideo} size="1x" />
-            <div className="join-call-text">Join Call</div>
-          </div>
-        </Button>
+        <Link to="/video-call">
+          <Button> 
+            {/* must fix this text and icon styling- not sure how things will work with props.children yet when passed to button component */}
+            <div className="join-call-label">
+              <FontAwesomeIcon className="join-video-icon" icon={faVideo} size="1x" />
+              <div className="join-call-text">Join Call</div>
+            </div>
+          </Button>
+        </Link>
       </div>
     </>
   );
