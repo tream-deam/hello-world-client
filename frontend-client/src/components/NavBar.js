@@ -11,8 +11,8 @@ function NavBar() {
   // const { } = props
 
   //modes for nav buttons
-  const SELECTED = "SELECTED";
-  const DESELECTED= "DESELECTED";
+  // const SELECTED = "SELECTED";
+  // const DESELECTED= "DESELECTED";
 
 
   return (
