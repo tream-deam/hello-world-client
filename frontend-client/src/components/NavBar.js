@@ -13,9 +13,12 @@ function NavBar() {
   return (
     <div className="nav-container">
         <section className="side-nav">
-          <h1 id="logo">
-            Hello, <br></br>Doc!{" "}
-          </h1>
+          <div id="logo">
+          <h1 id="logo-hello">
+            Hello,  </h1>
+            <h1 id="logo-doc"> 
+            Doc!{" "}</h1>
+          </div>
           <section className="nav-icons">
 
               <FontAwesomeIcon
