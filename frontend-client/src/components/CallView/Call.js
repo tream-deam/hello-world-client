@@ -27,6 +27,7 @@ export default function Call() {
 
   const videoPlaceholder = <div className="video placeholder"></div>;
   const otherVideoPlaceholder = <div className="video placeholder"></div>;
+  const transcriptPlaceholder = <div className="transcript-placeholder"></div>
 
   const joinRoom = (e) => {
     e.preventDefault();
@@ -164,11 +165,11 @@ export default function Call() {
   return (
     <div className="call-view">
       <NavBar />
-      <form onSubmit={joinRoom}>
+      {/* <form onSubmit={joinRoom}>
         Enter Your Name:
         <input value={userName} onChange={(e) => setUserName(e.target.value)} />
         <button>Join Room</button>
-      </form>
+      </form> */}
       <div id="videos">
         {state.remoteVideo ? (
           <div className="other-video-container">
