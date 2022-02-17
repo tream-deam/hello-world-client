@@ -15,8 +15,8 @@ function App() {
       {/* Conditional rendering if logged in*/}
 
    {/*    <CallView/> */}
-      <AllComponents/>
-      <AppointmentView/>
+      {/* <AllComponents/>
+      <AppointmentView/> */}
     </>
   );
 }
