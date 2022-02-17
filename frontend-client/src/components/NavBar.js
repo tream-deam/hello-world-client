@@ -10,36 +10,45 @@ import {
 function NavBar() {
   // const { } = props
 
+  //modes for nav buttons
+  // const SELECTED = "SELECTED";
+  // const DESELECTED= "DESELECTED";
+
+
   return (
     <div className="nav-container">
         <section className="side-nav">
-          <h1 id="logo">
-            Hello, <br></br>Doc!{" "}
-          </h1>
+          <div id="logo">
+          <h1 id="logo-hello">
+            Hello,  </h1>
+            <h1 id="logo-doc"> 
+            Doc!{" "}</h1>
+          </div>
           <section className="nav-icons">
 
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faCalendarCheck}
-                size="2x"
+                size="3x"
               />
                     	       
+              <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faBookMedical}
-                size="2x"
+                size="3x"
               />
      
-              <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
   
           </section>
+            <div className="user-profile-nav-container">
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faUserCircle}
-                size="2x"
+                size="3x"
               />
-              <h4 id="username"> User Name</h4>
-      
+              <h4 id="username"> Richard Bob</h4>
+            </div>
         </section>
     </div>
   );

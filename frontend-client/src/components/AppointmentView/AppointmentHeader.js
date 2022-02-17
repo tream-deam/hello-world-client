@@ -2,9 +2,9 @@ function AppointmentHeader (props) {
 
   return (
       <div className="appt-header">
-        <p className="welcome-msg">Hello, User! </p>
+        <p className="welcome-msg">Hello, Richard! </p>
               {/*STRETCH: conditional rendering of + Appointment button*/}
-         <p>+ Appointment</p>
+         <p className="add-appt">+ Appointment</p>
       </div>
   );
 
