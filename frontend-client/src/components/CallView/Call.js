@@ -148,7 +148,8 @@ export default function Call() {
   }
 
   return (
-    <div>
+    <div className="call-view">
+      <NavBar />
       <form onSubmit={joinRoom}>
         Enter Your Name:
         <input value={userName} onChange={(e) => setUserName(e.target.value)} />
