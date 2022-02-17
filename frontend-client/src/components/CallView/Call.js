@@ -165,11 +165,13 @@ export default function Call() {
   return (
     <div className="call-view">
       <NavBar />
-      {/* <form onSubmit={joinRoom}>
+      {!state.selfVideo &&
+      <form onSubmit={joinRoom}>
         Enter Your Name:
         <input value={userName} onChange={(e) => setUserName(e.target.value)} />
         <button>Join Room</button>
-      </form> */}
+      </form>
+       }
       <div id="videos">
         {state.remoteVideo ? (
           <div className="other-video-container">
