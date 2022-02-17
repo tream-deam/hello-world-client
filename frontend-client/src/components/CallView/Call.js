@@ -1,6 +1,7 @@
 import Video from "../../Video";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Transcription from '../../Transcription';
 const {
   connect,
   createLocalVideoTrack,
@@ -150,6 +151,7 @@ export default function Call() {
         <input value={userName} onChange={(e) => setUserName(e.target.value)}/>
         <button>Join Room</button>
       </form>
+      <Transcription />
       <Video
         id="self-video"
         videoFeed={state.selfVideo}
