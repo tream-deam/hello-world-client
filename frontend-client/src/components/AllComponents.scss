@@ -303,9 +303,9 @@
 /* ------------------- SELF VIDEO STYLES ----------------------------- */
 
 .self-video-container {
-  border-style: solid;
+  // border-style: solid;
   width: 100%;
-  height: 40%;
+  height: 30%;
   color: $yellow;
   border-radius: $border-radius;
   // margin-bottom: $spacing;
@@ -326,13 +326,13 @@
   // flex: 0.3;
   width: 30%;
 }
+
 /* ------------------- CONVO LOG STYLES ----------------------------- */
 
 .convo-log {
-  border-style: solid;
-  width: 407px;
-  height: 661px;
-  border-radius: $border-radius;
-  color: $yellow;
-  margin: $spacing;
+  // border-style: solid;
+  width: 100%;
+  height: 70%;
+  border-radius: $border-radius $border-radius $border-radius 0.15rem;
+  background-color: rgba(230, 173, 82, 0.45);
 }
