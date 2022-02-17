@@ -167,11 +167,13 @@ export default function Call() {
       <section className="self-video-log-panel">
         {state.selfVideo ? (
           <>
+          <div className="self-video-container">
             <Video
               id="self-video"
               videoFeed={state.selfVideo}
               audioFeed={state.selfAudio}
             />
+            </div>
             <Transcription />
           </>
         ) : (
