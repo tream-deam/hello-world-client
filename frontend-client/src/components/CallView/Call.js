@@ -2,6 +2,7 @@ import Video from "../../Video";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Transcription from '../../Transcription';
+import NavBar from "../NavBar";
 const {
   connect,
   createLocalVideoTrack,
@@ -145,23 +146,25 @@ export default function Call() {
   }
 
   return (
-    <div id="video-container">
+    <div>
       <form onSubmit={joinRoom}>
         Enter Your Name:
-        <input value={userName} onChange={(e) => setUserName(e.target.value)}/>
+        <input value={userName} onChange={(e) => setUserName(e.target.value)} />
         <button>Join Room</button>
       </form>
-      <Transcription />
       <Video
-        id="self-video"
-        videoFeed={state.selfVideo}
-        audioFeed={state.selfAudio}
-      />
-      <Video 
         id="remote-video"
         videoFeed={state.remoteVideo}
         audioFeed={state.remoteAudio}
       />
+      <section className= "self-video-log-panel">
+        <Video
+          id="self-video"
+          videoFeed={state.selfVideo}
+          audioFeed={state.selfAudio}
+        />
+        <Transcription />
+      </section>
     </div>
   );
 }
