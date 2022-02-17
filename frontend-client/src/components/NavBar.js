@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserCircle,
@@ -5,6 +6,7 @@ import {
   faBookMedical,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
+import './NavBar.scss'
 
 
 function NavBar() {
@@ -26,20 +28,32 @@ function NavBar() {
           </div>
           <section className="nav-icons">
 
+            <NavLink 
+              to="/appointments"
+              className={(navData) => navData.isActive ? "nav-link is-active" : "nav-link"}
+            >
               <FontAwesomeIcon
-                className="nav-icon"
-                icon={faCalendarCheck}
-                size="3x"
+              className="nav-icon"
+              icon={faCalendarCheck}
+              size="3x"
               />
-                    	       
+            </NavLink>
+
+            <NavLink 
+              to="/video-call" 
+              className={(navData) => navData.isActive ? "nav-link is-active" : "nav-link" }
+            >
               <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
+            </NavLink>
+
+            <NavLink to="/" className={(navData) => navData.isActive ? "nav-link is-active" : "nav-link" }>
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faBookMedical}
                 size="3x"
               />
+            </NavLink>
      
-  
           </section>
             <div className="user-profile-nav-container">
               <FontAwesomeIcon

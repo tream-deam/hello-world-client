@@ -37,8 +37,10 @@
 /* ------------------ CALLVIEW STYLES ------------------------- */
 .call-view {
   display: flex;
-  height: 90vh;
+  height: 100vh;
+  max-width: 100%;
 }
+
 /* ------------------ APPOINTMENT VIEW STYLES ------------------------- */
 .appt-view {
   display: flex;
@@ -248,6 +250,8 @@
 /* will need to play with position and z-index to layer captions and label */
 .other-video-container {
   position: relative;
+  width: 70%;
+  margin: 0 0 0 $spacing;
 }
 
 .other-video {
@@ -275,42 +279,63 @@
   z-index: 2;
 }
 /* Gotta add video ID to video once we know how things are returning twilio */
-#video {
+.video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: $border-radius;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(182, 180, 180);
+  border-radius: 2.1rem;
+}
+
+#videos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  padding: $spacing 0;
 }
 
 /* ------------------- SELF VIDEO STYLES ----------------------------- */
 
 .self-video-container {
   border-style: solid;
-  width: 28%;
-  height: 23%;
+  width: 100%;
+  height: 30%;
   color: $yellow;
   border-radius: $border-radius;
-  margin-left: $spacing;
+  margin-bottom: $spacing;
 }
-.self-video {
-  position: absolute; 
+
+.self-video--element {
+  // position: absolute; 
+  border-style: solid;
   z-index: 1;
   border-radius: 2.1rem;
+  width: 100%;
+  height: 100%;
 }
 
 .self-video-log-panel {
+  border-style: solid;
   display: flex;
   flex-direction: column;
-  margin-top: $spacing;
-  flex: 0.3;
-  min-width: 100px;
+  margin: 0 $spacing;
+  // flex: 0.3;
+  width: 30%;
 }
+
 /* ------------------- CONVO LOG STYLES ----------------------------- */
 
 .convo-log {
-  border-style: solid;
-  width: 407px;
-  height: 661px;
-  border-radius: $border-radius;
-  color: $yellow;
-  margin: $spacing;
+  // border-style: solid;
+  width: 100%;
+  height: 70%;
+  border-radius: $border-radius $border-radius $border-radius 0.15rem;
+  background-color: $peach;
 }

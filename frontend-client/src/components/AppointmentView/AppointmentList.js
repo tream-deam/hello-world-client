@@ -4,7 +4,7 @@ function AppointmentList (props) {
   return (
       <div className="appt-list">
         {/* map function to create appointmentlistitems */}
-        <AppointmentListItem/>
+        <AppointmentListItem userName="Kira" />
       </div>
   );
 }
