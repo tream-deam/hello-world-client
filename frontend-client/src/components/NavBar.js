@@ -6,6 +6,7 @@ import {
   faBookMedical,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
+import './NavBar.scss'
 
 
 function NavBar() {
@@ -29,23 +30,23 @@ function NavBar() {
 
             <NavLink 
               to="/appointments"
-              className={(navData) => navData.isActive ? "is-active" : ""
-            }>
+              className={(navData) => navData.isActive ? "nav-link is-active" : "nav-link"}
+            >
               <FontAwesomeIcon
-                className="nav-icon"
-                icon={faCalendarCheck}
-                size="3x"
+              className="nav-icon"
+              icon={faCalendarCheck}
+              size="3x"
               />
             </NavLink>
 
             <NavLink 
-              to="" 
-              className={(navData) => navData.isActive ? "is-active" : "" 
-            }>
+              to="/video-call" 
+              className={(navData) => navData.isActive ? "nav-link is-active" : "nav-link" }
+            >
               <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
             </NavLink>
 
-            <NavLink to="" className={(navData) => navData.isActive ? "is-active" : "" }>
+            <NavLink to="/" className={(navData) => navData.isActive ? "nav-link is-active" : "nav-link" }>
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faBookMedical}
