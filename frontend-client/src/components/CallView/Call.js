@@ -25,6 +25,8 @@ export default function Call() {
     // console.log(roomState.participants);
 
   }, [roomState])
+
+  const videoPlaceholder = <div style={{width: 640 + 'px', height: 480 + 'px', backgroundColor: 'grey'}}></div>
   
   
   const joinRoom = (e) => {
@@ -152,18 +154,28 @@ export default function Call() {
         <input value={userName} onChange={(e) => setUserName(e.target.value)} />
         <button>Join Room</button>
       </form>
-      <Video
-        id="remote-video"
-        videoFeed={state.remoteVideo}
-        audioFeed={state.remoteAudio}
-      />
-      <section className= "self-video-log-panel">
+      {state.remoteVideo ? (
         <Video
-          id="self-video"
-          videoFeed={state.selfVideo}
-          audioFeed={state.selfAudio}
+          id="remote-video"
+          videoFeed={state.remoteVideo}
+          audioFeed={state.remoteAudio}
         />
-        <Transcription />
+      ) : (
+        videoPlaceholder
+      )}
+      <section className="self-video-log-panel">
+        {state.selfVideo ? (
+          <>
+            <Video
+              id="self-video"
+              videoFeed={state.selfVideo}
+              audioFeed={state.selfAudio}
+            />
+            <Transcription />
+          </>
+        ) : (
+          videoPlaceholder
+        )}
       </section>
     </div>
   );
