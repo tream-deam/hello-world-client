@@ -16,18 +16,13 @@ export default function Call() {
     remoteAudio: null
   });
 
-  const [userName, setUserName] = useState("");
+  // make initial userName state random. for demo purposes 
+  const [userName, setUserName] = useState("s");
   const [roomState, setRoomState] = useState({});
   // const [remoteParticipant, setRemoteParticipant] = useState(null);
   
   useEffect(() => {
     // console.log(roomState.participants);
-
-  }, [roomState])
-  
-  
-  const joinRoom = (e) => {
-    e.preventDefault();
     
     axios
       .get(`/token/${userName}`)
@@ -71,7 +66,7 @@ export default function Call() {
               room.on("participantConnected", (participant) => {
                 console.log(`A remote Participant connected: ${participant}`);
                 // setRemoteParticipant(participant);
-
+  
                 // if participant has already published any content that is subscribed to in room
                 participant.tracks.forEach(publication => {
                   if (publication.isSubscribed) {
@@ -80,7 +75,7 @@ export default function Call() {
                     setState((prevState) => ({ ...prevState, remoteVideo: track }));
                   }
                 });
-
+  
                 // add remote participant user media that will eventually be streamed
                 participant.on('trackSubscribed', track => {
                   // depending on incoming track type (video or audio)
@@ -91,7 +86,7 @@ export default function Call() {
                   setState((prevState) => ({ ...prevState, remoteVideo: videoTrack, remoteAudio: audioTrack }));
                 });
               });
-
+  
               // for all participants already in call, attach their remote tracks to DOM
               room.participants.forEach((participant) => {
                 // the following commented out code was in twilio tutorial but the app
@@ -116,7 +111,7 @@ export default function Call() {
                 //     }));
                 //   }
                 // });
-
+  
                 participant.on("trackSubscribed", (track) => {
                   if (track.kind === "audio") {
                     const audioTrack = track.attach();
@@ -142,6 +137,12 @@ export default function Call() {
         );
       })
       .catch((err) => console.log(err));
+  }, [userName]);
+  
+  
+  const joinRoom = (e) => {
+    e.preventDefault();
+    
   }
 
   return (
