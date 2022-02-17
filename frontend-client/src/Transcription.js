@@ -28,11 +28,7 @@ const Transcription = () => {
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
     // check if in development or production so appropriate socket url is used
-    const socketURL =
-      process.env.NODE_ENV === "development"
-        ? "/"
-        : "https://hello-doc-lhl.herokuapp.com";
-    console.log(socketURL); // remove later
+    const socketURL = process.env.NODE_ENV === "development" ? "/" : "https://hello-doc-lhl.herokuapp.com";
 
     // After initializing socket, save to state to be reused elsewhere
     const socket = io(socketURL);
@@ -66,11 +62,11 @@ const Transcription = () => {
   // Whenever a new sentence is transcribed, send it to other client. Only grab the most recent (last) sentence/result
   useEffect(() => {
     const socket = socketState;
-    const lastResult = results.slice(-1);
+    const lastResult = results[results.length - 1];
 
     // This condition prevents transcript from trying to read properties of undefined when there aren't any results
-    if (lastResult[0]) {
-      socket.emit("transcriptionFinish", { msg: lastResult[0].transcript });
+    if (lastResult) {
+      socket.emit("transcriptionFinish", { msg: lastResult.transcript });
     }
   }, [socketState, results]);
 
@@ -111,7 +107,6 @@ const Transcription = () => {
       .request(options)
       .then((res) => {
         const result = res.data[0].translations[0].text;
-        console.log("original: " + JSON.parse(res.config.data)[0].Text);
         setTranslation(result);
       })
       .catch((error) => console.error(error));
