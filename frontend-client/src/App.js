@@ -11,14 +11,6 @@ import AppRouter from './routers/AppRouter';
 
 function App() {
   return (
-  //   <>
-  //     <Call />
-  //     {/* Conditional rendering if logged in*/}
-
-  //  {/*    <CallView/> */}
-  //     <AllComponents/>
-  //     <AppointmentView/>
-  //   </>
   <AppRouter />
   );
 }

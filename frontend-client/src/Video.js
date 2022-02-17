@@ -5,7 +5,7 @@ export default function Video(props) {
   useEffect(() => {
     // if user's webcam is streaming video
     if (videoFeed) {
-      document.getElementById(id).appendChild(videoFeed);
+      document.getElementById(id).appendChild(videoFeed).classList.add(`${id}--element`, 'video');
     }
     // if user's mic is streaming audio
     if (audioFeed) {
