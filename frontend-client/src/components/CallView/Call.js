@@ -27,7 +27,7 @@ export default function Call() {
 
   const videoPlaceholder = <div className="video placeholder"></div>;
   const otherVideoPlaceholder = <div className="video placeholder"></div>;
-  const transcriptPlaceholder = <div className="transcript-placeholder"></div>
+  const transcriptPlaceholder = <div className="transcript placeholder"></div>
 
   const joinRoom = (e) => {
     e.preventDefault();
@@ -180,7 +180,9 @@ export default function Call() {
             />
           </div>
         ) : (
-          <div className="other-video-container">{otherVideoPlaceholder}</div>
+          <div className="other-video-container">
+            {otherVideoPlaceholder}
+            </div>
         )}
         <section className="self-video-log-panel">
           {state.selfVideo ? (
@@ -195,7 +197,10 @@ export default function Call() {
               <Transcription />
             </>
           ) : (
-            videoPlaceholder
+            <>
+            {videoPlaceholder}
+            {transcriptPlaceholder}
+            </>
           )}
         </section>
       </div>
