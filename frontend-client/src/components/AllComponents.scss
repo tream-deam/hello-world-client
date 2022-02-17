@@ -224,7 +224,8 @@
 .nav-icons {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 4.8rem;
+  margin-bottom: 15rem;
 }
 .nav-icon:hover {
   color: $orange;
@@ -233,7 +234,7 @@
 .nav-container {
   display: flex;
   align-items: center;
-}
+ }
 
 .user-profile-nav-container {
   display: flex;

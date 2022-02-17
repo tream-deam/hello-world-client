@@ -10,6 +10,11 @@ import {
 function NavBar() {
   // const { } = props
 
+  //modes for nav buttons
+  const SELECTED = "SELECTED";
+  const DESELECTED= "DESELECTED";
+
+
   return (
     <div className="nav-container">
         <section className="side-nav">
@@ -27,13 +32,13 @@ function NavBar() {
                 size="3x"
               />
                     	       
+              <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faBookMedical}
                 size="3x"
               />
      
-              <FontAwesomeIcon className="nav-icon" icon={faVideo} size="2x" />
   
           </section>
             <div className="user-profile-nav-container">
