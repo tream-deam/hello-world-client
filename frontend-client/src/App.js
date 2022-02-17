@@ -5,19 +5,21 @@ import AllComponents from "./components/AllComponents";
 import "./components/AllComponents.scss";
 import "normalize.css"
 import AppointmentView from "./components/AppointmentView/AppointmentView"
+import AppRouter from './routers/AppRouter';
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <>
-      <Call />
-      {/* Conditional rendering if logged in*/}
+  //   <>
+  //     <Call />
+  //     {/* Conditional rendering if logged in*/}
 
-   {/*    <CallView/> */}
-      <AllComponents/>
-      <AppointmentView/>
-    </>
+  //  {/*    <CallView/> */}
+  //     <AllComponents/>
+  //     <AppointmentView/>
+  //   </>
+  <AppRouter />
   );
 }
 export default App;
