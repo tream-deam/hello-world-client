@@ -141,7 +141,7 @@ export default function Call() {
                   const videoTrack = track.attach();
                   setState((prevState) => ({
                     ...prevState,
-                    remoteAudio: videoTrack,
+                    remoteVideo: videoTrack,
                   }));
                 }
               });
