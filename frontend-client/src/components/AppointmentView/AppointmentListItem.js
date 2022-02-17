@@ -5,7 +5,6 @@ import { faVideo } from "@fortawesome/free-solid-svg-icons";
 
 
 function AppointmentListItem (props) {
-  const userName = props.name;
 
   return (
   <>

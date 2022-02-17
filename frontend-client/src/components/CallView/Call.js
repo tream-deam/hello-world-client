@@ -18,14 +18,16 @@ export default function Call() {
   });
 
   // make initial userName state random. for demo purposes 
-  const [userName, setUserName] = useState("s");
-  const [roomState, setRoomState] = useState({});
+  // const [userName, setUserName] = useState("s");
+  // const [roomState, setRoomState] = useState({});
   // const [remoteParticipant, setRemoteParticipant] = useState(null);
 
   useEffect(() => {
-    // console.log(roomState.participants);
+    // so that every client that enters a room is unique
+    const timestamp = Date.now();
+
     axios
-      .get(`/token/${userName}`)
+      .get(`/token/${timestamp}`)
       .then((response) => {
         // console.log(response.data);
         const token = response.data.myToken;
@@ -39,7 +41,7 @@ export default function Call() {
         }).then(
           (room) => {
             console.log(`Successfully joined a Room: ${room}`);
-            setRoomState(room);
+            // setRoomState(room);
             const getVideoTrack = async () => {
               const videoTrack = await createLocalVideoTrack();
               return videoTrack;
@@ -152,24 +154,14 @@ export default function Call() {
         );
       })
       .catch((err) => console.log(err));
-  }, [userName]);
+  }, []);
 
   const videoPlaceholder = <div className="video placeholder"></div>;
   const otherVideoPlaceholder = <div className="video placeholder"></div>;
 
-  const joinRoom = (e) => {
-    e.preventDefault();
-
-  };
-
   return (
     <div className="call-view">
       <NavBar />
-      <form onSubmit={joinRoom}>
-        Enter Your Name:
-        <input value={userName} onChange={(e) => setUserName(e.target.value)} />
-        <button>Join Room</button>
-      </form>
       <div id="videos">
         {state.remoteVideo ? (
           <div className="other-video-container">
