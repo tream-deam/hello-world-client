@@ -1,7 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import io from "socket.io-client";
-import useSpeechToText from "react-hook-speech-to-text";
-import axios from "axios";
+import React, { useContext, useState } from "react";
 
 const TranslationContext = React.createContext();
 const TranslationUpdateContext = React.createContext();
@@ -15,14 +12,14 @@ export function useTranslationUpdate() {
 }
 
 export function TranslationProvider({ children }) {
-  const [translationContext, setTranslation] = useState("");
+  const [translation, setTranslation] = useState("");
   
   function updateTranslation(result) {
     setTranslation(result);
   }
 
   return (
-    <TranslationContext.Provider value={translationContext}>
+    <TranslationContext.Provider value={translation}>
       <TranslationUpdateContext.Provider value={updateTranslation}>
         {children}
       </TranslationUpdateContext.Provider>

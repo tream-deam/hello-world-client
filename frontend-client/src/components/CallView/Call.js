@@ -2,6 +2,7 @@ import { TranslationProvider } from '../../providers/TranslationContext';
 import Video from "../../Video";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useTranslation } from '../../providers/TranslationContext';
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
@@ -18,6 +19,9 @@ export default function Call() {
     remoteVideo: null,
     remoteAudio: null,
   });
+
+  // Translation state and updater from context
+  const translation = useTranslation();
 
   // make initial userName state random. for demo purposes 
   // const [userName, setUserName] = useState("s");
@@ -163,7 +167,6 @@ export default function Call() {
   const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
   return (
-    <TranslationProvider>
       <div className="call-view">
         <NavBar />
         <div id="videos">
@@ -174,8 +177,9 @@ export default function Call() {
                   id="other-video"
                   videoFeed={state.remoteVideo}
                   audioFeed={state.remoteAudio}
-                />
+                  />
                 <VideoPanel />
+                  <p>hello: {translation}</p>
               </>
             ) : (
               <>{ otherVideoPlaceholder }</>
@@ -202,6 +206,5 @@ export default function Call() {
           </section>
         </div>
       </div>
-    </TranslationProvider>
   );
 }
