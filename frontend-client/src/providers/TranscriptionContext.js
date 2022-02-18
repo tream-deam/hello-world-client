@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 const TranscriptionContext = React.createContext();
 
@@ -8,14 +8,15 @@ export function useTranscription() {
 
 export function TranscriptionProvider({ children }) {
   const [test, setTest] = useState('test string');
-
-  // useEffect(() => {
-  //   setTest('test string change')
-  // }, [third])
+  const [test2, setTest2] = useState('test string');
+  
+  useEffect(() => {
+    setTest2('test string change')
+  }, [])
   
 
   return (
-    <TranscriptionContext.Provider value={test}>
+    <TranscriptionContext.Provider value={{value1: test, value2: test2}}>
       {children}
     </TranscriptionContext.Provider>
   )

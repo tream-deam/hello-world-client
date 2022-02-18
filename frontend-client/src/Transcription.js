@@ -30,6 +30,7 @@ const Transcription = () => {
 
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
+    console.log(transcription);
     // check if in development or production so appropriate socket url is used
     const socketURL = process.env.NODE_ENV === "development" ? "/" : "https://hello-doc-lhl.herokuapp.com";
 
@@ -75,7 +76,6 @@ const Transcription = () => {
 
   // Whenever the interim updates, send data to other client so they can see live transcription as well
   useEffect(() => {
-    console.log(transcription);
     const socket = socketState;
 
     // This condition prevents the emit method being ran on an undefined object (before socket is initialized)
