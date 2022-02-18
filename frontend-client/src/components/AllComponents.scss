@@ -280,9 +280,9 @@
 }
 /* Gotta add video ID to video once we know how things are returning twilio */
 .video {
-  // width: 100%;
+  width: 100%;
   height: 100%;
-  // object-fit: cover;
+  object-fit: cover;
   border-radius: $border-radius;
 }
 
