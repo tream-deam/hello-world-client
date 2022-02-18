@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
+import { useTranscription } from './providers/TranscriptionContext';
 
 const Transcription = () => {
+  const transcription = useTranscription();
+  
   const {
     error,
     interimResult,
@@ -72,6 +75,7 @@ const Transcription = () => {
 
   // Whenever the interim updates, send data to other client so they can see live transcription as well
   useEffect(() => {
+    console.log(transcription);
     const socket = socketState;
 
     // This condition prevents the emit method being ran on an undefined object (before socket is initialized)
@@ -121,24 +125,24 @@ const Transcription = () => {
   });
 
   return (
-    <div>
-      {stateInterim.msg}
-      <h1>Remote Transcription Log</h1>
-      {remoteTranscriptions}
+      <div>
+        {stateInterim.msg}
+        <h1>Remote Transcription Log</h1>
+        {remoteTranscriptions}
 
-      <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-        {isRecording ? "Stop Transcribing" : "Start Transcribing"}
-      </button>
+        <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+          {isRecording ? "Stop Transcribing" : "Start Transcribing"}
+        </button>
 
-      <div id="transcription">
-        {translation && <li>{translation}</li>}
-        {interimResult && <li>{interimResult}</li>}
-        {results && <h2>My Transcription log:</h2>}
-        {results.map((result) => {
-          return <li key={result.timestamp}> {result.transcript}</li>;
-        })}
+        <div id="transcription">
+          {translation && <li>{translation}</li>}
+          {interimResult && <li>{interimResult}</li>}
+          {results && <h2>My Transcription log:</h2>}
+          {results.map((result) => {
+            return <li key={result.timestamp}> {result.transcript}</li>;
+          })}
+        </div>
       </div>
-    </div>
   );
 };
 

@@ -1,3 +1,4 @@
+import { TranscriptionProvider } from '../../providers/TranscriptionContext';
 import Video from "../../Video";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -162,43 +163,45 @@ export default function Call() {
   const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
   return (
-    <div className="call-view">
-      <NavBar />
-      <div id="videos">
-        <div className="other-video-container">
-          {state.remoteVideo ? (
-            <>
-              <Video
-                id="other-video"
-                videoFeed={state.remoteVideo}
-                audioFeed={state.remoteAudio}
-              />
-              <VideoPanel />
-            </>
-          ) : (
-            <>{ otherVideoPlaceholder }</>
-          )}
-        </div>
-        <section className="self-video-log-panel">
-          {state.selfVideo ? (
-            <>
-              <div className="self-video-container">
+    <TranscriptionProvider>
+      <div className="call-view">
+        <NavBar />
+        <div id="videos">
+          <div className="other-video-container">
+            {state.remoteVideo ? (
+              <>
                 <Video
-                  id="self-video"
-                  videoFeed={state.selfVideo}
-                  audioFeed={state.selfAudio}
+                  id="other-video"
+                  videoFeed={state.remoteVideo}
+                  audioFeed={state.remoteAudio}
                 />
-              </div>
-              <Transcription />
-            </>
-          ) : (
-            <>
-              <div className="self-video-container">{videoPlaceholder}</div>
-              {transcriptPlaceholder}
-            </>
-          )}
-        </section>
+                <VideoPanel />
+              </>
+            ) : (
+              <>{ otherVideoPlaceholder }</>
+            )}
+          </div>
+          <section className="self-video-log-panel">
+            {state.selfVideo ? (
+              <>
+                <div className="self-video-container">
+                  <Video
+                    id="self-video"
+                    videoFeed={state.selfVideo}
+                    audioFeed={state.selfAudio}
+                  />
+                </div>
+                <Transcription />
+              </>
+            ) : (
+              <>
+                <div className="self-video-container">{videoPlaceholder}</div>
+                {transcriptPlaceholder}
+              </>
+            )}
+          </section>
+        </div>
       </div>
-    </div>
+    </TranscriptionProvider>
   );
 }
