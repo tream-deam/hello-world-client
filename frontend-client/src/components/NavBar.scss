@@ -1,7 +1,14 @@
+@import "../styles/variables.scss";
+
 .is-active .nav-icon {
-  color: #7ab82b;
+  color: $vibrant-orange;
+  background-color: $peach;
+  border-radius: $border-radius;
+
 }
 
 .nav-link {
   text-align: center;
+  text-decoration: none;
+  
 }
