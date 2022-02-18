@@ -250,20 +250,19 @@
 /* will need to play with position and z-index to layer captions and label */
 .other-video-container {
   position: relative;
-  width: 70%;
+  width: 75%;
   margin: 0 0 0 $spacing;
 }
 
-.other-video {
-  border-style: solid;
-  width: 60%;
+#other-video {
+  width: 100%;
+  height: 100%;
   color: $yellow;
-  border-radius: $border-radius;
   align-self: stretch;
-  margin: $spacing 0; 
+  // margin: $spacing 0; 
   position: absolute; 
   z-index: 1;
-  border-radius: 2.1rem;
+  border-radius: $border-radius;
 }
 
 .caption {
@@ -304,30 +303,24 @@
 /* ------------------- SELF VIDEO STYLES ----------------------------- */
 
 .self-video-container {
-  border-style: solid;
   width: 100%;
-  height: 30%;
   color: $yellow;
   border-radius: $border-radius;
   margin-bottom: $spacing;
 }
 
 .self-video--element {
-  // position: absolute; 
-  border-style: solid;
   z-index: 1;
-  border-radius: 2.1rem;
+  border-radius: $border-radius;
   width: 100%;
   height: 100%;
 }
 
 .self-video-log-panel {
-  border-style: solid;
   display: flex;
   flex-direction: column;
   margin: 0 $spacing;
-  // flex: 0.3;
-  width: 30%;
+  width: 25%;
 }
 
 /* ------------------- CONVO LOG STYLES ----------------------------- */
