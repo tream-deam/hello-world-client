@@ -4,7 +4,7 @@ function AppointmentHeader (props) {
       <div className="appt-header">
         <p className="welcome-msg">Hello, Richard! </p>
               {/*STRETCH: conditional rendering of + Appointment button*/}
-         <p className="add-appt">+ Appointment</p>
+         <p className="add-appt">+ New Call</p>
       </div>
   );
 
