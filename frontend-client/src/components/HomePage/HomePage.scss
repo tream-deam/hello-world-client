@@ -1,0 +1,94 @@
+@import "../../styles/variables.scss";
+/* poppin 500/700 
+  $font-family 300,400,600, 700
+*/
+
+.homepage-view {
+  display: flex;
+  font-family: $logo-font;
+ 
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+
+}
+.home-banner {
+  display: flex;
+  flex-direction: column;
+
+}
+.heading-home {
+  display: flex;
+  flex-direction: row;
+  font-size: 4.8rem;
+
+  .heading-hello {
+    font-weight: 700;
+  }
+  .heading-world {
+    font-weight: 500;
+  }
+  .brand-description {
+    font-weight: 700;
+  }
+}
+
+
+.hello-world-options {
+  display:flex;
+  flex-direction: column;
+
+  .option-header {
+    font-family: $font-family;
+    font-size: 3.0rem;
+    font-weight: 700;
+  }
+  .options-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: $font-family;
+    font-weight: 600;
+    font-size: 2.0rem;
+    /* check if child nodes inherit flex-direction */
+  }
+
+}
+
+.health-container {
+  display: flex;
+  flex-direction: column;
+  
+
+  .health-circle {
+    background-color: $vibrant-orange;
+  }
+}
+
+
+.learning-container {
+  display: flex;
+  flex-direction: column;
+
+  .learning-circle {
+    background-color: $teal;
+  }
+}
+
+.personal-container {
+  display: flex;
+  flex-direction: column;
+
+  .personal-circle {
+    background-color: $gold;
+  }
+}
+.option-title {
+  font-size: 2.4rem;;
+}
+
+.option-icon {
+  color: white;
+}
