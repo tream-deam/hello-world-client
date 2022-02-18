@@ -249,6 +249,8 @@
 
 /* will need to play with position and z-index to layer captions and label */
 .other-video-container {
+  display: flex;
+  flex-direction: column-reverse;
   position: relative;
   width: 75%;
   margin: 0 0 0 $spacing;
@@ -261,7 +263,7 @@
   align-self: stretch;
   // margin: $spacing 0; 
   position: absolute; 
-  z-index: 1;
+  z-index: -1;
   border-radius: $border-radius;
 }
 
@@ -298,6 +300,13 @@
   width: 100%;
   height: 100%;
   padding: $spacing 0;
+}
+
+#video-panel {
+  width: 100%;
+  height: 5%;
+  background-color: rgba(0, 0, 0, 0.459);
+  border-radius: 0 0 $border-radius $border-radius;
 }
 
 /* ------------------- SELF VIDEO STYLES ----------------------------- */
