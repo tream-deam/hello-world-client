@@ -32,7 +32,7 @@ function NavBar() {
           <section className="nav-icons">
 
             <NavLink 
-              to="/appointments"
+              to="/schedule"
               className={(navData) => navData.isActive ? "nav-link is-active" : "nav-link"}
             >
               <FontAwesomeIcon
