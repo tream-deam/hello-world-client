@@ -1,4 +1,4 @@
-import { TranscriptionProvider } from '../../providers/TranscriptionContext';
+import { TranslationProvider } from '../../providers/TranslationContext';
 import Video from "../../Video";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -163,7 +163,7 @@ export default function Call() {
   const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
   return (
-    <TranscriptionProvider>
+    <TranslationProvider>
       <div className="call-view">
         <NavBar />
         <div id="videos">
@@ -202,6 +202,6 @@ export default function Call() {
           </section>
         </div>
       </div>
-    </TranscriptionProvider>
+    </TranslationProvider>
   );
 }

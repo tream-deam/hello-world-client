@@ -1,22 +1,29 @@
 import React, { useContext, useState, useEffect } from "react";
+import io from "socket.io-client";
+import useSpeechToText from "react-hook-speech-to-text";
+import axios from "axios";
 
 const TranscriptionContext = React.createContext();
+const TranscriptionUpdateContext = React.createContext();
 
 export function useTranscription() {
   return useContext(TranscriptionContext);
 }
 
+export function useTranscriptionUpdate() {
+  return useContext(TranscriptionUpdateContext)
+}
+
 export function TranscriptionProvider({ children }) {
-  const [test, setTest] = useState('test string');
-  const [test2, setTest2] = useState('test string');
   
-  useEffect(() => {
-    setTest2('test string change')
-  }, [])
   
 
   return (
-    <TranscriptionContext.Provider value={{value1: test, value2: test2}}>
+    <TranscriptionContext.Provider 
+      value={{
+        // transcriptionResults
+      }}
+    >
       {children}
     </TranscriptionContext.Provider>
   )

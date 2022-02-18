@@ -1,12 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
+import { useTranslation, useTranslationUpdate } from './providers/TranslationContext';
+// import useSpeechToText from "react-hook-speech-to-text";
+
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
-import { useTranscription } from './providers/TranscriptionContext';
+
+
 
 const Transcription = () => {
-  const transcription = useTranscription();
+  // const {
+  //   error,
+  //   interimResult,
+  //   isRecording,
+  //   results,
+  //   startSpeechToText,
+  //   stopSpeechToText,
+  // } = useSpeechToText({
+  //   continuous: true,
+  //   useLegacyResults: false,
+  // });
+
+  // const { transcriptionResults } = useTranscription();
+  const translationContext = useTranslation();
+  const updateTranslation = useTranslationUpdate();
   
+  useEffect(() => {
+    console.log('translationContext', translationContext);
+  }, [translationContext])
+
   const {
     error,
     interimResult,
@@ -24,13 +46,12 @@ const Transcription = () => {
   // Store interim results that come from socket listener 'interimListen' into state so that they can be displayed
   const [stateInterim, setStateInterim] = useState([]);
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
-  const [transcriptionResults, setTranscriptionResults] = useState([]);
+  const [transcriptionResults, setTranscriptionResults] = useState(['test']);
   // Translation state
   const [translation, setTranslation] = useState("");
 
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
-    console.log(transcription);
     // check if in development or production so appropriate socket url is used
     const socketURL = process.env.NODE_ENV === "development" ? "/" : "https://hello-doc-lhl.herokuapp.com";
 
@@ -111,7 +132,8 @@ const Transcription = () => {
       .request(options)
       .then((res) => {
         const result = res.data[0].translations[0].text;
-        setTranslation(result);
+        // setTranslation(result);
+        updateTranslation(result);
       })
       .catch((error) => console.error(error));
   }, [interimResult]);
@@ -119,6 +141,7 @@ const Transcription = () => {
   if (error) {
     return <p> Web Speech API is not available in this browser :( </p>;
   }
+  
 
   const remoteTranscriptions = transcriptionResults.map((result, idx) => {
     return <li key={idx}>{result.msg}</li>;
@@ -135,7 +158,8 @@ const Transcription = () => {
         </button>
 
         <div id="transcription">
-          {translation && <li>{translation}</li>}
+          {/* {translation && <li>{translation}</li>} */}
+          {translationContext && <li>{translationContext}</li>}
           {interimResult && <li>{interimResult}</li>}
           {results && <h2>My Transcription log:</h2>}
           {results.map((result) => {
