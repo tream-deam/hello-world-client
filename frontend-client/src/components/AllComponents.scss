@@ -316,8 +316,9 @@
 .call-button {
   border-radius: 100rem;
   border: none;
-  width: 6rem;
-  height: 6rem;
+  // width: $button-m-size;
+  // height: $button-m-size;
+  padding: $m-size;
   margin: 0rem 4rem;
   font-size: $s-size;
   background-color: #403B3BCC;
@@ -325,8 +326,7 @@
 }
 
 #call-toggle {
-  width: 8rem;
-  height: 8rem;
+  padding: $m-size;
   background-color: red;
 }
 
