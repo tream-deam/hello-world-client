@@ -7,6 +7,7 @@ import {
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import './NavBar.scss'
+import getSourceLanguages from './LanguageDropDown/helpers/getSourceLanguages';
 
 
 function NavBar() {
@@ -16,7 +17,8 @@ function NavBar() {
   // const SELECTED = "SELECTED";
   // const DESELECTED= "DESELECTED";
 
-
+  getSourceLanguages();
+  
   return (
     <div className="nav-container">
         <section className="side-nav">
