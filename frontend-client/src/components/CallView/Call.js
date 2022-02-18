@@ -164,17 +164,17 @@ export default function Call() {
     <div className="call-view">
       <NavBar />
       <div id="videos">
-        {state.remoteVideo ? (
-          <div className="other-video-container">
+        <div className="other-video-container">
+          {state.remoteVideo ? (
             <Video
               id="other-video"
               videoFeed={state.remoteVideo}
               audioFeed={state.remoteAudio}
             />
-          </div>
-        ) : (
-          <div className="other-video-container">{otherVideoPlaceholder}</div>
-        )}
+          ) : (
+            <>{ otherVideoPlaceholder }</>
+          )}
+        </div>
         <section className="self-video-log-panel">
           {state.selfVideo ? (
             <>
