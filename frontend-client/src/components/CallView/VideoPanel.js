@@ -3,10 +3,8 @@ import { CallEnd, Translate } from '@mui/icons-material';
 import {
   faVolumeHigh,
   faMicrophoneSlash,
-  faVideo,
-  faLanguage
+  faVideo
 } from '@fortawesome/free-solid-svg-icons';
-import Button from "../Button";
 
 export default function VideoPanel() {
   return (
