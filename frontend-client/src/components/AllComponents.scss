@@ -252,6 +252,8 @@
 
 /* will need to play with position and z-index to layer captions and label */
 .other-video-container {
+  display: flex;
+  flex-direction: column-reverse;
   position: relative;
   width: 75%;
   margin: 0 0 0 $spacing;
@@ -264,7 +266,7 @@
   align-self: stretch;
   // margin: $spacing 0; 
   position: absolute; 
-  z-index: 1;
+  z-index: -1;
   border-radius: $border-radius;
 }
 
@@ -301,6 +303,32 @@
   width: 100%;
   height: 100%;
   padding: $spacing 0;
+}
+
+#video-panel {
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 12%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+.call-button {
+  border-radius: 50%;
+  border: none;
+  padding: $m-size;
+  margin: 0rem 4rem;
+  font-size: $s-size;
+  background-color: #403B3BCC;
+  color: white;
+}
+
+#call-toggle {
+  padding: $m-size;
+  background-color: red;
 }
 
 /* ------------------- SELF VIDEO STYLES ----------------------------- */

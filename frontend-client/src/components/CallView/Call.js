@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
+import VideoPanel from "./VideoPanel";
 const {
   connect,
   createLocalVideoTrack,
@@ -164,17 +165,20 @@ export default function Call() {
     <div className="call-view">
       <NavBar />
       <div id="videos">
-        {state.remoteVideo ? (
-          <div className="other-video-container">
-            <Video
-              id="other-video"
-              videoFeed={state.remoteVideo}
-              audioFeed={state.remoteAudio}
-            />
-          </div>
-        ) : (
-          <div className="other-video-container">{otherVideoPlaceholder}</div>
-        )}
+        <div className="other-video-container">
+          {state.remoteVideo ? (
+            <>
+              <Video
+                id="other-video"
+                videoFeed={state.remoteVideo}
+                audioFeed={state.remoteAudio}
+              />
+              <VideoPanel />
+            </>
+          ) : (
+            <>{ otherVideoPlaceholder }</>
+          )}
+        </div>
         <section className="self-video-log-panel">
           {state.selfVideo ? (
             <>
