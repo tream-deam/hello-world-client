@@ -1,5 +1,11 @@
 import NavBar from "../NavBar";
 import "./HomePage.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeartPulse, 
+  faBrain,
+  faUserGroup
+} from "@fortawesome/free-solid-svg-icons";
 
 function HomePage (props) {
   return (
@@ -27,21 +33,21 @@ function HomePage (props) {
             <div className="health-container">
               <div className="health-circle">
                 <p className="option-title">Health</p>
-                {/* Heart Icon */}
+                <FontAwesomeIcon icon={faHeartPulse} size="3x" />
               </div>
               <p className="desc">Connect with doctors or patients to speak about health concerns. </p>
             </div>
             <div className="learning-container">
               <div className="learning-circle">
                 <p className="option-title">Learning</p>
-                {/* Learning/Brain Icon */}
+                <FontAwesomeIcon icon={faBrain} size="3x" />
               </div>
               <p className="desc">Expanding your learning network with others that speak another language. </p>
             </div>
             <div className="personal-container">
               <div className="personal-circle">
                 <p className="option-title">Personal</p>
-                {/* 2 people icon */}
+                <FontAwesomeIcon icon={faUserGroup} size="2x" />
               </div>
               <p className="desc">Connect with friends and family around the world. </p>
             </div>
