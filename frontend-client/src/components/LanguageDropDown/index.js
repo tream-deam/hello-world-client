@@ -1,10 +1,20 @@
-export function Dropdown(props) {
-  const { label, type } = props;
-  const languages = type === 'source-language' ? getSourceLanguages() : getTargetLanguages();
+import getSourceLanguages from "./helpers/getSourceLanguages";
+
+export function Dropdown() {
+  const languages = getSourceLanguages();
+  const options = languages.map((language) => {
+    const languageNameAndRegion = `${language.language} (${language.region})`;
+    return (
+      <option value={language["language-code"]}>{languageNameAndRegion}</option>
+    );
+  });
+
   return (
     <form>
-      <label for="languages">{label}</label>
-      {options}
+      <label for="languages">Choose your preferred language</label>
+      <select name="languages" id="languages">
+        {options}
+      </select>
     </form>
-  )
+  );
 }
