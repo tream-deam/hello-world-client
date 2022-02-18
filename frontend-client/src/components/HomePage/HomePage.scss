@@ -6,6 +6,10 @@
 .homepage-view {
   display: flex;
   font-family: $logo-font;
+  color: $dark-teal;
+  height: 100vh;
+  max-width: 100%;
+ 
  
 }
 
@@ -13,26 +17,43 @@
   display: flex;
   flex-direction: column;
 
+
 }
 .home-banner {
   display: flex;
   flex-direction: column;
+  background-color: $pale-teal;
+  max-width: 100vw;
+
+  
 
 }
 .heading-home {
   display: flex;
   flex-direction: row;
   font-size: 4.8rem;
+  /* margin: 0 6rem; */
+  margin: auto;
 
   .heading-hello {
     font-weight: 700;
+    margin-bottom: 0;
+   
   }
   .heading-world {
     font-weight: 500;
+    margin-bottom: 0;
   }
-  .brand-description {
-    font-weight: 700;
-  }
+
+}
+
+.brand-description {
+  font-weight: 700;
+  font-size: 4.8rem ;
+  margin: auto;
+  margin: 6rem;
+  text-align: center;
+
 }
 
 
@@ -44,14 +65,19 @@
     font-family: $font-family;
     font-size: 3.0rem;
     font-weight: 700;
+  /*   margin: 6rem 6rem; */
+    margin: auto;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
   }
   .options-container {
     display:flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     font-family: $font-family;
     font-weight: 600;
     font-size: 2.0rem;
+    padding: 0 6rem;
     /* check if child nodes inherit flex-direction */
   }
 
@@ -60,10 +86,18 @@
 .health-container {
   display: flex;
   flex-direction: column;
+
+  
   
 
   .health-circle {
     background-color: $vibrant-orange;
+    border-radius: 50%;
+    width:20rem;
+    height:20rem;
+    text-align: center;
+    color: white;
+    margin-right: 10rem;
   }
 }
 
@@ -74,6 +108,12 @@
 
   .learning-circle {
     background-color: $teal;
+    border-radius: 50%;
+    width:20rem;
+    height:20rem;
+    text-align: center;
+    color: white;
+    margin-right: 10rem;
   }
 }
 
@@ -83,12 +123,22 @@
 
   .personal-circle {
     background-color: $gold;
+    border-radius: 50%;
+    width:20rem;
+    height:20rem;
+    text-align: center;
+    color: white;
   }
 }
 .option-title {
-  font-size: 2.4rem;;
+  font-size: 2.4rem;
+  margin: 6rem 0;
 }
 
 .option-icon {
   color: white;
+}
+
+.desc {
+  max-width: 20rem;
 }
