@@ -167,7 +167,7 @@ export default function Call() {
         {state.remoteVideo ? (
           <div className="other-video-container">
             <Video
-              id="remote-video"
+              id="other-video"
               videoFeed={state.remoteVideo}
               audioFeed={state.remoteAudio}
             />
