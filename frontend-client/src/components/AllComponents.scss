@@ -256,11 +256,12 @@
 
 .other-video {
   border-style: solid;
-  width: 60%;
+  width: 100%;
+  height: 100%;
   color: $yellow;
   border-radius: $border-radius;
   align-self: stretch;
-  margin: $spacing 0; 
+  // margin: $spacing 0; 
   position: absolute; 
   z-index: 1;
   border-radius: 2.1rem;
