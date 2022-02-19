@@ -1,0 +1,114 @@
+@import "../../styles/variables.scss";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.modal-main {
+  position:fixed;
+  background: $pale-teal;
+  width: 30%;
+  min-width: 454px;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: $border-radius;
+  padding: 6rem;
+  padding-top: 4.5rem;
+  font-size: 2.4rem;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);  
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal-submit {
+  background-color: $dark-teal;
+  color: white;
+  border-radius: 1rem;
+  font-family: $font-family;
+  font-size: 2rem;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+
+.modal-footer {
+  border: none;
+  display: flex;
+  justify-content: flex-end;
+ 
+}
+.modal-header {
+  border: none;
+  display: flex;
+  justify-content: flex-end;
+ 
+}
+
+.modal-input {
+  font-family: $font-family;
+  font-size: 2rem;
+  padding: 1rem;
+  width: 100%
+}
+
+.close-button {
+  text-align: center;
+
+}
+.close-button:hover {
+  text-align: center;
+  color: white;
+  font-weight: 400;
+}
+
+button.modal-submit {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background: $dark-teal;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+  background: $pale-teal;
+  color: $dark-teal;
+  outline: 1px solid $dark-teal;
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+  color: white;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+

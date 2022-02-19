@@ -16,15 +16,14 @@
   margin-left:1rem;
   margin-bottom: 0;;
 }  
-#logo-doc {
-  color: $green-black;
+#logo-world {
+  color: $orange;
   font-family: $logo-font;
   font-weight: 300;
   font-size: 3.4rem;
-  margin-right:1rem;
-  margin-left:1rem;
-  margin-top: 0;
-  
+  margin-right: 1rem;
+  margin-left: 2.3rem;
+  margin-top: 0.6rem;
 }  
 
 #username {
@@ -41,6 +40,10 @@
   max-width: 100%;
 }
 
+.call-view-container{
+  margin-left: 12.5rem;
+}
+
 /* ------------------ APPOINTMENT VIEW STYLES ------------------------- */
 .appt-view {
   display: flex;
@@ -50,19 +53,16 @@
 
 
 .appt-section {
-/*   border-style: solid;
-  border-width: thin; */
   flex: 1;
   color: $green-black;
   padding: 0 3.6rem;
+  margin-left: 12.5rem;
 } 
 
 
 .appt-header {
   display: flex;
   justify-content: space-between;
-/*   border-style: solid;
-  border-width: thin; */
   margin: 0 2.4rem;
   margin-top: 2.0rem;
   font-weight: 600;
@@ -80,6 +80,7 @@
   font-weight: 700;
   margin: 0;
 }
+
 .add-appt:hover{
   color: $orange;
 }
@@ -93,8 +94,6 @@
 
 .appt-list-item {
   display: flex;
-/*   border-style: solid;
-  border-width: thin; */
   border-radius: 0.7rem;
   background-color: #F9EAD4;
   justify-content: space-between;
@@ -213,6 +212,7 @@
 }
 
 .side-nav{
+  position:fixed;
   display: flex;
   flex-direction: column;
   background-color: $white;
@@ -315,8 +315,14 @@
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 0 0 $border-radius $border-radius;
 }
+#video-panel:hover {
+  .call-button {
+    visibility: visible;
+  }
+}
 
 .call-button {
+  visibility: hidden;
   border-radius: 50%;
   border: none;
   padding: $m-size;

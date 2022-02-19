@@ -6,6 +6,7 @@ import { useTranslation } from '../../providers/TranslationContext';
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
+import ConvoLog from './ConvoLog';
 const {
   connect,
   createLocalVideoTrack,
@@ -167,8 +168,9 @@ export default function Call() {
   const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
   return (
-      <div className="call-view">
-        <NavBar />
+    <div className="call-view">
+      <NavBar />
+      <section className="call-view-container">
         <div id="videos">
           <div className="other-video-container">
             {state.remoteVideo ? (
@@ -177,9 +179,11 @@ export default function Call() {
                   id="other-video"
                   videoFeed={state.remoteVideo}
                   audioFeed={state.remoteAudio}
-                  />
-                <VideoPanel />
+                />
+                <div id="video-panel">
+                  <VideoPanel />
                   <p>hello: {translation}</p>
+                </div>
               </>
             ) : (
               <>{ otherVideoPlaceholder }</>
@@ -196,6 +200,7 @@ export default function Call() {
                   />
                 </div>
                 <Transcription />
+                <ConvoLog />
               </>
             ) : (
               <>
@@ -205,6 +210,7 @@ export default function Call() {
             )}
           </section>
         </div>
-      </div>
+      </section>
+    </div>
   );
 }

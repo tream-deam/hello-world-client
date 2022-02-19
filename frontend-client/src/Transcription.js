@@ -15,6 +15,10 @@ const Transcription = () => {
   } = useSpeechToText({
     continuous: true,
     useLegacyResults: false,
+    speechRecognitionProperties: {
+      lang: 'es-CO',
+      interimResults: true // allows for displaying real-time speech results
+    }
   });
 
   // Take the socket we initialize in page load useEffect and store it in state so we can reuse it in different useEffects
@@ -89,7 +93,7 @@ const Transcription = () => {
       method: "POST",
       url: "https://microsoft-translator-text.p.rapidapi.com/translate",
       params: {
-        to: "es",
+        to: "en",
         "api-version": "3.0",
         profanityAction: "NoAction",
         textType: "plain",

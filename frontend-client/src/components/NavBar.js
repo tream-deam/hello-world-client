@@ -5,6 +5,7 @@ import {
   faCalendarCheck,
   faBookMedical,
   faVideo,
+  faEarthAmericas
 } from "@fortawesome/free-solid-svg-icons";
 import './NavBar.scss'
 
@@ -15,8 +16,7 @@ function NavBar() {
   //modes for nav buttons
   // const SELECTED = "SELECTED";
   // const DESELECTED= "DESELECTED";
-
-
+  
   return (
     <div className="nav-container">
         <section className="side-nav">
@@ -24,8 +24,8 @@ function NavBar() {
             <div id="logo">
             <h1 id="logo-hello">
               Hello,  </h1>
-              <h1 id="logo-doc"> 
-              Doc!{" "}</h1>
+              <h1 id="logo-world"> 
+              <FontAwesomeIcon icon={faEarthAmericas} size="1x"/></h1>
             </div>
           </NavLink>
      
