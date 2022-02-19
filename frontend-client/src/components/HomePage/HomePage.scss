@@ -9,26 +9,21 @@
   color: $dark-teal;
   height: 100vh;
   max-width: 100%;
- 
- 
 }
 
 .homepage-container {
   display: flex;
   flex-direction: column;
-
-
+  margin-left: 12.5rem;
 }
+
 .home-banner {
   display: flex;
   flex-direction: column;
   background-color: $pale-teal;
   max-width: 100vw;
-  max-height: 40%;
-
-  
-
 }
+
 .heading-home {
   display: flex;
   flex-direction: row;
@@ -40,7 +35,6 @@
   .heading-hello {
     font-weight: 700;
     margin-bottom: 0;
-   
   }
   .heading-world {
     font-weight: 500;
@@ -55,7 +49,6 @@
   margin: auto;
   margin: 6rem;
   text-align: center;
-
 }
 
 
@@ -88,9 +81,6 @@
 .health-container {
   display: flex;
   flex-direction: column;
-
-  
-  
 
   .health-circle {
     background-color: $vibrant-orange;

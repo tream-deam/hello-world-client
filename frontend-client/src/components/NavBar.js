@@ -16,8 +16,7 @@ function NavBar() {
   //modes for nav buttons
   // const SELECTED = "SELECTED";
   // const DESELECTED= "DESELECTED";
-
-
+  
   return (
     <div className="nav-container">
         <section className="side-nav">

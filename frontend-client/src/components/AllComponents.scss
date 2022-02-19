@@ -40,6 +40,10 @@
   max-width: 100%;
 }
 
+.call-view-container{
+  margin-left: 12.5rem;
+}
+
 /* ------------------ APPOINTMENT VIEW STYLES ------------------------- */
 .appt-view {
   display: flex;
@@ -52,6 +56,7 @@
   flex: 1;
   color: $green-black;
   padding: 0 3.6rem;
+  margin-left: 12.5rem;
 } 
 
 
@@ -207,6 +212,7 @@
 }
 
 .side-nav{
+  position:fixed;
   display: flex;
   flex-direction: column;
   background-color: $white;
@@ -309,8 +315,14 @@
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 0 0 $border-radius $border-radius;
 }
+#video-panel:hover {
+  .call-button {
+    visibility: visible;
+  }
+}
 
 .call-button {
+  visibility: hidden;
   border-radius: 50%;
   border: none;
   padding: $m-size;
