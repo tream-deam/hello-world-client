@@ -1,9 +1,11 @@
 import Video from "../../Video";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useTranslation } from '../../providers/TranslationContext';
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
+import ConvoLog from './ConvoLog';
 const {
   connect,
   createLocalVideoTrack,
@@ -17,6 +19,9 @@ export default function Call() {
     remoteVideo: null,
     remoteAudio: null,
   });
+
+  // Translation state and updater from context
+  const translation = useTranslation();
 
   // make initial userName state random. for demo purposes 
   // const [userName, setUserName] = useState("s");
@@ -176,6 +181,7 @@ export default function Call() {
                 />
                 <div id="video-panel">
                   <VideoPanel />
+                  <p>hello: {translation}</p>
                 </div>
               </>
             ) : (
@@ -193,6 +199,7 @@ export default function Call() {
                   />
                 </div>
                 <Transcription />
+                <ConvoLog />
               </>
             ) : (
               <>

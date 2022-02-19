@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
+import { useTranslation, useTranslationUpdate } from './providers/TranslationContext';
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
@@ -26,8 +27,10 @@ const Transcription = () => {
   const [stateInterim, setStateInterim] = useState([]);
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
   const [transcriptionResults, setTranscriptionResults] = useState([]);
-  // Translation state
-  const [translation, setTranslation] = useState("");
+
+  // Translation state and updater from context
+  const translation = useTranslation();
+  const updateTranslation = useTranslationUpdate();
 
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
@@ -111,38 +114,39 @@ const Transcription = () => {
       .request(options)
       .then((res) => {
         const result = res.data[0].translations[0].text;
-        setTranslation(result);
+        // use context to update translation instead of setTranslation
+        updateTranslation(result);
       })
       .catch((error) => console.error(error));
-  }, [interimResult]);
+  }, [interimResult, updateTranslation]);
 
   if (error) {
     return <p> Web Speech API is not available in this browser :( </p>;
   }
-
+  
   const remoteTranscriptions = transcriptionResults.map((result, idx) => {
     return <li key={idx}>{result.msg}</li>;
   });
 
   return (
-    <div>
-      {stateInterim.msg}
-      <h1>Remote Transcription Log</h1>
-      {remoteTranscriptions}
+      <div>
+        {stateInterim.msg}
+        <h1>Remote Transcription Log</h1>
+        {remoteTranscriptions}
 
-      <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-        {isRecording ? "Stop Transcribing" : "Start Transcribing"}
-      </button>
+        <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+          {isRecording ? "Stop Transcribing" : "Start Transcribing"}
+        </button>
 
-      <div id="transcription">
-        {translation && <li>{translation}</li>}
-        {interimResult && <li>{interimResult}</li>}
-        {results && <h2>My Transcription log:</h2>}
-        {results.map((result) => {
-          return <li key={result.timestamp}> {result.transcript}</li>;
-        })}
+        <div id="transcription">
+          {translation && <li>{translation}</li>}
+          {interimResult && <li>{interimResult}</li>}
+          {results && <h2>My Transcription log:</h2>}
+          {results.map((result) => {
+            return <li key={result.timestamp}> {result.transcript}</li>;
+          })}
+        </div>
       </div>
-    </div>
   );
 };
 
