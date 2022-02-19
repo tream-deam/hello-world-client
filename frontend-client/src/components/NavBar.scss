@@ -12,3 +12,37 @@
   text-decoration: none;
   
 }
+.nav-link:hover {
+  animation: shake 5s cubic-bezier(0.62, 0.33, 0.46, 0.63);
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+
+}
+.nav-icon:hover {
+  animation: shake 5s cubic-bezier(0.62, 0.33, 0.46, 0.63);
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+
+}
+
+
+@keyframes bounce {
+  0%   {top:0px;}
+  50%  {top:1px;}
+  100% {top:0px;}
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(1px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(1px, 0, 0);
+  }
+}
