@@ -26,7 +26,7 @@ const Transcription = () => {
   // Store interim results that come from socket listener 'interimListen' into state so that they can be displayed
   const [stateInterim, setStateInterim] = useState([]);
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
-  const [transcriptionResults, setTranscriptionResults] = useState(['test']);
+  const [transcriptionResults, setTranscriptionResults] = useState([]);
 
   // Translation state and updater from context
   const translation = useTranslation();
