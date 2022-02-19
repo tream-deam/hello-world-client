@@ -32,6 +32,7 @@ class HomePage extends Component {
         <NavBar/>
         <div className="homepage-container">
             <HomePageModal show={this.state.show} handleClose={this.hideModal}>
+
             </HomePageModal>
            {/*  <button type="button" onClick={this.showModal}>
              Open
@@ -42,7 +43,7 @@ class HomePage extends Component {
                   Hello
                 </p>
                 <p className="heading-world">
-                  ,World!
+                  , World!
                 </p>
               </div>
               <p className="brand-description">
