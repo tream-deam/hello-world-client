@@ -3,6 +3,7 @@ import { useTranslation, useTranslationUpdate } from './providers/TranslationCon
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
+import { useInterim, useInterimUpdate } from './providers/InterimContext';
 
 const Transcription = () => {
   const {
@@ -16,17 +17,19 @@ const Transcription = () => {
     continuous: true,
     useLegacyResults: false,
     speechRecognitionProperties: {
-      lang: 'es-CO',
+      lang: 'en-US',
       interimResults: true // allows for displaying real-time speech results
     }
   });
 
   // Take the socket we initialize in page load useEffect and store it in state so we can reuse it in different useEffects
   const [socketState, setSocketState] = useState("");
-  // Store interim results that come from socket listener 'interimListen' into state so that they can be displayed
-  const [stateInterim, setStateInterim] = useState([]);
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
   const [transcriptionResults, setTranscriptionResults] = useState([]);
+
+  // Store interim results that come from socket listener 'interimListen' into state so that they can be displayed
+  const stateInterim = useInterim();
+  const updateInterim = useInterimUpdate();
 
   // Translation state and updater from context
   const translation = useTranslation();
@@ -45,11 +48,6 @@ const Transcription = () => {
       console.log("Connected to socket!");
     });
 
-    // Real time transcription
-    socket.on("interimListen", (msg) => {
-      setStateInterim(msg);
-    });
-
     // Transcription after a sentence is finished
     socket.on("transcriptionFinish", (msg) => {
       setTranscriptionResults((prevTranscriptionResults) => [
@@ -66,6 +64,17 @@ const Transcription = () => {
     return () => socket.disconnect();
   }, []);
 
+  useEffect(() => {
+    const socket = socketState;
+
+    if (socket) {
+      // Real time transcription (incoming)
+      socket.on("interimListen", (msg) => {
+        updateInterim(msg);
+      });
+    }
+  }, [updateInterim, socketState]);
+  
   // Whenever a new sentence is transcribed, send it to other client. Only grab the most recent (last) sentence/result
   useEffect(() => {
     const socket = socketState;

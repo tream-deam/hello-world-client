@@ -6,6 +6,7 @@ import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
 import ConvoLog from './ConvoLog';
+import { useInterim } from '../../providers/InterimContext';
 const {
   connect,
   createLocalVideoTrack,
@@ -20,8 +21,8 @@ export default function Call() {
     remoteAudio: null,
   });
 
-  // Translation state and updater from context
-  const translation = useTranslation();
+  // Interim state and updater from context
+  const receiveInterim = useInterim();
 
   // make initial userName state random. for demo purposes 
   // const [userName, setUserName] = useState("s");
@@ -166,6 +167,7 @@ export default function Call() {
   const otherVideoPlaceholder = <div className="video placeholder"></div>;
   const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
+  console.log(receiveInterim);
   return (
     <div className="call-view">
       <NavBar />
@@ -181,7 +183,7 @@ export default function Call() {
                 />
                 <div id="video-panel">
                   <VideoPanel />
-                  <p>hello: {translation}</p>
+                  <p>hello: {receiveInterim.msg}</p>
                 </div>
               </>
             ) : (
