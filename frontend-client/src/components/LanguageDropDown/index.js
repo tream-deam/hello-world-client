@@ -10,11 +10,11 @@ export function Dropdown() {
   });
 
   return (
-    <form>
-      <label for="languages">Choose your preferred language</label>
+    <>
+      <label for="languages"></label>
       <select name="languages" id="languages">
         {options}
       </select>
-    </form>
+    </>
   );
 }
