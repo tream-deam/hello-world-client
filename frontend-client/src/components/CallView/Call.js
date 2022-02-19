@@ -164,41 +164,45 @@ export default function Call() {
   return (
     <div className="call-view">
       <NavBar />
-      <div id="videos">
-        <div className="other-video-container">
-          {state.remoteVideo ? (
-            <>
-              <Video
-                id="other-video"
-                videoFeed={state.remoteVideo}
-                audioFeed={state.remoteAudio}
-              />
-              <VideoPanel />
-            </>
-          ) : (
-            <>{ otherVideoPlaceholder }</>
-          )}
-        </div>
-        <section className="self-video-log-panel">
-          {state.selfVideo ? (
-            <>
-              <div className="self-video-container">
+      <section className="call-view-container">
+        <div id="videos">
+          <div className="other-video-container">
+            {state.remoteVideo ? (
+              <>
                 <Video
-                  id="self-video"
-                  videoFeed={state.selfVideo}
-                  audioFeed={state.selfAudio}
+                  id="other-video"
+                  videoFeed={state.remoteVideo}
+                  audioFeed={state.remoteAudio}
                 />
-              </div>
-              <Transcription />
-            </>
-          ) : (
-            <>
-              <div className="self-video-container">{videoPlaceholder}</div>
-              {transcriptPlaceholder}
-            </>
-          )}
-        </section>
-      </div>
+                <div id="video-panel">
+                  <VideoPanel />
+                </div>
+              </>
+            ) : (
+              <>{ otherVideoPlaceholder }</>
+            )}
+          </div>
+          <section className="self-video-log-panel">
+            {state.selfVideo ? (
+              <>
+                <div className="self-video-container">
+                  <Video
+                    id="self-video"
+                    videoFeed={state.selfVideo}
+                    audioFeed={state.selfAudio}
+                  />
+                </div>
+                <Transcription />
+              </>
+            ) : (
+              <>
+                <div className="self-video-container">{videoPlaceholder}</div>
+                {transcriptPlaceholder}
+              </>
+            )}
+          </section>
+        </div>
+      </section>
     </div>
   );
 }
