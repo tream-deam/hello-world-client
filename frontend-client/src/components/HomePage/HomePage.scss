@@ -90,9 +90,24 @@
     text-align: center;
     color: white;
     margin-right: 10rem;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: 1; 
+    box-shadow: 0.1rem 0.1rem 1rem #9d9d9d;
+    
+  }
+  
+  .health-circle:hover {
+    cursor: pointer;
+    background-color: white;
+    border: solid;
+    border-color: $vibrant-orange;
+    border-width: 3px;
+    color: $vibrant-orange;
+    box-shadow: 0.1rem 0.1rem 1rem #ffffff;
   }
 }
-
 
 .learning-container {
   display: flex;
@@ -106,6 +121,20 @@
     text-align: center;
     color: white;
     margin-right: 10rem;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: 2;
+    box-shadow: 0.1rem 0.1rem 1rem #9d9d9d; 
+  }
+  .learning-circle:hover {
+    cursor: pointer;
+    background-color: white;
+    border: solid;
+    border-color: $teal;
+    border-width: 3px;
+    color: $teal;
+    box-shadow: 0.1rem 0.1rem 1rem #ffffff;
   }
 }
 
@@ -120,6 +149,20 @@
     height:20rem;
     text-align: center;
     color: white;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: 1; 
+    box-shadow: 0.1rem 0.1rem 1rem #9d9d9d;
+  }
+  .personal-circle:hover {
+    cursor: pointer;
+    background-color: white;
+    border: solid;
+    border-color: $gold;
+    border-width: 3px;
+    color: $gold;
+    box-shadow: 0.1rem 0.1rem 1rem #ffffff;
   }
 }
 .option-title {
@@ -134,4 +177,11 @@
 
 .desc {
   max-width: 20rem;
+  margin-top: 3rem;
+}
+
+@keyframes bounce {
+  0%   {top:0px;}
+  50%  {top:10px;}
+  100% {top:0px;}
 }
