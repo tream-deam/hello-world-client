@@ -1,5 +1,7 @@
 @import "../styles/variables.scss";
-
+/* poppin 500/700 
+  $font-family 300,400,600, 700
+*/
 #logo {
   color: $orange;
   font-family: $logo-font;
@@ -274,9 +276,13 @@
 .caption {
   border-bottom-left-radius: 2.1rem;
   border-bottom-right-radius: 2.1rem;
-  font-size: 16px;
+  font-size: calc(1.6rem + 1.5vw);
   position: absolute;
   z-index: 3;
+  color:white;
+  font-weight: 600;
+  margin: 2rem;
+  visibility: visible;
 }
 
 .label {
@@ -319,6 +325,9 @@
 #video-panel:hover {
   .call-button {
     visibility: visible;
+  }
+  .caption {
+    visibility: hidden;
   }
 }
 

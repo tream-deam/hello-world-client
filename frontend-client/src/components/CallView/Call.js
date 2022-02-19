@@ -181,7 +181,7 @@ export default function Call() {
                 />
                 <div id="video-panel">
                   <VideoPanel />
-                  <p>hello: {translation}</p>
+                  <p className="caption">{translation}</p>
                 </div>
               </>
             ) : (
