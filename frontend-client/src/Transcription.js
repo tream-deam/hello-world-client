@@ -6,9 +6,11 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentSlash,faComment } from "@fortawesome/free-solid-svg-icons";
 import Label from './components/CallView/Label';
+import { useLanguage } from './providers/LanguageContext';
 
 
 const Transcription = () => {
+  const userSpokenLanguageCode = useLanguage();
   const {
     error,
     interimResult,
@@ -20,7 +22,7 @@ const Transcription = () => {
     continuous: true,
     useLegacyResults: false,
     speechRecognitionProperties: {
-      lang: 'en-US',
+      lang: userSpokenLanguageCode,
       interimResults: true // allows for displaying real-time speech results
     }
   });
@@ -97,7 +99,7 @@ const Transcription = () => {
       method: "POST",
       url: "https://microsoft-translator-text.p.rapidapi.com/translate",
       params: {
-        to: "es",
+        to: userSpokenLanguageCode,
         "api-version": "3.0",
         profanityAction: "NoAction",
         textType: "plain",
