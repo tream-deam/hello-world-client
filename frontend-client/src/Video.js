@@ -1,10 +1,7 @@
-/* import Label from "./components/CallView/Label"; */
 import { useEffect } from "react";
-/* import { useName } from './providers/UsernameProvider';  */
 
 export default function Video(props) {
   const { id, videoFeed, audioFeed } = props;
-/*   const name = useName();  */
   useEffect(() => {
     // if user's webcam is streaming video
     if (videoFeed) {
@@ -20,7 +17,6 @@ export default function Video(props) {
 
   return (
     <div id={id}>
-   {/*    <Label text={name}/> */}
     </div>
   );
 }
