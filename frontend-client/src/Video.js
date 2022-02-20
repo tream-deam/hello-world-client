@@ -18,9 +18,10 @@ export default function Video(props) {
 
   useEffect(() => {
     if (selfDisconnect) {
-      const selfVideoNode = document.getElementsByClassName(`self-video--element`)[0]
-      console.log({selfVideoNode})
-      document.getElementById(id).removeChild(selfVideoNode);
+      // when self disconnects, remove child audio & video nodes of self-video div
+      document.getElementById(id).children.forEach(childNode => {
+        document.getElementById(id).removeChild(childNode)
+      })
     }
   }, [id, selfDisconnect]);
   
