@@ -5,6 +5,7 @@ import { useTranslation } from '../../providers/TranslationContext';
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
+import { useNavigate } from "react-router-dom";
 const {
   connect,
   createLocalVideoTrack,
@@ -19,6 +20,9 @@ export default function Call() {
     remoteAudio: null,
     userDisconnectHandler: () => {},
   });
+
+  // used to redirect to other paths on app using react router
+  const navigate = useNavigate();
 
   // Translation state and updater from context
   const translation = useTranslation();
@@ -161,6 +165,7 @@ export default function Call() {
               e.preventDefault()
               console.log('user disconnected!')
               room.disconnect();
+              navigate('/');
             };
 
             setState(prev => ({...prev, userDisconnectHandler: userDisconnectHandler}))
