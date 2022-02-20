@@ -19,7 +19,7 @@ export default function Call() {
     remoteAudio: null,
   });
 
-  // Interim state and updater from context
+  // Translation state and updater from context
   const translation = useTranslation();
 
   // make initial userName state random. for demo purposes 
