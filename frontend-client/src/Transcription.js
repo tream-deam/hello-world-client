@@ -3,7 +3,6 @@ import { useTranslation, useTranslationUpdate } from './providers/TranslationCon
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
-import ConvoLog from "./components/CallView/ConvoLog"
 
 const Transcription = () => {
   const {
@@ -103,7 +102,7 @@ const Transcription = () => {
       headers: {
         "content-type": "application/json",
         "x-rapidapi-host": "microsoft-translator-text.p.rapidapi.com",
-        "x-rapidapi-key": "538c8b93a1mshaefebc3f9e0d00ap14b70ejsn49bf6990464e",
+        "x-rapidapi-key": `${process.env.REACT_APP_MICROSOFT_API_KEY}`,
       },
       data: [
         {
@@ -148,7 +147,6 @@ const Transcription = () => {
             return <li key={result.timestamp}> {result.transcript}</li>;
           })}
         </div>
-        <ConvoLog />
       </div>
   );
 };
