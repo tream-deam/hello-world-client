@@ -11,7 +11,7 @@ export function Dropdown() {
 
   return (
     <>
-      <label for="languages"></label>
+      <label htmlFor="languages"></label>
       <select name="languages" id="languages">
         {options}
       </select>
