@@ -1,8 +1,10 @@
 import './HomePageModal.scss';
+import { useName, useNameUpdate } from '../../providers/UsernameProvider';
 
 const HomePageModal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
-
+  const name = useName();
+  const setName = useNameUpdate();
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
@@ -19,8 +21,8 @@ const HomePageModal = ({ handleClose, show, children }) => {
                     name="name"
                     type="text"
                     placeholder="Your name"
-              /*       value={student} 
-                    onChange={(event) => setStudent(event.target.value)} */
+                     value={name} 
+                    onChange={(event) => setName(event.target.value)} 
                     data-testid="username-input"
                   />
                 </form>
