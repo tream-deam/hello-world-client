@@ -9,7 +9,7 @@ function ConvoLog (props) {
   return (
       <div className="convo-log">
         {/* <Label text="Translation Log"/>  */}
-        <Transcription/>
+        {/* <Transcription/> */}
         <TranslateIcon className="nav-icon"/>
    {/*        <FontAwesomeIcon
               className="nav-icon translate"
