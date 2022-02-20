@@ -6,6 +6,8 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentSlash,faComment } from "@fortawesome/free-solid-svg-icons";
 import Label from './components/CallView/Label';
+import { useCoparticipant, useCoparticipantUpdate } from './providers/CoparticipantContext';
+import { useName } from './providers/UsernameProvider';
 
 
 const Transcription = () => {
@@ -32,11 +34,15 @@ const Transcription = () => {
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
   const [transcriptionResults, setTranscriptionResults] = useState([]);
 
-
+  const userName = useName();
+  const setCoparticipant = useCoparticipantUpdate();
+  const coparticipant = useCoparticipant();
+  // console.log(coparticipant);
+  
   // Translation state and updater from context
   const translation = useTranslation();
   const updateTranslation = useTranslationUpdate();
-
+  
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
     // check if in development or production so appropriate socket url is used
@@ -63,13 +69,38 @@ const Transcription = () => {
       ]);
     });
 
+    socket.on("disconnected_user", (msg) => {
+      console.log('user disconnected:', msg);
+    })
+    
     socket.on("disconnect", () => {
       console.log("User disconnected!");
     });
-
+    
     // Ensures we disconnect to avoid memory leaks
     return () => socket.disconnect();
   }, []);
+  
+  useEffect(() => {
+    const socket = socketState;
+    
+    if (socket) {
+      socket.emit("sendName", userName);
+      
+      socket.on("receiveNameInClient", (users) => {
+        console.log(users); //object all users from beginning of server time
+        if (users.user2 !== userName) {
+          // there's a 2nd user and 2nd user is not me (im 1st user)
+          setCoparticipant(users.user2);
+        } else if (users.user1 !== userName) {
+          // 1st user is not me!
+          setCoparticipant(users.user1);
+        }
+        // setCoparticipant(users[users.length-1]);
+        // filter thru array, keep that don't name own user name, take name either immediately before or after to coparticipant
+      });
+    }
+  }, [socketState, userName, setCoparticipant]);
   
   // Whenever a new sentence is transcribed, send it to other client. Only grab the most recent (last) sentence/result
   useEffect(() => {
