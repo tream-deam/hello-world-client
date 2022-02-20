@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import NavBar from "../NavBar";
 import "./HomePage.scss";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeartPulse, 
@@ -9,29 +10,27 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import HomePageModal from "../HomePageModal/HomePageModal";
 
-class HomePage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      show: false
-    };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
+function HomePage() {
+  const [show, setShow] = useState(false)
+
+  let navigate = useNavigate(); 
+
+  const showModal = () => {
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
   }
-
-  showModal = () => {
-    this.setState({ show: true });
+  const routeChange = () => {
+    navigate(`/schedule`); 
   };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
-  render(){
+  
     return (
       <div className="homepage-view">
         <NavBar/>
         <div className="homepage-container">
-            <HomePageModal show={this.state.show} handleClose={this.hideModal}>
+            <HomePageModal show={show} handleClose={hideModal} handleSubmit={routeChange}>
 
             </HomePageModal>
            {/*  <button type="button" onClick={this.showModal}>
@@ -56,7 +55,7 @@ class HomePage extends Component {
             </p>
             <div className="options-container">
               <div className="health-container">
-                <div onClick={this.showModal} className="health-circle">
+                <div onClick={showModal} className="health-circle">
                   <p className="option-title">Health</p>
                   <FontAwesomeIcon icon={faHeartPulse} size="3x" />
                 </div>
@@ -82,6 +81,6 @@ class HomePage extends Component {
       </div>
 
     );
-  }
+  
 }
 export default HomePage;
