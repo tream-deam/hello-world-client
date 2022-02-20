@@ -38,7 +38,7 @@ class HomePage extends Component {
            {/*  <button type="button" onClick={this.showModal}>
              Open
             </button> */}
-          <section className="home-banner"> 
+            <section className="home-banner"> 
               <div className="heading-home">
                 <p className="heading-hello">
                   Hello
@@ -68,7 +68,7 @@ class HomePage extends Component {
                   <p className="option-title">Learning</p>
                   <FontAwesomeIcon icon={faBrain} size="3x" />
                 </div>
-                <p className="desc">Expanding your learning network with others that speak another language. </p>
+                <p className="desc">Expand your learning with others that speak another language. </p>
               </div>
               <div className="personal-container">
                 <div className="personal-circle">
