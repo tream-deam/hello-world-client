@@ -173,14 +173,27 @@ export default function Call() {
                 const attachedElements = publication.track.detach();
                 attachedElements.forEach(element => element.remove());
               })
+
+              const selfVideoContainerElements =
+              document.getElementById("self-video").children;
+
+              for (let element of selfVideoContainerElements) {
+                document.getElementById("self-video").removeChild(element);
+              }
+
               console.log('removed your tracks!');
-              setState(prev => ({ ...prev, selfVideo: null, selfDisconnect: true }));
+              setState(prev => ({ ...prev, selfVideo: null }));
             })
 
             // listen for when remote participant disconnects
             room.on('participantDisconnected', participant => {
-              console.log({participant});
-              setState(prev => ({ ...prev, remoteDisconnect: true }));
+              const remoteVideoContainerElements =
+                document.getElementById("other-video").children;
+
+              for (let element of remoteVideoContainerElements) {
+                document.getElementById("other-video").removeChild(element);
+              }
+              setState(prev => ({ ...prev, remoteVideo: null }));
             })
           },
           (error) => {
@@ -233,6 +246,7 @@ export default function Call() {
                     videoFeed={state.selfVideo}
                     audioFeed={state.selfAudio}
                     selfDisconnect={state.selfDisconnect}
+                    remoteDisconnect={state.remoteDisconnect}
                   />
                 </div>
                   <Transcription />
