@@ -125,7 +125,7 @@ const Transcription = () => {
         updateTranslation(result);
       })
       .catch((error) => console.error(error));
-  }, [updateTranslation, stateInterim.msg]);
+  }, [updateTranslation, stateInterim.msg, userSpokenLanguageCode]);
 
   if (error) {
     return <p> Web Speech API is not available in this browser :( </p>;
