@@ -11,7 +11,7 @@ export function useLanguageUpdate() {
   return useContext(LanguageUpdateContext)
 }
 
-export function ThemeProvider({ children }) {
+export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState('en-CA');
 
   function updateLanguage(newLanguage) {
