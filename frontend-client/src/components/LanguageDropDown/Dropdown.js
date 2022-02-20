@@ -5,7 +5,7 @@ export function Dropdown() {
   const options = languages.map((language) => {
     const languageNameAndRegion = `${language.language} (${language.region})`;
     return (
-      <option value={language["language-code"]}>{languageNameAndRegion}</option>
+      <option key={language["language-code"]} value={language["language-code"]}>{languageNameAndRegion}</option>
     );
   });
 
