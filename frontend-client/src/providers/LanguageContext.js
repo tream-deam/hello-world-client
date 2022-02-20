@@ -14,8 +14,8 @@ export function useLanguageUpdate() {
 export function ThemeProvider({ children }) {
   const [language, setLanguage] = useState('en-CA');
 
-  function updateLanguage() {
-    setLanguage((prevDarkTheme) => !prevDarkTheme);
+  function updateLanguage(newLanguage) {
+    setLanguage(newLanguage);
   }
 
   return (
