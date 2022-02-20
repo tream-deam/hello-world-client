@@ -1,7 +1,7 @@
-import './HomePageModal.scss';
-import { useName, useNameUpdate } from '../../providers/UsernameProvider';
-import { Dropdown } from '../LanguageDropDown/Dropdown';
-import { useLanguageUpdate } from '../../providers/LanguageContext';
+import "./HomePageModal.scss";
+import { useName, useNameUpdate } from "../../providers/UsernameProvider";
+import { Dropdown } from "../LanguageDropDown/Dropdown";
+import { useLanguageUpdate } from "../../providers/LanguageContext";
 
 const HomePageModal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
@@ -18,23 +18,26 @@ const HomePageModal = ({ handleClose, show, children }) => {
           </div>
         </div>
         <p>Please add your name so your doctor knows you are here.</p>
-                <form autoComplete="off"  onSubmit={(e) => e.preventDefault()}>
-                  <input
-                    className="modal-input"
-                    name="name"
-                    type="text"
-                    placeholder="Your name"
-                     value={name} 
-                    onChange={(event) => setName(event.target.value)} 
-                    data-testid="username-input"
-                  />
-                </form>
-              <p>Language you speak:</p>
-                <form  onSubmit={(e) => e.preventDefault()} onChange={e => setLanguage(e.target.value)}>
-                <Dropdown/>
-                  </form>
-                  <br></br>
-       <footer className="modal-footer">
+        <form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
+          <input
+            className="modal-input"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            data-testid="username-input"
+          />
+        </form>
+        <p>Language you speak:</p>
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          onChange={(e) => setLanguage(e.target.value)}
+        >
+          <Dropdown />
+        </form>
+        <br></br>
+        <footer className="modal-footer">
           <button className="modal-submit" type="button" onClick={handleClose}>
             Submit
           </button>
@@ -44,4 +47,4 @@ const HomePageModal = ({ handleClose, show, children }) => {
   );
 };
 
-export default HomePageModal
+export default HomePageModal;
