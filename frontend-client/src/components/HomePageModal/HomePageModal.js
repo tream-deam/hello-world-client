@@ -3,7 +3,7 @@ import { useName, useNameUpdate } from "../../providers/UsernameProvider";
 import { Dropdown } from "../LanguageDropDown/Dropdown";
 import { useLanguageUpdate } from "../../providers/LanguageContext";
 
-const HomePageModal = ({ handleClose, show, children }) => {
+const HomePageModal = ({ handleSubmit, handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   const name = useName();
   const setName = useNameUpdate();
@@ -43,7 +43,7 @@ const HomePageModal = ({ handleClose, show, children }) => {
         </form>
         <br></br>
         <footer className="modal-footer">
-          <button className="modal-submit" type="button" onClick={handleClose}>
+          <button className="modal-submit" type="button" onClick={handleSubmit}>
             Submit
           </button>
         </footer>
