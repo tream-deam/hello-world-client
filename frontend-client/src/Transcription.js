@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useTranslation, useTranslationUpdate } from './providers/TranslationContext';
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
@@ -34,6 +34,7 @@ const Transcription = () => {
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
   const [transcriptionResults, setTranscriptionResults] = useState([]);
 
+
   // Translation state and updater from context
   const translation = useTranslation();
   const updateTranslation = useTranslationUpdate();
@@ -51,7 +52,7 @@ const Transcription = () => {
       console.log("Connected to socket!");
     });
 
-    // Real time transcription
+    // Real time transcription (incoming)
     socket.on("interimListen", (msg) => {
       setStateInterim(msg);
     });
@@ -71,7 +72,7 @@ const Transcription = () => {
     // Ensures we disconnect to avoid memory leaks
     return () => socket.disconnect();
   }, []);
-
+  
   // Whenever a new sentence is transcribed, send it to other client. Only grab the most recent (last) sentence/result
   useEffect(() => {
     const socket = socketState;
@@ -111,7 +112,7 @@ const Transcription = () => {
       },
       data: [
         {
-          Text: interimResult ? interimResult : " ",
+          Text: stateInterim.msg ? stateInterim.msg : " ",
         },
       ],
     };
@@ -124,7 +125,7 @@ const Transcription = () => {
         updateTranslation(result);
       })
       .catch((error) => console.error(error));
-  }, [interimResult, updateTranslation]);
+  }, [updateTranslation, stateInterim.msg]);
 
   if (error) {
     return <p> Web Speech API is not available in this browser :( </p>;
