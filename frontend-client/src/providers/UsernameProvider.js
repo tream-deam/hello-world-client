@@ -1,20 +1,30 @@
-import { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from "react";
 
-export const userContext = createContext();
+const NameContext = createContext();
+const NameUpdateContext = createContext();
 
+export function useName() {
+  return useContext(NameContext);
+}
+
+export function useNameUpdate() {
+  return useContext(NameUpdateContext);
+}
 
 // We will need this for <Label> for videos as well as <AppointmentHeader>
 
-function UsernameProvider(props) {
-  //state logic here
-  //userData being passed below are state variables or functions in the logic that we want to pass to any child components eg. const userData = {user, login, logout, auth}
+export function UserNameProvider({ children }) {
+  const [userName, setUserName] = useState("");
 
+  function assignName(newName) {
+    setUserName(newName);
+  }
 
-  // return (
-  //   <userContext.Provider value={userData}>
-  //     {props.children}
-  //   </userContext.Provider>
-  // );
-};
-
-export default UsernameProvider;
+  return (
+    <NameContext.Provider value={userName}>
+      <NameUpdateContext.Provider value={assignName}>
+        {children}
+      </NameUpdateContext.Provider>
+    </NameContext.Provider>
+  );
+}
