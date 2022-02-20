@@ -16,7 +16,7 @@ const Transcription = () => {
     continuous: true,
     useLegacyResults: false,
     speechRecognitionProperties: {
-      lang: 'es-CO',
+      lang: 'en-US',
       interimResults: true // allows for displaying real-time speech results
     }
   });
@@ -93,7 +93,7 @@ const Transcription = () => {
       method: "POST",
       url: "https://microsoft-translator-text.p.rapidapi.com/translate",
       params: {
-        to: "en",
+        to: "es",
         "api-version": "3.0",
         profanityAction: "NoAction",
         textType: "plain",
@@ -101,7 +101,7 @@ const Transcription = () => {
       headers: {
         "content-type": "application/json",
         "x-rapidapi-host": "microsoft-translator-text.p.rapidapi.com",
-        "x-rapidapi-key": "538c8b93a1mshaefebc3f9e0d00ap14b70ejsn49bf6990464e",
+        "x-rapidapi-key": `${process.env.REACT_APP_MICROSOFT_API_KEY}`,
       },
       data: [
         {
