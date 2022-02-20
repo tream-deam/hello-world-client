@@ -71,10 +71,6 @@ const Transcription = () => {
       ]);
     });
 
-    socket.on("disconnected_user", (msg) => {
-      console.log('user disconnected:', msg);
-    })
-    
     socket.on("disconnect", () => {
       console.log("User disconnected!");
     });
@@ -98,8 +94,11 @@ const Transcription = () => {
           // 1st user is not me!
           setCoparticipant(users.user1);
         }
-        // setCoparticipant(users[users.length-1]);
-        // filter thru array, keep that don't name own user name, take name either immediately before or after to coparticipant
+      });
+
+      socket.on("disconnected_user", (msg) => {
+        console.log('user disconnected:', msg);
+        setCoparticipant(null);
       });
     }
   }, [socketState, userName, setCoparticipant]);
