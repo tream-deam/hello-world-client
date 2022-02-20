@@ -148,6 +148,7 @@ const Transcription = () => {
             return <li key={result.timestamp}> {result.transcript}</li>;
           })}
         </div>
+        <ConvoLog />
       </div>
   );
 };
