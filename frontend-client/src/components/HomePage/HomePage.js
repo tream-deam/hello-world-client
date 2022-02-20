@@ -9,11 +9,16 @@ import {
   faUserGroup
 } from "@fortawesome/free-solid-svg-icons";
 import HomePageModal from "../HomePageModal/HomePageModal";
+import { useNameUpdate, useInterimName, useInterimNameUpdate } from "../../providers/UsernameProvider";
 
 function HomePage() {
   const [show, setShow] = useState(false)
 
+
   let navigate = useNavigate(); 
+  let setUsername = useNameUpdate();
+  let interimName= useInterimName();
+  let setInterimName = useInterimNameUpdate();
 
   const showModal = () => {
     setShow(true);
@@ -24,13 +29,14 @@ function HomePage() {
   }
   const routeChange = () => {
     navigate(`/schedule`); 
+    setUsername(interimName);
   };
   
     return (
       <div className="homepage-view">
         <NavBar/>
         <div className="homepage-container">
-            <HomePageModal show={show} handleClose={hideModal} handleSubmit={routeChange}>
+            <HomePageModal show={show} handleClose={hideModal} handleSubmit={routeChange} interimName={interimName} setInterimName={setInterimName}>
 
             </HomePageModal>
            {/*  <button type="button" onClick={this.showModal}>

@@ -1,9 +1,9 @@
 import "./HomePageModal.scss";
-import { useName, useNameUpdate } from "../../providers/UsernameProvider";
+import { useName, useNameUpdate, useInterimName, useInterimNameUpdate } from "../../providers/UsernameProvider";
 import { Dropdown } from "../LanguageDropDown/Dropdown";
 import { useLanguageUpdate } from "../../providers/LanguageContext";
 
-const HomePageModal = ({ handleSubmit, handleClose, show, children }) => {
+const HomePageModal = ({ setInterimName, interimName, handleSubmit, handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   const name = useName();
   const setName = useNameUpdate();
@@ -12,6 +12,7 @@ const HomePageModal = ({ handleSubmit, handleClose, show, children }) => {
   const handleDropdownChange = (e) => {
     setLanguage(e.target.value);
   };
+  
 
   return (
     <div className={showHideClassName}>
@@ -29,8 +30,8 @@ const HomePageModal = ({ handleSubmit, handleClose, show, children }) => {
             name="name"
             type="text"
             placeholder="Your name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            value={interimName}
+            onChange={(event) => setInterimName(event.target.value)}
             data-testid="username-input"
           />
         </form>
