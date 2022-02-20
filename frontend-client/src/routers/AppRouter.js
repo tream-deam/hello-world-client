@@ -5,11 +5,8 @@ import Call from "../components/CallView/Call";
 import AppointmentView from "../components/AppointmentView/AppointmentView";
 import HomePage from "../components/HomePage/HomePage";
 import { UserNameProvider } from "../providers/UsernameProvider";
-<<<<<<< HEAD
 import { CoparticipantProvider } from '../providers/CoparticipantContext';
-=======
 import { LanguageProvider } from "../providers/LanguageContext";
->>>>>>> main
 
 const AppRouter = () => (
   <BrowserRouter>
