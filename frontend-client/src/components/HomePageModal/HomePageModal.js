@@ -1,11 +1,13 @@
 import './HomePageModal.scss';
 import { useName, useNameUpdate } from '../../providers/UsernameProvider';
 import { Dropdown } from '../LanguageDropDown/Dropdown';
+import { useLanguageUpdate } from '../../providers/LanguageContext';
 
 const HomePageModal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   const name = useName();
   const setName = useNameUpdate();
+  const setLanguage = useLanguageUpdate();
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
@@ -28,7 +30,7 @@ const HomePageModal = ({ handleClose, show, children }) => {
                   />
                 </form>
               <p>Language you speak:</p>
-                <form autoComplete="off"  onSubmit={(e) => e.preventDefault()}>
+                <form  onSubmit={(e) => e.preventDefault()} onChange={e => setLanguage(e.target.value)}>
                 <Dropdown/>
                   </form>
                   <br></br>
