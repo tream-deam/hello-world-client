@@ -3,6 +3,10 @@ import { useTranslation, useTranslationUpdate } from './providers/TranslationCon
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentSlash,faComment } from "@fortawesome/free-solid-svg-icons";
+import Label from './components/CallView/Label';
+
 
 const Transcription = () => {
   const {
@@ -130,15 +134,26 @@ const Transcription = () => {
   });
 
   return (
-      <div className='convo-log'>
+      <div className="convo-log">
         {stateInterim.msg}
-        <h1>Remote Transcription Log</h1>
-        {remoteTranscriptions}
-
-        <button onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-          {isRecording ? "Stop Transcribing" : "Start Transcribing"}
-        </button>
-
+        <div className="log-header">
+          <Label text="Translation Log"/> 
+          <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+          
+            {isRecording ?  
+              <FontAwesomeIcon
+              className="translate"
+              icon={faComment}
+              size="2x"
+              />
+              :     
+              <FontAwesomeIcon
+              className="translate"
+              icon={faCommentSlash}
+              size="2x"
+              />}
+          </button>
+        </div>
         <div id="transcription">
           {translation && <li>{translation}</li>}
           {interimResult && <li>{interimResult}</li>}
@@ -146,6 +161,8 @@ const Transcription = () => {
           {results.map((result) => {
             return <li key={result.timestamp}> {result.transcript}</li>;
           })}
+          <h1>Remote Transcription Log</h1>
+          {remoteTranscriptions}
         </div>
       </div>
   );

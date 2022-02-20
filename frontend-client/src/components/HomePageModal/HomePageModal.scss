@@ -112,3 +112,13 @@ button:active {
   transform: scale(0.99);
 }
 
+button.convo-log-toggle,
+button.convo-log-toggle:hover,
+button.convo-log-toggle:focus {
+  outline: none;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: $vibrant-orange;
+}

@@ -5,7 +5,6 @@ import { useTranslation } from '../../providers/TranslationContext';
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
-
 const {
   connect,
   createLocalVideoTrack,
@@ -181,7 +180,7 @@ export default function Call() {
                 />
                 <div id="video-panel">
                   <VideoPanel />
-                  <p>hello: {translation}</p>
+                  <p className="caption">{translation}</p>
                 </div>
               </>
             ) : (
