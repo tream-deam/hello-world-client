@@ -1,12 +1,10 @@
 import "./HomePageModal.scss";
-import { useName, useNameUpdate, useInterimName, useInterimNameUpdate } from "../../providers/UsernameProvider";
+import { useName, useNameUpdate } from "../../providers/UsernameProvider";
 import { Dropdown } from "../LanguageDropDown/Dropdown";
 import { useLanguageUpdate } from "../../providers/LanguageContext";
 
 const HomePageModal = ({ setInterimName, interimName, handleSubmit, handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
-  const name = useName();
-  const setName = useNameUpdate();
   const setLanguage = useLanguageUpdate();
 
   const handleDropdownChange = (e) => {
