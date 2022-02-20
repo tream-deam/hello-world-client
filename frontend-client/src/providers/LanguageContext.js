@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import getSourceLanguages from "../components/LanguageDropDown/helpers/getSourceLanguages";
 
 const LanguageContext = React.createContext();
 const LanguageUpdateContext = React.createContext();
@@ -12,7 +13,8 @@ export function useLanguageUpdate() {
 }
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('en-CA');
+  const firstLanguageCode = getSourceLanguages()[0]['language-code'];
+  const [language, setLanguage] = useState(firstLanguageCode);
 
   function updateLanguage(newLanguage) {
     setLanguage(newLanguage);
