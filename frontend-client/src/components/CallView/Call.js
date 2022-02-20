@@ -17,6 +17,7 @@ export default function Call() {
     selfAudio: null,
     remoteVideo: null,
     remoteAudio: null,
+    userDisconnectHandler: () => {},
   });
 
   // Translation state and updater from context
@@ -155,6 +156,14 @@ export default function Call() {
                 }
               });
             });
+
+            const userDisconnectHandler = (e) => {
+              e.preventDefault()
+              console.log('user disconnected!')
+              room.disconnect();
+            };
+
+            setState(prev => ({...prev, userDisconnectHandler: userDisconnectHandler}))
           },
           (error) => {
             console.log(token);
@@ -191,7 +200,7 @@ export default function Call() {
               <>
                 { otherVideoPlaceholder } 
                 <div id="video-panel">
-                <VideoPanel />
+                <VideoPanel userDisconnectHandler={state.userDisconnectHandler}/>
                 <p className="caption">{translation}</p>
                 </div>
               </>
@@ -205,6 +214,7 @@ export default function Call() {
                     id="self-video"
                     videoFeed={state.selfVideo}
                     audioFeed={state.selfAudio}
+                    selfDisconnect={state.selfDisconnect}
                   />
                 </div>
                   <Transcription />
