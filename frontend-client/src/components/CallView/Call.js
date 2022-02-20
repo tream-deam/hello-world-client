@@ -5,7 +5,6 @@ import { useTranslation } from '../../providers/TranslationContext';
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
-//import ConvoLog from './ConvoLog';
 const {
   connect,
   createLocalVideoTrack,
@@ -198,8 +197,7 @@ export default function Call() {
                     audioFeed={state.selfAudio}
                   />
                 </div>
-                <Transcription />
-                {/* <ConvoLog /> */}
+                  <Transcription />
               </>
             ) : (
               <>
