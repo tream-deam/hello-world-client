@@ -18,8 +18,6 @@ export default function Call() {
     remoteVideo: null,
     remoteAudio: null,
     userDisconnectHandler: () => {},
-    selfDisconnect: null,
-    remoteDisconnect: null,
   });
 
   // Translation state and updater from context

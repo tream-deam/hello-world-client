@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useName } from './providers/UsernameProvider';
 
 export default function Video(props) {
-  const { id, videoFeed, audioFeed, selfDisconnect } = props;
+  const { id, videoFeed, audioFeed } = props;
   const name = useName();
   useEffect(() => {
     // if user's webcam is streaming video
@@ -15,15 +15,6 @@ export default function Video(props) {
       document.getElementById(id).appendChild(audioFeed);
     }
   }, [id, videoFeed, audioFeed]);
-
-  useEffect(() => {
-    if (selfDisconnect) {
-      // when self disconnects, remove child audio & video nodes of self-video div
-      document.getElementById(id).children.forEach(childNode => {
-        document.getElementById(id).removeChild(childNode)
-      })
-    }
-  }, [id, selfDisconnect]);
   
 
 
