@@ -8,6 +8,11 @@ const HomePageModal = ({ handleClose, show, children }) => {
   const name = useName();
   const setName = useNameUpdate();
   const setLanguage = useLanguageUpdate();
+
+  const handleDropdownChange = (e) => {
+    setLanguage(e.target.value);
+  };
+
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
@@ -32,7 +37,7 @@ const HomePageModal = ({ handleClose, show, children }) => {
         <p>Language you speak:</p>
         <form
           onSubmit={(e) => e.preventDefault()}
-          onChange={(e) => setLanguage(e.target.value)}
+          onChange={handleDropdownChange}
         >
           <Dropdown />
         </form>
