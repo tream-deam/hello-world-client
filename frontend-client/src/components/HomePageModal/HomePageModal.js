@@ -1,5 +1,6 @@
 import './HomePageModal.scss';
 import { useName, useNameUpdate } from '../../providers/UsernameProvider';
+import { Dropdown } from '../LanguageDropDown/Dropdown';
 
 const HomePageModal = ({ handleClose, show, children }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
@@ -28,16 +29,7 @@ const HomePageModal = ({ handleClose, show, children }) => {
                 </form>
               <p>Language you speak:</p>
                 <form autoComplete="off"  onSubmit={(e) => e.preventDefault()}>
-                    <input
-                      className="modal-input"
-                      name="language"
-                      type="text"
-                      placeholder="Language you speak"
-                /*       value={student} 
-                      onChange={(event) => setStudent(event.target.value)} */
-                      data-testid="language-input"
-                    />
-                {/*     <DropDown/> */}
+                <Dropdown/>
                   </form>
                   <br></br>
        <footer className="modal-footer">
