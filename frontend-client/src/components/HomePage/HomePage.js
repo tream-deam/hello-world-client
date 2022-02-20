@@ -8,7 +8,6 @@ import {
   faUserGroup
 } from "@fortawesome/free-solid-svg-icons";
 import HomePageModal from "../HomePageModal/HomePageModal";
-import { UserNameProvider } from "../../providers/UsernameProvider";
 
 class HomePage extends Component {
   constructor() {
