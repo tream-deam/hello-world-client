@@ -12,7 +12,7 @@ export function Dropdown() {
   return (
     <>
       <label htmlFor="languages"></label>
-      <select name="languages" id="languages">
+      <select name="languages" id="languages" class="modal-input">
         {options}
       </select>
     </>

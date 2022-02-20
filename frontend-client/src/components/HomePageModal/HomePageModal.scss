@@ -122,3 +122,9 @@ button.convo-log-toggle:focus {
   -moz-appearance: none;
   color: $vibrant-orange;
 }
+
+// language drop down styles
+
+select#languages {
+  width: 100%;
+}
