@@ -176,6 +176,12 @@ export default function Call() {
               console.log('removed your tracks!');
               setState(prev => ({ ...prev, selfVideo: null, selfDisconnect: true }));
             })
+
+            // listen for when remote participant disconnects
+            room.on('participantDisconnected', participant => {
+              console.log({participant});
+              setState(prev => ({ ...prev, remoteDisconnect: true }));
+            })
           },
           (error) => {
             console.log(token);
@@ -204,7 +210,7 @@ export default function Call() {
                   audioFeed={state.remoteAudio}
                 />
                 <div id="video-panel">
-                  <VideoPanel />
+                  <VideoPanel userDisconnectHandler={state.userDisconnectHandler}/>
                   <p className="caption">{translation}</p>
                 </div>
               </>
