@@ -18,6 +18,7 @@ export default function Call() {
     remoteVideo: null,
     remoteAudio: null,
     userDisconnectHandler: () => {},
+    selfDisconnect: null,
   });
 
   // Translation state and updater from context
@@ -164,6 +165,16 @@ export default function Call() {
             };
 
             setState(prev => ({...prev, userDisconnectHandler: userDisconnectHandler}))
+
+            room.on('disconnected', room => {
+              console.log('you disconnected!');
+              room.localParticipant.tracks.forEach(publication => {
+                const attachedElements = publication.track.detach();
+                attachedElements.forEach(element => element.remove());
+              })
+              console.log('removed your tracks!');
+              setState(prev => ({ ...prev, selfVideo: null, selfDisconnect: true }));
+            })
           },
           (error) => {
             console.log(token);
