@@ -5,14 +5,14 @@ export function Dropdown() {
   const options = languages.map((language) => {
     const languageNameAndRegion = `${language.language} (${language.region})`;
     return (
-      <option value={language["language-code"]}>{languageNameAndRegion}</option>
+      <option key={language["language-code"]} value={language["language-code"]}>{languageNameAndRegion}</option>
     );
   });
 
   return (
     <>
-      <label for="languages"></label>
-      <select name="languages" id="languages">
+      <label htmlFor="languages"></label>
+      <select name="languages" id="languages" className="modal-input">
         {options}
       </select>
     </>
