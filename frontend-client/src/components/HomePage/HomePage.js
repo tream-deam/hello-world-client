@@ -37,7 +37,7 @@ class HomePage extends Component {
            {/*  <button type="button" onClick={this.showModal}>
              Open
             </button> */}
-          <section className="home-banner"> 
+            <section className="home-banner"> 
               <div className="heading-home">
                 <p className="heading-hello">
                   Hello
