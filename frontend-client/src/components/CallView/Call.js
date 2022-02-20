@@ -199,7 +199,7 @@ export default function Call() {
                   />
                 </div>
                 <Transcription />
-                <ConvoLog />
+                {/* <ConvoLog /> */}
               </>
             ) : (
               <>

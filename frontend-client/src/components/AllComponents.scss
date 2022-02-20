@@ -286,9 +286,18 @@
 }
 
 .label {
-  position: absolute;
+  /* position: absolute; */
   z-index: 2;
+  background-color: rgba(5, 7, 4, 0.75);
+  font-size: 1.6rem;
+  color: white;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  border-radius: 2rem;
+
 }
+
+
 /* Gotta add video ID to video once we know how things are returning twilio */
 .video {
   width: 100%;
@@ -308,7 +317,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: $spacing 0;
 }
 
@@ -375,7 +384,27 @@
 .convo-log {
   // border-style: solid;
   width: 100%;
-  height: 70%;
+  height: 100%;
   border-radius: $border-radius $border-radius $border-radius 0.15rem;
   background-color: $peach;
+  padding: 2rem;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.log-header {
+  display: flex;
+  flex-direction: row;
+}
+button.convo-log-toggle,
+button.convo-log-toggle:hover,
+button.convo-log-toggle:focus {
+  outline: none;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: $vibrant-orange;
 }
