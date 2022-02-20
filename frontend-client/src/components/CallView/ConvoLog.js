@@ -6,7 +6,7 @@ import TranslateIcon from '@material-ui/icons/Translate';
 
 function ConvoLog (props) {
   return (
-      <div className="convo-log">
+      <div className="">
         <Label/> <h1> Transcription Log:</h1>
         <p> Comment vous sentez-vous aujourd'hui</p>
         <p> Je me sens très malade. Je continue d'avoir des migraines.</p>
