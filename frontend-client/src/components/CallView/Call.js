@@ -5,6 +5,9 @@ import { useTranslation } from '../../providers/TranslationContext';
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
+import Label from "./Label";
+import { useName } from "../../providers/UsernameProvider"
+
 const {
   connect,
   createLocalVideoTrack,
@@ -18,7 +21,7 @@ export default function Call() {
     remoteVideo: null,
     remoteAudio: null,
   });
-
+  const name = useName();
   // Translation state and updater from context
   const translation = useTranslation();
 
@@ -195,6 +198,7 @@ export default function Call() {
             {state.selfVideo ? (
               <>
                 <div className="self-video-container">
+                  <Label text={name}/>
                   <Video
                     id="self-video"
                     videoFeed={state.selfVideo}

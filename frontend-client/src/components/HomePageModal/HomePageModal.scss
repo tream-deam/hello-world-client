@@ -95,11 +95,12 @@ button.modal-submit {
   -moz-appearance: none;
 }
 
-button:hover,
-button:focus {
+button.modal-submit:hover,
+button.modal-submit:focus {
   background: $pale-teal;
   color: $dark-teal;
   outline: 1px solid $dark-teal;
+  font-weight: 600;
 }
 
 button:focus {
