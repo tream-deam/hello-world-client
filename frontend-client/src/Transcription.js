@@ -5,7 +5,7 @@ import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentSlash,faComment } from "@fortawesome/free-solid-svg-icons";
-import Label from './components/CallView/Label';
+import NoLayerLabel from './components/CallView/NoLayerLabel';
 import { useLanguage } from './providers/LanguageContext';
 
 
@@ -139,7 +139,7 @@ const Transcription = () => {
       <div className="convo-log">
         {stateInterim.msg}
         <div className="log-header">
-          <Label text="Translation Log"/> 
+          <NoLayerLabel text="Translation Log"/> 
           <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
           
             {isRecording ?  
