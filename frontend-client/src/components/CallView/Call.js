@@ -188,7 +188,13 @@ export default function Call() {
                 </div>
               </>
             ) : (
-              <>{ otherVideoPlaceholder }</>
+              <>
+                { otherVideoPlaceholder } 
+                <div id="video-panel">
+                <VideoPanel />
+                <p className="caption">{translation}</p>
+                </div>
+              </>
             )}
           </div>
           <section className="self-video-log-panel">
