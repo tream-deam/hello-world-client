@@ -39,7 +39,6 @@ const Transcription = () => {
   const userName = useName();
   const setCoparticipant = useCoparticipantUpdate();
   const coparticipant = useCoparticipant();
-  // console.log(coparticipant);
   
   // Translation state and updater from context
   const translation = useTranslation();
@@ -57,6 +56,10 @@ const Transcription = () => {
     socket.on("connect", () => {
       console.log("Connected to socket!");
     });
+
+    socket.on("connected_user", (roomCount) => {
+      console.log(roomCount);
+    })
 
     // Real time transcription (incoming)
     socket.on("interimListen", (msg) => {
@@ -86,22 +89,26 @@ const Transcription = () => {
       socket.emit("sendName", userName);
       
       socket.on("receiveNameInClient", (users) => {
-        console.log(users); //object all users from beginning of server time
-        if (users.user2 !== userName) {
-          // there's a 2nd user and 2nd user is not me (im 1st user)
-          setCoparticipant(users.user2);
-        } else if (users.user1 !== userName) {
-          // 1st user is not me!
-          setCoparticipant(users.user1);
+        console.log(users); //object
+        // set other user to coparticipant. Only accomodates 2 people as intended
+        for (let user in users) {
+          if (Object.keys(users).length <= 2 && users[user] !== userName) {
+            setCoparticipant(users[user]);
+          }
         }
       });
 
       socket.on("disconnected_user", (msg) => {
-        console.log('user disconnected:', msg);
-        setCoparticipant(null);
+        // log user who left and room count
+        console.log('user disconnected: ', msg);
+
+        // only set coparticipant to null if the existing co-participant leaves
+        if (msg.user === coparticipant) {
+          setCoparticipant(null);
+        }
       });
     }
-  }, [socketState, userName, setCoparticipant]);
+  }, [socketState, userName, setCoparticipant, coparticipant]);
   
   // Whenever a new sentence is transcribed, send it to other client. Only grab the most recent (last) sentence/result
   useEffect(() => {
