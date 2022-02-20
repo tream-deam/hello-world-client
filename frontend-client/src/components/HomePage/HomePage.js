@@ -32,11 +32,9 @@ class HomePage extends Component {
       <div className="homepage-view">
         <NavBar/>
         <div className="homepage-container">
-          <UserNameProvider>
             <HomePageModal show={this.state.show} handleClose={this.hideModal}>
 
             </HomePageModal>
-            </UserNameProvider>
            {/*  <button type="button" onClick={this.showModal}>
              Open
             </button> */}
