@@ -431,3 +431,11 @@ button.convo-log-toggle:focus {
   -moz-appearance: none;
   color: $vibrant-orange;
 }
+
+.other-message {
+  color: $black;
+}
+
+.self-message {
+  color: $orange;
+}
