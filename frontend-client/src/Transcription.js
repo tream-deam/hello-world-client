@@ -205,9 +205,9 @@ const Transcription = () => {
     return <p> Web Speech API is not available in this browser :( </p>;
   }
 
-  const transcriptElements = transcript.map(messageObj => {
-    const { userName, message, timestamp } = messageObj; 
-    return <TranscriptMessage key={timestamp} sender={userName} message={message} />
+  const transcriptElements = transcript.map((messageObj, index) => {
+    const { userName, message } = messageObj; 
+    return <TranscriptMessage key={index} sender={userName} message={message} />
   });
 
   return (
