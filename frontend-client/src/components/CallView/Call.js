@@ -5,6 +5,7 @@ import { useTranslation } from '../../providers/TranslationContext';
 import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
+import { useNavigate } from "react-router-dom";
 import Label from "./Label";
 import { useName } from "../../providers/UsernameProvider"
 
@@ -20,7 +21,12 @@ export default function Call() {
     selfAudio: null,
     remoteVideo: null,
     remoteAudio: null,
+    userDisconnectHandler: () => {},
   });
+
+  // used to redirect to other paths on app using react router
+  const navigate = useNavigate();
+
   const name = useName();
   // Translation state and updater from context
   const translation = useTranslation();
@@ -158,6 +164,44 @@ export default function Call() {
                 }
               });
             });
+
+            const userDisconnectHandler = (e) => {
+              e.preventDefault()
+              console.log('user disconnected!')
+              room.disconnect();
+              navigate('/schedule');
+            };
+
+            setState(prev => ({...prev, userDisconnectHandler: userDisconnectHandler}))
+
+            room.on('disconnected', room => {
+              console.log('you disconnected!');
+              room.localParticipant.tracks.forEach(publication => {
+                const attachedElements = publication.track.detach();
+                attachedElements.forEach(element => element.remove());
+              })
+
+              const selfVideoContainerElements =
+              document.getElementById("self-video").children;
+
+              for (let element of selfVideoContainerElements) {
+                document.getElementById("self-video").removeChild(element);
+              }
+
+              console.log('removed your tracks!');
+              setState(prev => ({ ...prev, selfVideo: null }));
+            })
+
+            // listen for when remote participant disconnects
+            room.on('participantDisconnected', participant => {
+              const remoteVideoContainerElements =
+                document.getElementById("other-video").children;
+
+              for (let element of remoteVideoContainerElements) {
+                document.getElementById("other-video").removeChild(element);
+              }
+              setState(prev => ({ ...prev, remoteVideo: null }));
+            })
           },
           (error) => {
             console.log(token);
@@ -166,10 +210,10 @@ export default function Call() {
         );
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   const videoPlaceholder = <div className="video placeholder"></div>;
-  const otherVideoPlaceholder = <div className="video placeholder"></div>;
+  const otherVideoPlaceholder = <div className="other video placeholder"></div>;
   const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
   return (
@@ -186,12 +230,18 @@ export default function Call() {
                   audioFeed={state.remoteAudio}
                 />
                 <div id="video-panel">
-                  <VideoPanel />
+                  <VideoPanel userDisconnectHandler={state.userDisconnectHandler}/>
                   <p className="caption">{translation}</p>
                 </div>
               </>
             ) : (
-              <>{ otherVideoPlaceholder }</>
+              <>
+                { otherVideoPlaceholder } 
+                <div id="video-panel">
+                <VideoPanel userDisconnectHandler={state.userDisconnectHandler}/>
+                <p className="caption">{translation}</p>
+                </div>
+              </>
             )}
           </div>
           <section className="self-video-log-panel">
@@ -203,6 +253,8 @@ export default function Call() {
                     id="self-video"
                     videoFeed={state.selfVideo}
                     audioFeed={state.selfAudio}
+                    selfDisconnect={state.selfDisconnect}
+                    remoteDisconnect={state.remoteDisconnect}
                   />
                 </div>
                   <Transcription />
