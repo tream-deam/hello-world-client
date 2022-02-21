@@ -207,7 +207,7 @@ const Transcription = () => {
 
   const transcriptElements = transcript.map((messageObj, index) => {
     const { userName, message } = messageObj; 
-    return <TranscriptMessage key={index} sender={userName} message={message} />
+    return <TranscriptMessage key={index} sender={userName} message={message} coparticipant={coparticipant}/>
   });
 
   return (
