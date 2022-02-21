@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useTranslation, useTranslationUpdate } from './providers/TranslationContext';
+import { useTranslationUpdate } from './providers/TranslationContext';
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
@@ -9,6 +9,7 @@ import { useCoparticipant, useCoparticipantUpdate } from './providers/Coparticip
 import { useName } from './providers/UsernameProvider';
 import NoLayerLabel from './components/CallView/NoLayerLabel';
 import { useLanguage } from './providers/LanguageContext';
+import TranscriptMessage from "./components/TranscriptMessage";
 
 
 const Transcription = () => {
@@ -36,12 +37,14 @@ const Transcription = () => {
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
   const [transcriptionResults, setTranscriptionResults] = useState([]);
 
+  // store all transcribed messages (from self and other)
+  const [transcript, setTranscript] = useState([]);
+
   const userName = useName();
   const setCoparticipant = useCoparticipantUpdate();
   const coparticipant = useCoparticipant();
   
   // Translation state and updater from context
-  const translation = useTranslation();
   const updateTranslation = useTranslationUpdate();
   
   // Initialize socket and listeners to respond to whatever is emitted from the server
@@ -68,6 +71,7 @@ const Transcription = () => {
 
     // Transcription after a sentence is finished
     socket.on("transcriptionFinish", (msg) => {
+      console.log('incoming message: ', msg)
       setTranscriptionResults((prevTranscriptionResults) => [
         ...prevTranscriptionResults,
         msg,
@@ -117,9 +121,9 @@ const Transcription = () => {
 
     // This condition prevents transcript from trying to read properties of undefined when there aren't any results
     if (lastResult) {
-      socket.emit("transcriptionFinish", { msg: lastResult.transcript });
+      socket.emit("transcriptionFinish", { user: userName, msg: lastResult.transcript });
     }
-  }, [socketState, results]);
+  }, [socketState, results, userName]);
 
   // Whenever the interim updates, send data to other client so they can see live transcription as well
   useEffect(() => {
@@ -130,6 +134,39 @@ const Transcription = () => {
       socket.emit("interimListen", { msg: interimResult });
     }
   }, [socketState, interimResult]);
+
+  // whenever (self) transcripts or (other) transcripts change, update transcript array
+  // by adding the new message to the transcript state
+
+  useEffect(() => {
+    // if there is at least one new transcribed message from self
+    if (results.length > 0) {
+      const newestTranscriptionFromSelf = results[results.length - 1];
+      const newMessage = {
+        userName,
+        message: newestTranscriptionFromSelf.transcript,
+        timestamp: newestTranscriptionFromSelf.timestamp
+      };
+      if (newestTranscriptionFromSelf) {
+        setTranscript((prev) => [...prev, newMessage]);
+      }
+    }
+  }, [results, userName]);
+
+  useEffect(() => {
+    // if there is at least one new transcribed message from other participant
+    if (transcriptionResults.length > 0) {
+      const newestTranscriptionFromOther = transcriptionResults[transcriptionResults.length - 1];
+      const newMessage = {
+        userName: newestTranscriptionFromOther.user,
+        message: newestTranscriptionFromOther.msg,
+        timestamp: newestTranscriptionFromOther.timestamp
+      };
+      if (newestTranscriptionFromOther) {
+        setTranscript((prev) => [...prev, newMessage]);
+      }
+    }
+  }, [transcriptionResults, userName]);
 
   // Translation
   useEffect(() => {
@@ -167,9 +204,10 @@ const Transcription = () => {
   if (error) {
     return <p> Web Speech API is not available in this browser :( </p>;
   }
-  
-  const remoteTranscriptions = transcriptionResults.map((result, idx) => {
-    return <li key={idx}>{result.msg}</li>;
+
+  const transcriptElements = transcript.map((messageObj, index) => {
+    const { userName, message } = messageObj; 
+    return <TranscriptMessage key={index} sender={userName} message={message} coparticipant={coparticipant}/>
   });
 
   return (
@@ -194,14 +232,7 @@ const Transcription = () => {
           </button>
         </div>
         <div id="transcription">
-          {translation && <li>{translation}</li>}
-          {interimResult && <li>{interimResult}</li>}
-          {results && <h2>My Transcription log:</h2>}
-          {results.map((result) => {
-            return <li key={result.timestamp}> {result.transcript}</li>;
-          })}
-          <h1>Remote Transcription Log</h1>
-          {remoteTranscriptions}
+          {transcriptElements}
         </div>
       </div>
   );

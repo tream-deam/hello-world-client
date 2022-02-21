@@ -424,11 +424,13 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  overflow-y: scroll;
 }
 
 .log-header {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 button.convo-log-toggle,
 button.convo-log-toggle:hover,
@@ -439,4 +441,21 @@ button.convo-log-toggle:focus {
   -webkit-appearance: none;
   -moz-appearance: none;
   color: $vibrant-orange;
+}
+
+.message {
+  font-family: $font-family;
+  font-size: 18px;
+}
+
+.other-message {
+  color: $black;
+}
+
+.self-message {
+  color: $orange;
+}
+
+#transcription {
+  overflow-y: auto;
 }
