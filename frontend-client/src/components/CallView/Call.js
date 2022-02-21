@@ -213,7 +213,7 @@ export default function Call() {
   }, [navigate]);
 
   const videoPlaceholder = <div className="video placeholder"></div>;
-  const otherVideoPlaceholder = <div className="video placeholder"></div>;
+  const otherVideoPlaceholder = <div className="other video placeholder"></div>;
   const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
   return (
