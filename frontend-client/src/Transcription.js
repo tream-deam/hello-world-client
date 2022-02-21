@@ -5,6 +5,8 @@ import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentSlash,faComment } from "@fortawesome/free-solid-svg-icons";
+import { useCoparticipant, useCoparticipantUpdate } from './providers/CoparticipantContext';
+import { useName } from './providers/UsernameProvider';
 import NoLayerLabel from './components/CallView/NoLayerLabel';
 import { useLanguage } from './providers/LanguageContext';
 
@@ -34,11 +36,14 @@ const Transcription = () => {
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
   const [transcriptionResults, setTranscriptionResults] = useState([]);
 
-
+  const userName = useName();
+  const setCoparticipant = useCoparticipantUpdate();
+  const coparticipant = useCoparticipant();
+  
   // Translation state and updater from context
   const translation = useTranslation();
   const updateTranslation = useTranslationUpdate();
-
+  
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
     // check if in development or production so appropriate socket url is used
@@ -51,6 +56,10 @@ const Transcription = () => {
     socket.on("connect", () => {
       console.log("Connected to socket!");
     });
+
+    socket.on("connected_user", (roomCount) => {
+      console.log(roomCount);
+    })
 
     // Real time transcription (incoming)
     socket.on("interimListen", (msg) => {
@@ -68,10 +77,38 @@ const Transcription = () => {
     socket.on("disconnect", () => {
       console.log("User disconnected!");
     });
-
+    
     // Ensures we disconnect to avoid memory leaks
     return () => socket.disconnect();
   }, []);
+  
+  useEffect(() => {
+    const socket = socketState;
+    
+    if (socket) {
+      socket.emit("sendName", userName);
+      
+      socket.on("receiveNameInClient", (users) => {
+        console.log(users); //object
+        // set other user to coparticipant. Only accomodates 2 people as intended
+        for (let user in users) {
+          if (Object.keys(users).length <= 2 && users[user] !== userName) {
+            setCoparticipant(users[user]);
+          }
+        }
+      });
+
+      socket.on("disconnected_user", (msg) => {
+        // log user who left and room count
+        console.log('user disconnected: ', msg);
+
+        // only set coparticipant to null if the existing co-participant leaves
+        if (msg.user === coparticipant) {
+          setCoparticipant(null);
+        }
+      });
+    }
+  }, [socketState, userName, setCoparticipant, coparticipant]);
   
   // Whenever a new sentence is transcribed, send it to other client. Only grab the most recent (last) sentence/result
   useEffect(() => {

@@ -5,6 +5,7 @@ import Call from "../components/CallView/Call";
 import AppointmentView from "../components/AppointmentView/AppointmentView";
 import HomePage from "../components/HomePage/HomePage";
 import { UserNameProvider } from "../providers/UsernameProvider";
+import { CoparticipantProvider } from '../providers/CoparticipantContext';
 import { LanguageProvider } from "../providers/LanguageContext";
 
 const AppRouter = () => (
@@ -18,7 +19,9 @@ const AppRouter = () => (
           path="/video-call"
           element={
             <TranslationProvider>
-              <Call />
+              <CoparticipantProvider>
+                <Call />
+              </CoparticipantProvider>
             </TranslationProvider>
           }
         />

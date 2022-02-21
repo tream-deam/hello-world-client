@@ -8,6 +8,7 @@ import VideoPanel from "./VideoPanel";
 import { useNavigate } from "react-router-dom";
 import Label from "./Label";
 import { useName } from "../../providers/UsernameProvider"
+import { useCoparticipant } from '../../providers/CoparticipantContext';
 
 const {
   connect,
@@ -30,6 +31,8 @@ export default function Call() {
   const name = useName();
   // Translation state and updater from context
   const translation = useTranslation();
+
+  const coparticipant = useCoparticipant();
 
   // make initial userName state random. for demo purposes 
   // const [userName, setUserName] = useState("s");
@@ -224,6 +227,7 @@ export default function Call() {
           <div className="other-video-container">
             {state.remoteVideo ? (
               <>
+                <Label otherVid text={coparticipant}/>
                 <Video
                   id="other-video"
                   videoFeed={state.remoteVideo}
