@@ -227,7 +227,7 @@ export default function Call() {
           <div className="other-video-container">
             {state.remoteVideo ? (
               <>
-                <Label text={coparticipant}/>
+                <Label otherVid text={coparticipant}/>
                 <Video
                   id="other-video"
                   videoFeed={state.remoteVideo}
