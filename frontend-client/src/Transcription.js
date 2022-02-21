@@ -205,10 +205,6 @@ const Transcription = () => {
   if (error) {
     return <p> Web Speech API is not available in this browser :( </p>;
   }
-  
-  const remoteTranscriptions = transcriptionResults.map((result, idx) => {
-    return <li key={idx}>{result.msg}</li>;
-  });
 
   const transcriptElements = transcript.map(messageObj => {
     const { userName, message, timestamp } = messageObj; 
