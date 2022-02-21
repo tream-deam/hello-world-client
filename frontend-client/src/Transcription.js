@@ -154,6 +154,21 @@ const Transcription = () => {
     }
   }, [results, userName]);
 
+  useEffect(() => {
+    // if there is at least one new transcribed message from other participant
+    if (transcriptionResults.length > 0) {
+      const newestTranscriptionFromOther = transcriptionResults[transcriptionResults.length - 1];
+      const newMessage = {
+        userName: newestTranscriptionFromOther.user,
+        message: newestTranscriptionFromOther.msg,
+        timestamp: newestTranscriptionFromOther.timestamp
+      };
+      if (newestTranscriptionFromOther) {
+        setTranscript((prev) => [...prev, newMessage]);
+      }
+    }
+  }, [transcriptionResults, userName]);
+
   // Translation
   useEffect(() => {
     const options = {
