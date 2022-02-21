@@ -6,6 +6,9 @@ import Transcription from "../../Transcription";
 import NavBar from "../NavBar";
 import VideoPanel from "./VideoPanel";
 import { useNavigate } from "react-router-dom";
+import Label from "./Label";
+import { useName } from "../../providers/UsernameProvider"
+
 const {
   connect,
   createLocalVideoTrack,
@@ -24,6 +27,7 @@ export default function Call() {
   // used to redirect to other paths on app using react router
   const navigate = useNavigate();
 
+  const name = useName();
   // Translation state and updater from context
   const translation = useTranslation();
 
@@ -244,6 +248,7 @@ export default function Call() {
             {state.selfVideo ? (
               <>
                 <div className="self-video-container">
+                  <Label text={name}/>
                   <Video
                     id="self-video"
                     videoFeed={state.selfVideo}
