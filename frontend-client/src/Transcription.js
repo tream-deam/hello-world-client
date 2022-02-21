@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useTranslation, useTranslationUpdate } from './providers/TranslationContext';
+import { useTranslationUpdate } from './providers/TranslationContext';
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
