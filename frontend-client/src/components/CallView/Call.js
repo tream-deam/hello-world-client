@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Label from "./Label";
 import { useName } from "../../providers/UsernameProvider"
 import { useCoparticipant } from '../../providers/CoparticipantContext';
+import classNames from 'classnames';
 
 const {
   connect,
@@ -219,6 +220,10 @@ export default function Call() {
   const otherVideoPlaceholder = <div className="other video placeholder"></div>;
   const transcriptPlaceholder = <div className="convo-log placeholder"></div>;
 
+  const videoPanelClass = classNames({
+    "show-caption-box": coparticipant
+  })
+
   return (
     <div className="call-view">
       <NavBar />
@@ -233,7 +238,7 @@ export default function Call() {
                   videoFeed={state.remoteVideo}
                   audioFeed={state.remoteAudio}
                 />
-                <div id="video-panel">
+                <div id="video-panel" className={videoPanelClass}>
                   <VideoPanel userDisconnectHandler={state.userDisconnectHandler}/>
                   <p className="caption">{translation}</p>
                 </div>
