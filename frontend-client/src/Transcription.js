@@ -45,7 +45,6 @@ const Transcription = () => {
   const coparticipant = useCoparticipant();
   
   // Translation state and updater from context
-  const translation = useTranslation();
   const updateTranslation = useTranslationUpdate();
   
   // Initialize socket and listeners to respond to whatever is emitted from the server
@@ -233,9 +232,6 @@ const Transcription = () => {
           </button>
         </div>
         <div id="transcription">
-          {translation && <li>{translation}</li>}
-          {interimResult && <li>{interimResult}</li>}
-          {results && <h2>Transcription log:</h2>}
           {transcriptElements}
         </div>
       </div>
