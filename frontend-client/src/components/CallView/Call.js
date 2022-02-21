@@ -210,7 +210,7 @@ export default function Call() {
         );
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [navigate]);
 
   const videoPlaceholder = <div className="video placeholder"></div>;
   const otherVideoPlaceholder = <div className="video placeholder"></div>;
