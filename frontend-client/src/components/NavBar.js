@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { useName } from '../providers/UsernameProvider';  
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserCircle,
@@ -11,12 +12,7 @@ import './NavBar.scss'
 
 
 function NavBar() {
-  // const { } = props
-
-  //modes for nav buttons
-  // const SELECTED = "SELECTED";
-  // const DESELECTED= "DESELECTED";
-  
+  const name = useName(); 
   return (
     <div className="nav-container">
         <section className="side-nav">
@@ -63,7 +59,7 @@ function NavBar() {
                 icon={faUserCircle}
                 size="3x"
               />
-              <h4 id="username"> Richard Bob</h4>
+              <h4 id="username"> {name}</h4>
             </div>
         </section>
     </div>

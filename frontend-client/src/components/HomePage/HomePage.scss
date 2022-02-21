@@ -8,12 +8,12 @@
   font-family: $logo-font;
   color: $dark-teal;
   height: 100vh;
-  width: 100vw;
 }
 
 .homepage-container {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   margin-left: 12.5rem;
 }
 
@@ -21,7 +21,6 @@
   display: flex;
   flex-direction: column;
   background-color: $pale-teal;
-  width: 100%;
 }
 
 .heading-home {
