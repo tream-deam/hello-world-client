@@ -169,7 +169,7 @@ export default function Call() {
               e.preventDefault()
               console.log('user disconnected!')
               room.disconnect();
-              navigate('/');
+              navigate('/schedule');
             };
 
             setState(prev => ({...prev, userDisconnectHandler: userDisconnectHandler}))
