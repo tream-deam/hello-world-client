@@ -9,6 +9,7 @@ import { useCoparticipant, useCoparticipantUpdate } from './providers/Coparticip
 import { useName } from './providers/UsernameProvider';
 import NoLayerLabel from './components/CallView/NoLayerLabel';
 import { useLanguage } from './providers/LanguageContext';
+import TranscriptMessage from "./components/TranscriptMessage";
 
 
 const Transcription = () => {
@@ -35,6 +36,9 @@ const Transcription = () => {
   const [stateInterim, setStateInterim] = useState([]);
   // Store transcription results that come from socket listener 'transcriptionFinish' into state so that they can be displayed
   const [transcriptionResults, setTranscriptionResults] = useState([]);
+
+  // store all transcribed messages (from self and other)
+  const [transcript, setTranscript] = useState([]);
 
   const userName = useName();
   const setCoparticipant = useCoparticipantUpdate();
@@ -131,6 +135,24 @@ const Transcription = () => {
     }
   }, [socketState, interimResult]);
 
+  // whenever (self) transcripts or (other) transcripts change, update transcript array
+  // by adding the new message to the transcript state
+
+  useEffect(() => {
+    // if there is at least one new transcribed message from self
+    if (results.length > 0) {
+      const newestTranscriptionFromSelf = results[results.length - 1];
+      const newMessage = {
+        userName,
+        message: newestTranscriptionFromSelf.transcript,
+        timestamp: newestTranscriptionFromSelf.timestamp
+      };
+      if (newestTranscriptionFromSelf) {
+        setTranscript((prev) => [...prev, newMessage]);
+      }
+    }
+  }, [results, userName]);
+
   // Translation
   useEffect(() => {
     const options = {
@@ -172,6 +194,11 @@ const Transcription = () => {
     return <li key={idx}>{result.msg}</li>;
   });
 
+  const transcriptElements = transcript.map(messageObj => {
+    const { userName, message, timestamp } = messageObj; 
+    return <TranscriptMessage key={timestamp} sender={userName} message={message} />
+  });
+
   return (
       <div className="convo-log">
         {stateInterim.msg}
@@ -196,12 +223,8 @@ const Transcription = () => {
         <div id="transcription">
           {translation && <li>{translation}</li>}
           {interimResult && <li>{interimResult}</li>}
-          {results && <h2>My Transcription log:</h2>}
-          {results.map((result) => {
-            return <li key={result.timestamp}> {result.transcript}</li>;
-          })}
-          <h1>Remote Transcription Log</h1>
-          {remoteTranscriptions}
+          {results && <h2>Transcription log:</h2>}
+          {transcriptElements}
         </div>
       </div>
   );
