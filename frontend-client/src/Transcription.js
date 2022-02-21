@@ -5,7 +5,6 @@ import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentSlash,faComment } from "@fortawesome/free-solid-svg-icons";
-import Label from './components/CallView/Label';
 import { useCoparticipant, useCoparticipantUpdate } from './providers/CoparticipantContext';
 import { useName } from './providers/UsernameProvider';
 import NoLayerLabel from './components/CallView/NoLayerLabel';
