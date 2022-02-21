@@ -330,6 +330,8 @@
   height: 12%;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 0 0 $border-radius $border-radius;
+  z-index: 1;
+  position: relative;
 }
 #video-panel:hover {
   .call-button {
