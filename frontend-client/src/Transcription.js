@@ -72,6 +72,7 @@ const Transcription = () => {
 
     // Transcription after a sentence is finished
     socket.on("transcriptionFinish", (msg) => {
+      console.log('incoming message: ', msg)
       setTranscriptionResults((prevTranscriptionResults) => [
         ...prevTranscriptionResults,
         msg,
@@ -121,9 +122,9 @@ const Transcription = () => {
 
     // This condition prevents transcript from trying to read properties of undefined when there aren't any results
     if (lastResult) {
-      socket.emit("transcriptionFinish", { msg: lastResult.transcript });
+      socket.emit("transcriptionFinish", { user: userName, msg: lastResult.transcript });
     }
-  }, [socketState, results]);
+  }, [socketState, results, userName]);
 
   // Whenever the interim updates, send data to other client so they can see live transcription as well
   useEffect(() => {
