@@ -432,6 +432,11 @@ button.convo-log-toggle:focus {
   color: $vibrant-orange;
 }
 
+.message {
+  font-family: $font-family;
+  font-size: 18px;
+}
+
 .other-message {
   color: $black;
 }
