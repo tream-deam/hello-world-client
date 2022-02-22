@@ -5,9 +5,9 @@ import { useName } from '../providers/UsernameProvider';
 export default function TranscriptMessage(props) {
   const { sender, message, coparticipant } = props;
   const userName = useName();
-  console.log('the sender prop: ', sender)
-  console.log('the userName global state: ', userName)
-  console.log('the coparticipant global state: ', coparticipant)
+  // console.log('the sender prop: ', sender)
+  // console.log('the userName global state: ', userName)
+  // console.log('the coparticipant global state: ', coparticipant)
 
 
   const messageClass = classNames('message', {
