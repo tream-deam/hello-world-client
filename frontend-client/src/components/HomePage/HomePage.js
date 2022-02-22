@@ -52,7 +52,7 @@ function HomePage() {
                 </p>
               </div>
               <p className="brand-description">
-              “Bridging communities around the world &amp; breaking language barriers.”
+              “Bridging communities around the world &amp; breaking communication barriers.”
               </p>
             </section>
           <section className="hello-world-options">
