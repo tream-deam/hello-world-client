@@ -281,8 +281,11 @@
   z-index: 3;
   color:white;
   font-weight: 600;
-  margin: 2rem;
   visibility: visible;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  margin-bottom: 0;
+  padding: 2rem 2rem 3rem 3rem;
 }
 
 .label {
@@ -343,16 +346,18 @@
   align-content: space-between;
   align-items: center;
   width: 100%;
-  height: 12%;
+  height: fit-content;
   border-radius: 0 0 $border-radius $border-radius;
   z-index: 1;
   position: relative;
+  visibility:hidden;
+  margin-bottom: 1rem;
 }
 
 // only show grey transparent background if coparticipant is in room
-.show-caption-box {
-  background-color: rgba(0, 0, 0, 0.7);
-}
+// .show-caption-box {
+//   background-color: rgba(0, 0, 0, 0.7);
+// }
 
 #video-panel:hover {
   .call-button {
