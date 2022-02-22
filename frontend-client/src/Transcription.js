@@ -236,14 +236,14 @@ const Transcription = () => {
       .catch((error) => console.error(error));
   }, [updateTranslation, stateInterim.msg, userSpokenLanguageCode]);
 
-  if (error) {
-    return <p> Web Speech API is not available in this browser :( </p>;
-  }
-
   const transcriptElements = transcript.map((messageObj, index) => {
     const { userName, message } = messageObj; 
     return <TranscriptMessage key={index} sender={userName} message={message} coparticipant={coparticipant}/>
   });
+  
+  if (error) {
+    return <p> Web Speech API is not available in this browser :( </p>;
+  }
 
   return (
       <div className="convo-log">
