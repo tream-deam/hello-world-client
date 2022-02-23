@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NavBar from "../NavBar";
 import "../HomePage/HomePage.scss";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +11,6 @@ import {
 
 export default function About() {
 
-
-  
     return (
       <div className="homepage-view">
         <NavBar/>
