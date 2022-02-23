@@ -162,13 +162,48 @@ const Transcription = () => {
         message: newestTranscriptionFromOther.msg,
         timestamp: newestTranscriptionFromOther.timestamp
       };
+
+      // if we have one new transcription from the other participant, 
+      // we want to translate it before we add it to the transcript log
       if (newestTranscriptionFromOther) {
+        const languageCodeWithoutRegion = userSpokenLanguageCode.substring(0, 2);
+        console.log('languageCodeWithoutRegion: ', languageCodeWithoutRegion);
+        const options = {
+          method: "POST",
+          url: "https://microsoft-translator-text.p.rapidapi.com/translate",
+          params: {
+            to: languageCodeWithoutRegion,
+            "api-version": "3.0",
+            profanityAction: "NoAction",
+            textType: "plain",
+          },
+          headers: {
+            "content-type": "application/json",
+            "x-rapidapi-host": "microsoft-translator-text.p.rapidapi.com",
+            "x-rapidapi-key": `${process.env.REACT_APP_MICROSOFT_API_KEY}`,
+          },
+          data: [
+            {
+              Text: newMessage.message,
+            },
+          ],
+        };
+
+        axios
+      .request(options)
+      .then((res) => {
+        const result = res.data[0].translations[0].text;
+        // update incoming transcription message from other with the translated version
+        newMessage.message = result;
         setTranscript((prev) => [...prev, newMessage]);
+      })
+      .catch((error) => console.error(error));
+
       }
     }
-  }, [transcriptionResults, userName]);
+  }, [transcriptionResults, userName, userSpokenLanguageCode]);
 
-  // Translation
+  // Translation of live subtitles
   useEffect(() => {
     const options = {
       method: "POST",
@@ -201,22 +236,20 @@ const Transcription = () => {
       .catch((error) => console.error(error));
   }, [updateTranslation, stateInterim.msg, userSpokenLanguageCode]);
 
-  if (error) {
-    return <p> Web Speech API is not available in this browser :( </p>;
-  }
-
   const transcriptElements = transcript.map((messageObj, index) => {
     const { userName, message } = messageObj; 
     return <TranscriptMessage key={index} sender={userName} message={message} coparticipant={coparticipant}/>
   });
+  
+  if (error) {
+    return <p> Web Speech API is not available in this browser :( </p>;
+  }
 
   return (
       <div className="convo-log">
-        {stateInterim.msg}
         <div className="log-header">
           <NoLayerLabel text="Translation Log"/> 
           <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-          
             {isRecording ?  
               <FontAwesomeIcon
               className="translate"

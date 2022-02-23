@@ -274,15 +274,24 @@
 }
 
 .caption {
-  border-bottom-left-radius: 2.1rem;
-  border-bottom-right-radius: 2.1rem;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
   font-size: calc(1.6rem + 1.5vw);
   position: absolute;
   z-index: 3;
   color:white;
   font-weight: 600;
-  margin: 2rem;
   visibility: visible;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  min-height: 100%;
+  margin-bottom: 0;
+  padding: 2rem 2rem 3rem 3rem;
+  align-self: flex-end;
+}
+
+p.caption {
+  margin-bottom: 0rem;
 }
 
 .label {
@@ -343,18 +352,22 @@
   align-content: space-between;
   align-items: center;
   width: 100%;
-  height: 12%;
+  height: fit-content;
   border-radius: 0 0 $border-radius $border-radius;
   z-index: 1;
   position: relative;
+  visibility:hidden;
+  padding-top: 1rem;
 }
 
 // only show grey transparent background if coparticipant is in room
-.show-caption-box {
-  background-color: rgba(0, 0, 0, 0.7);
-}
+// .show-caption-box {
+//   background-color: rgba(0, 0, 0, 0.7);
+// }
 
 #video-panel:hover {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.7);
   .call-button {
     visibility: visible;
   }
@@ -372,6 +385,7 @@
   font-size: $s-size;
   background-color: #403B3BCC;
   color: white;
+  margin-bottom: 1rem;
 }
 
 .show-all-video-buttons {
