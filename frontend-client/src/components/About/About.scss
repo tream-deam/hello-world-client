@@ -10,7 +10,6 @@
   margin-left: 10rem;
 
   .profile-picture-circle {
-    background-color: $vibrant-orange;
     border-radius: 50%;
     width:25rem;
     height:25rem;
@@ -230,6 +229,7 @@ img.team-member-picture {
 
 div.designer-name {
   text-align: center;
+  color: $dark-teal
 }
 
 a.plug {
