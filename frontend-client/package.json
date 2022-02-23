@@ -24,7 +24,6 @@
     "react-hook-speech-to-text": "^0.8.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "react-scroll": "^1.8.5",
     "socket.io-client": "^4.4.1",
     "twilio-video": "^2.20.0",
     "util": "^0.12.4",
