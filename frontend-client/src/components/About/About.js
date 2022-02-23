@@ -54,10 +54,17 @@ export default function About() {
               </div>
               <div className="learning-container">
                 <div className="learning-circle">
-                  <p className="option-title">Learning</p>
-                  <FontAwesomeIcon icon={faBrain} size="3x" />
+                  <p className="option-title"></p>
                 </div>
-                <p className="desc">Sameer Mohamed</p>
+                <p className="desc">
+                  Sameer Mohamed
+                  <br/><br/>
+                  Full-stack developer with a background in Life Sciences, looking to help businesses grow and make a difference in the Digital Health industry
+                  <br/><br/>
+                  Favourite Tech Stack: React, Javascript, Express, PostgreSQL
+                  <br/><br/>
+                  <a href="https://github.com/houseofsam">github.com/houseofsam</a>
+                  </p>
               </div>
               <div className="personal-container">
                 <div className="personal-circle">
