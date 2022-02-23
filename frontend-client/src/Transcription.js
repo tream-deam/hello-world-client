@@ -274,23 +274,6 @@ const Transcription = () => {
           </div>
     <div className="convo-log-wrapper">
       <div className="convo-log">
-        <div className="log-header">
-          <NoLayerLabel text="Translation Log"/> 
-          <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-            {isRecording ?  
-              <FontAwesomeIcon
-              className="translate"
-              icon={faComment}
-              size="2x"
-              />
-              :     
-              <FontAwesomeIcon
-              className="translate"
-              icon={faCommentSlash}
-              size="2x"
-              />}
-          </button>
-        </div>
         <div id="transcription">
           {transcriptElements}
           <div ref={messagesEndRef}/>

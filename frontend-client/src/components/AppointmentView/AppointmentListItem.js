@@ -40,7 +40,7 @@ function AppointmentListItem (props) {
         
           </div>
           <div className="patient-name-notes">
-            <p className="appt-text">1:00PM - Sameer Mohammed &amp; Karen Ngo </p>
+            <p className="appt-text">1:00PM - Sameer Mohamed &amp; Karen Ngo </p>
             <p className="appt-notes">Check up examination, shortness of breath.</p>
           </div>
         </div>
