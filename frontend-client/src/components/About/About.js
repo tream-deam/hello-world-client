@@ -1,7 +1,9 @@
 import React from "react";
 import NavBar from "../NavBar";
-import "../HomePage/HomePage.scss";
+import "./About.scss";
 import karenNgoPicture from '../../images/karen_profile_pic.png';
+import sameerMohamedPicture from '../../images/sameer_profile_pic.jpg'
+import lorençoProfilePicture from '../../images/lorenço_profile_pic.JPG'
 
 export default function About() {
 
@@ -24,16 +26,18 @@ export default function About() {
             </section>
           <section className="hello-world-options">
             <p className="option-header">
-              Meet the team
+              Meet the Team
             </p>
             <div className="options-container">
-              <div className="health-container">
-                <div  className="health-circle">
-                  {/* <img className="team-member-picture" src={karenNgoPicture} alt="Karen Ngo" /> */}
+              <div className="profile-picture-container">
+                <div  className="profile-picture-circle">
+                  <img className="team-member-picture" src={karenNgoPicture} alt="Karen Ngo" />
                   
                 </div>
                 <p className="desc">
-                  Karen Ngo
+                  <div class="designer-name">
+                    Karen Ngo
+                  </div>
                   <br/><br/>
                   Ux Designer → UX Engineer/Developer
                   <br/><br/>
@@ -45,12 +49,15 @@ export default function About() {
                 </p>
                 {/* <p className="desc"></p> */}
               </div>
-              <div className="learning-container">
-                <div className="learning-circle">
+              <div className="profile-picture-container">
+                <div className="profile-picture-circle">
+                  <img className="team-member-picture" src={sameerMohamedPicture} alt="Sameer Mohamed" />
                   <p className="option-title"></p>
                 </div>
                 <p className="desc">
-                  Sameer Mohamed
+                  <div class="designer-name">
+                    Sameer Mohamed
+                  </div>
                   <br/><br/>
                   Full-stack developer with a background in Life Sciences, looking to help businesses grow and make a difference in the Digital Health industry
                   <br/><br/>
@@ -59,12 +66,15 @@ export default function About() {
                   <a className="plug" href="https://github.com/houseofsam">github.com/houseofsam</a>
                   </p>
               </div>
-              <div className="personal-container">
-                <div className="personal-circle">
+              <div className="profile-picture-container">
+                <div className="profile-picture-circle">
+                  <img className="team-member-picture" src={lorençoProfilePicture} alt="Lorenço Alvarez Navarrete" />
                   <p className="option-title"></p>
                 </div>
                 <p className="desc">
-                  Lorenço Alvarez Navarrete
+                  <div class="designer-name">
+                    Lorenço Alvarez Navarrete
+                  </div>
                   <br/><br/>
                   Recent grad in Artificial Intelligence (focus: Linguistics) looking to create software that truly improves people's quality of life
                   <br/><br/>
