@@ -1,13 +1,6 @@
 import React from "react";
 import NavBar from "../NavBar";
 import "../HomePage/HomePage.scss";
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeartPulse, 
-  faBrain,
-  faUserGroup
-} from "@fortawesome/free-solid-svg-icons";
 import karenNgoPicture from '../../images/karen_profile_pic.png';
 
 export default function About() {
