@@ -130,41 +130,43 @@
 }
 
 .appt-date {
-  display:flex;
+  display: flex;
   flex-direction: column;
   font-weight: 600;
-  margin:2rem;
+  margin: 2rem;
   align-items: center;
   padding-top: 2.5rem;
   padding-left: 2.0rem;
 
   .day {
-    font-weight:600;
+    font-weight: 600;
     font-size: 3.0rem;
   }
   .month {
-    font-weight:600;
+    font-weight: 600;
     font-size: 1.6rem;
   }
   .date {
-    font-weight:600;
+    font-weight: 600;
     font-size: 2.5rem;
   }
 
 }
 
 .patient-name-notes {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   font-weight: 600;
   padding-left: 1.2rem;
 
-  .appt-text{
-    margin-top:4.9rem;
+  .appt-text {
+    margin-top: 4.9rem;
+    font-size: 2.4rem;
   }
-  .appt-notes{
-    margin-top:0rem;
+
+  .appt-notes {
+    margin-top: 0rem;
     font-weight: 400;
   }
   
@@ -178,7 +180,7 @@
   font-weight: 600;
   color: white;
   border-radius: 0.7rem;
-  margin-top:4.9rem;
+  margin-top: 4.9rem;
   margin-right: 4.9rem;
   border: none;
 }
