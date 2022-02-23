@@ -2,14 +2,15 @@
 /* poppin 500/700 
   $font-family 300,400,600, 700
 */
+
 #logo {
   color: $orange;
   font-family: $logo-font;
   font-size: 3.4rem;
   margin-right:1rem;
   text-align: center;
-  
 }  
+
 #logo-hello {
   color: $orange;
   font-family: $logo-font;
@@ -18,6 +19,7 @@
   margin-left:1rem;
   margin-bottom: 0;;
 }  
+
 #logo-world {
   color: $orange;
   font-family: $logo-font;
@@ -94,7 +96,6 @@
   padding: 2.4rem;
 }
 
-
 .appt-list-item {
   display: flex;
   border-radius: 0.7rem;
@@ -103,6 +104,7 @@
   margin-bottom: 2rem;
   height: 19rem;
 }
+
 .appt-list-item:hover {
   box-shadow: 0.5rem 0.5rem 1rem #ccc;
   cursor: pointer;
@@ -110,8 +112,6 @@
 
 .appt-list-item-1{
   display: flex;
-/*   border-style: solid;
-  border-width: thin; */
   border-radius: 0.7rem;
   background-color: #F9EAD4;
   justify-content: space-between;
@@ -119,6 +119,7 @@
   height: 19rem;
   background-color: $pale-teal;
 }
+
 .appt-list-item-1:hover {
   box-shadow: 0.5rem 0.5rem 1rem #ccc;
   cursor: pointer;
@@ -127,7 +128,6 @@
 .appt-info-container {
   display: flex;
 }
-
 
 .appt-date {
   display:flex;
@@ -158,8 +158,6 @@
   flex-direction: column;
   font-size: 1.6rem;
   font-weight: 600;
-/*   border-style: solid;
-  border-width: thin; */
   padding-left: 1.2rem;
 
   .appt-text{
@@ -183,8 +181,8 @@
   margin-top:4.9rem;
   margin-right: 4.9rem;
   border: none;
-
 }
+
 .join-button:hover {
   background-color: $green-black;
   color: white;
@@ -203,6 +201,7 @@
   font-weight: 600;
   justify-content: space-around;
 }
+
 .join-call-text {
   padding: 0.5rem;
   margin-right:0.6rem;
@@ -224,8 +223,6 @@
   padding: 0 1rem;
   justify-content: space-between;
   height: 100%;
- /*  border-style: solid;
-  border-width: thin; */
   box-shadow: 0.2rem 0rem 0.5rem #ccc;
 }
 
@@ -235,6 +232,7 @@
   gap: 4.8rem;
   margin-bottom: 15rem;
 }
+
 .nav-icon:hover {
   color: $orange;
 }
@@ -311,8 +309,6 @@
   border-radius: 2rem;
   white-space: nowrap;
 }
-
-
 
 /* Gotta add video ID to video once we know how things are returning twilio */
 .video {
@@ -414,24 +410,23 @@
 /* ------------------- CONVO LOG STYLES ----------------------------- */
 
 .convo-log {
-  // border-style: solid;
-  width: 100%;
-  height: 100%;
-  border-radius: $border-radius $border-radius $border-radius 0.15rem;
-  background-color: $peach;
-  padding: 2rem;
   align-items: flex-start;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   flex-grow: 1;
   overflow-y: scroll;
+  padding-top: 0rem;
 }
 
-.log-header {
+/* .log-header {
   display: flex;
   flex-direction: row;
-  width: 100%;
-}
+  background-color: $peach;
+  border-radius: $border-radius;
+  padding-top: 1rem;
+  flex-grow: 1;;
+} */
+
 button.convo-log-toggle,
 button.convo-log-toggle:hover,
 button.convo-log-toggle:focus {
@@ -441,21 +436,72 @@ button.convo-log-toggle:focus {
   -webkit-appearance: none;
   -moz-appearance: none;
   color: $vibrant-orange;
+  margin-left: 2rem;
 }
 
 .message {
   font-family: $font-family;
-  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: $white;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  border-radius: 3rem;
+  margin-right: 10rem;
+ 
 }
 
 .other-message {
-  color: $black;
+  /* color: $black; */
+  background-color: $dark-teal;
+  border-bottom-left-radius: 0rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 .self-message {
-  color: $orange;
+/*   color: $orange; */
+background-color: $vibrant-orange;
+margin-left: 15rem;
+margin-right: 1rem;
+border-bottom-right-radius: 0rem;
+border-top-right-radius: 2rem;
+border-bottom-left-radius: 2rem;
 }
 
 #transcription {
-  overflow-y: auto;
+  overflow-y: scroll;
+  width: 100%;  
+}
+
+.convo-log-wrapper {
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  background-color: $peach;
+  padding: 1rem;
+  overflow-y: scroll;
+}
+
+.name {
+  font-weight: 600;
+}
+
+p.message-text {
+  margin: 0.1rem;
+  font-weight: 400;
+}
+
+p.name{
+  margin: 0.5rem;
+  margin-left: 0rem;
+}
+
+.header-container {
+  display: flex;
+  background-color: $peach;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  padding: 1rem;
 }

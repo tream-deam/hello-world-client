@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useTranslationUpdate } from './providers/TranslationContext';
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
@@ -13,6 +13,7 @@ import TranscriptMessage from "./components/TranscriptMessage";
 
 
 const Transcription = () => {
+  const messagesEndRef = useRef(null); 
   const userSpokenLanguageCode = useLanguage();
   const {
     error,
@@ -167,6 +168,9 @@ const Transcription = () => {
       }
     }
   }, [transcriptionResults, userName]);
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView();
+  }, [transcript]);
 
   // Translation
   useEffect(() => {
@@ -210,31 +214,38 @@ const Transcription = () => {
     return <TranscriptMessage key={index} sender={userName} message={message} coparticipant={coparticipant}/>
   });
 
+ 
+
   return (
+    <>
+          <div className="header-container">
+            <NoLayerLabel text="Translation Log"/> 
+            <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
+            
+              {isRecording ?  
+                <FontAwesomeIcon
+                className="translate"
+                icon={faComment}
+                size="2x"
+                />
+                :     
+                <FontAwesomeIcon
+                className="translate"
+                icon={faCommentSlash}
+                size="2x"
+                />}
+            </button>
+          </div>
+    <div className="convo-log-wrapper">
       <div className="convo-log">
         {stateInterim.msg}
-        <div className="log-header">
-          <NoLayerLabel text="Translation Log"/> 
-          <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-          
-            {isRecording ?  
-              <FontAwesomeIcon
-              className="translate"
-              icon={faComment}
-              size="2x"
-              />
-              :     
-              <FontAwesomeIcon
-              className="translate"
-              icon={faCommentSlash}
-              size="2x"
-              />}
-          </button>
-        </div>
         <div id="transcription">
           {transcriptElements}
+          <div ref={messagesEndRef}/>
         </div>
       </div>
+    </div>
+    </>
   );
 };
 
