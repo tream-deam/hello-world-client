@@ -240,7 +240,7 @@ export default function Call() {
                 />
                 <div id="video-panel" className={videoPanelClass}>
                   <VideoPanel userDisconnectHandler={state.userDisconnectHandler}/>
-                  <p className="caption">{translation}</p>
+                  <div className="caption">{translation}</div>
                 </div>
               </>
             ) : (
@@ -248,7 +248,6 @@ export default function Call() {
                 { otherVideoPlaceholder } 
                 <div id="video-panel">
                 <VideoPanel userDisconnectHandler={state.userDisconnectHandler}/>
-                <p className="caption">{translation}</p>
                 </div>
               </>
             )}
