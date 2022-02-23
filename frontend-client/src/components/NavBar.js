@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useName } from '../providers/UsernameProvider';  
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,7 +13,6 @@ import './NavBar.scss'
 
 function NavBar() {
   const name = useName(); 
-  const navigate = useNavigate();
   return (
     <div className="nav-container">
         <section className="side-nav">
