@@ -46,9 +46,9 @@ export default function About() {
                   <br/><br/>
                   Not just the what, but how to make what I design and making things functional
                   <br/><br/>
-                  <a href="mailto:to.karenngo@gmail.com">to.karenngo@gmail.com</a>
+                  <a className="plug" href="mailto:to.karenngo@gmail.com">to.karenngo@gmail.com</a>
                   <br/>
-                  <a href="https://github.com/careuno">github.com/careuno</a>
+                  <a className="plug" href="https://github.com/careuno">github.com/careuno</a>
                 </p>
                 {/* <p className="desc"></p> */}
               </div>
@@ -63,7 +63,7 @@ export default function About() {
                   <br/><br/>
                   Favourite Tech Stack: React, Javascript, Express, PostgreSQL
                   <br/><br/>
-                  <a href="https://github.com/houseofsam">github.com/houseofsam</a>
+                  <a className="plug" href="https://github.com/houseofsam">github.com/houseofsam</a>
                   </p>
               </div>
               <div className="personal-container">
@@ -77,9 +77,9 @@ export default function About() {
                   <br/><br/>
                   Web developer hoping to one day create mobile and other native applications
                   <br/><br/>
-                  <a href="mailto:loralnav@student.ubc.ca">loralnav@student.ubc.ca</a>
+                  <a className="plug" href="mailto:loralnav@student.ubc.ca">loralnav@student.ubc.ca</a>
                   <br/>
-                  <a href="https://github.com/ocnerol">github.com/ocnerol</a>
+                  <a className="plug" href="https://github.com/ocnerol">github.com/ocnerol</a>
                 </p>
               </div>
             </div>
