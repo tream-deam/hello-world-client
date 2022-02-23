@@ -250,7 +250,6 @@ const Transcription = () => {
         <div className="log-header">
           <NoLayerLabel text="Translation Log"/> 
           <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-          
             {isRecording ?  
               <FontAwesomeIcon
               className="translate"
