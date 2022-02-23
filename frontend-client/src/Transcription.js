@@ -247,7 +247,6 @@ const Transcription = () => {
 
   return (
       <div className="convo-log">
-        {stateInterim.msg}
         <div className="log-header">
           <NoLayerLabel text="Translation Log"/> 
           <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
