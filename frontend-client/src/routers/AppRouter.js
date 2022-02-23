@@ -7,6 +7,7 @@ import HomePage from "../components/HomePage/HomePage";
 import { UserNameProvider } from "../providers/UsernameProvider";
 import { CoparticipantProvider } from '../providers/CoparticipantContext';
 import { LanguageProvider } from "../providers/LanguageContext";
+import About from '../components/About/About';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -25,6 +26,7 @@ const AppRouter = () => (
             </TranslationProvider>
           }
         />
+        <Route path="/about" element={<About />}/>
       </Routes>
       </LanguageProvider>
     </UserNameProvider>
