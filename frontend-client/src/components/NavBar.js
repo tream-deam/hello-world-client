@@ -54,11 +54,16 @@ function NavBar() {
           
           </section>
             <div className="user-profile-nav-container">
+              <NavLink 
+                to="/about"
+                className={(navData) => navData.isActive ? "nav-link is-active" : "nav-link"}
+              >
               <FontAwesomeIcon
                 className="nav-icon"
                 icon={faUserCircle}
                 size="3x"
               />
+              </NavLink>
               <h4 id="username"> {name}</h4>
             </div>
         </section>
