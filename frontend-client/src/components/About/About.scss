@@ -1,0 +1,237 @@
+@import "../../styles/variables.scss";
+/* poppin 500/700 
+  $font-family 300,400,600, 700
+*/
+
+.profile-picture-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10rem;
+  margin-left: 10rem;
+
+  .profile-picture-circle {
+    background-color: $vibrant-orange;
+    border-radius: 50%;
+    width:25rem;
+    height:25rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    
+  }
+  
+  .health-circle:hover {
+    cursor: pointer;
+    background-color: white;
+    border: solid;
+    border-color: $vibrant-orange;
+    border-width: 3px;
+    color: $vibrant-orange;
+    box-shadow: 0.1rem 0.1rem 1rem #ffffff;
+  }
+}
+
+
+img.team-member-picture {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.homepage-view {
+  display: flex;
+  font-family: $logo-font;
+  color: $dark-teal;
+  height: 100vh;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 12.5rem;
+}
+
+.home-banner {
+  display: flex;
+  flex-direction: column;
+  background-color: $pale-teal;
+}
+
+.heading-home {
+  display: flex;
+  flex-direction: row;
+  font-size: 4.8rem;
+  /* margin: 0 6rem; */
+  margin: auto;
+  margin-top: 6rem;
+
+  .heading-hello {
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+  .heading-world {
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+}
+
+.brand-description {
+  font-weight: 700;
+  font-size: 4.8rem ;
+  margin: auto;
+  margin: 6rem;
+  text-align: center;
+}
+
+
+.hello-world-options {
+  display:flex;
+  flex-direction: column;
+
+  .option-header {
+    font-family: $font-family;
+    font-size: 3.0rem;
+    font-weight: 700;
+  /*   margin: 6rem 6rem; */
+    margin: auto;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+  .options-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: $font-family;
+    font-weight: 600;
+    font-size: 2.0rem;
+    padding: 0 6rem;
+    text-align: center;
+    /* check if child nodes inherit flex-direction */
+  }
+
+}
+
+.health-container {
+  display: flex;
+  flex-direction: column;
+
+  .health-circle {
+    background-color: $vibrant-orange;
+    border-radius: 50%;
+    width:20rem;
+    height:20rem;
+    text-align: center;
+    color: white;
+    margin-right: 10rem;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: 1; 
+    box-shadow: 0.1rem 0.1rem 1rem #9d9d9d;
+    
+  }
+  
+  .health-circle:hover {
+    cursor: pointer;
+    background-color: white;
+    border: solid;
+    border-color: $vibrant-orange;
+    border-width: 3px;
+    color: $vibrant-orange;
+    box-shadow: 0.1rem 0.1rem 1rem #ffffff;
+  }
+}
+
+.learning-container {
+  display: flex;
+  flex-direction: column;
+
+  .learning-circle {
+    background-color: $teal;
+    border-radius: 50%;
+    width:20rem;
+    height:20rem;
+    text-align: center;
+    color: white;
+    margin-right: 10rem;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: 2;
+    box-shadow: 0.1rem 0.1rem 1rem #9d9d9d; 
+  }
+  .learning-circle:hover {
+    cursor: pointer;
+    background-color: white;
+    border: solid;
+    border-color: $teal;
+    border-width: 3px;
+    color: $teal;
+    box-shadow: 0.1rem 0.1rem 1rem #ffffff;
+  }
+}
+
+.personal-container {
+  display: flex;
+  flex-direction: column;
+
+  .personal-circle {
+    background-color: $gold;
+    border-radius: 50%;
+    width:20rem;
+    height:20rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: 1; 
+    box-shadow: 0.1rem 0.1rem 1rem #9d9d9d;
+  }
+  .personal-circle:hover {
+    cursor: pointer;
+    background-color: white;
+    border: solid;
+    border-color: $gold;
+    border-width: 3px;
+    color: $gold;
+    box-shadow: 0.1rem 0.1rem 1rem #ffffff;
+  }
+}
+.option-title {
+  font-size: 2.4rem;
+  margin-top: 6rem;
+  margin-bottom: 1rem;
+}
+
+.option-icon {
+  color: white;
+}
+
+.desc {
+  max-width: 20rem;
+  margin-top: 3rem;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 12%;
+}
+
+@keyframes bounce {
+  0%   {top:0px;}
+  50%  {top:10px;}
+  100% {top:0px;}
+}
+
+div.designer-name {
+  text-align: center;
+}
+
+a.plug {
+  color: $dark-teal;
+}
