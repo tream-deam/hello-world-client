@@ -38,7 +38,18 @@ export default function About() {
                   <p className="option-title">Health</p>
                   <FontAwesomeIcon icon={faHeartPulse} size="3x" />
                 </div>
-                <p className="desc">Karen Ngo</p>
+                <p className="desc">
+                  Karen Ngo
+                  <br/><br/>
+                  Ux Designer → UX Engineer/Developer
+                  <br/><br/>
+                  Not just the what, but how to make what I design and making things functional
+                  <br/><br/>
+                  <a href="mailto:to.karenngo@gmail.com">to.karenngo@gmail.com</a>
+                  <br/>
+                  <a href="https://github.com/careuno">github.com/careuno</a>
+                </p>
+                {/* <p className="desc"></p> */}
               </div>
               <div className="learning-container">
                 <div className="learning-circle">
