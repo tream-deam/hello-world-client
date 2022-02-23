@@ -211,7 +211,7 @@ img.team-member-picture {
   color: white;
 }
 
-.desc {
+.desc-about {
   max-width: 20rem;
   margin-top: 3rem;
   text-align: left;
@@ -219,6 +219,10 @@ img.team-member-picture {
   justify-content: center;
   flex-direction: column;
   margin-left: 12%;
+}
+
+.karen {
+  margin-right: 10%;
 }
 
 @keyframes bounce {

@@ -21,7 +21,7 @@ const HomePageModal = ({ setInterimName, interimName, handleSubmit, handleClose,
             x
           </div>
         </div>
-        <p>Please add your name so your doctor knows you are here.</p>
+        <p>Name</p>
         <form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
           <input
             className="modal-input"
@@ -31,6 +31,13 @@ const HomePageModal = ({ setInterimName, interimName, handleSubmit, handleClose,
             value={interimName}
             onChange={(event) => setInterimName(event.target.value)}
             data-testid="username-input"
+          />
+          <p>Patient ID</p>
+          <input
+            className="modal-input"
+            name="password"
+            type="password"
+            placeholder="Patient ID"
           />
         </form>
         <p>Language you speak:</p>
