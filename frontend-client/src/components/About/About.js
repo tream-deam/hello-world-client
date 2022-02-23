@@ -8,6 +8,7 @@ import {
   faBrain,
   faUserGroup
 } from "@fortawesome/free-solid-svg-icons";
+import karenNgoPicture from '../../images/karen_profile_pic.png';
 
 export default function About() {
 
@@ -35,8 +36,8 @@ export default function About() {
             <div className="options-container">
               <div className="health-container">
                 <div  className="health-circle">
-                  <p className="option-title">Health</p>
-                  <FontAwesomeIcon icon={faHeartPulse} size="3x" />
+                  {/* <img className="team-member-picture" src={karenNgoPicture} alt="Karen Ngo" /> */}
+                  
                 </div>
                 <p className="desc">
                   Karen Ngo
