@@ -39,7 +39,7 @@ export default function About() {
                     Karen Ngo
                   </div>
                   <br/><br/>
-                  Ux Designer → UX Engineer/Developer
+                  UX Designer → UX Engineer/Developer
                   <br/><br/>
                   Not just the what, but how to make what I design and making things functional
                   <br/><br/>
