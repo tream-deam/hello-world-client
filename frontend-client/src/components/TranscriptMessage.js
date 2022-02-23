@@ -12,8 +12,9 @@ export default function TranscriptMessage(props) {
 
   const messageClass = classNames('message', {
     'self-message': userName === sender,
-    'other-message': userName === coparticipant // ideally we use coparticipant here but right now its undefined
+    'other-message': sender === coparticipant // ideally we use coparticipant here but right now its undefined
   })
+
   return (
     <div className={messageClass}>
       <p className="name">{sender}</p>
