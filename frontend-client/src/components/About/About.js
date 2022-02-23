@@ -47,7 +47,6 @@ export default function About() {
                   <br/>
                   <a className="plug" href="https://github.com/careuno">github.com/careuno</a>
                 </p>
-                {/* <p className="desc"></p> */}
               </div>
               <div className="profile-picture-container">
                 <div className="profile-picture-circle">
@@ -63,6 +62,8 @@ export default function About() {
                   <br/><br/>
                   Favourite Tech Stack: React, Javascript, Express, PostgreSQL
                   <br/><br/>
+                  <a className="plug" href="mailto:sameer.mohamed1@outlook.com">sameer.mohamed1@outlook.com</a>
+                  <br />
                   <a className="plug" href="https://github.com/houseofsam">github.com/houseofsam</a>
                   </p>
               </div>
