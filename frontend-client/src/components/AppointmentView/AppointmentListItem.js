@@ -11,7 +11,7 @@ function AppointmentListItem (props) {
       <div className="appt-list-item-1">
         <div className="appt-info-container">
           <div className="appt-date">
-            <div className="day">THURS</div>
+            <div className="day">THU</div>
             <div className="month">Feb</div>
             <div className="date">24th</div>
         
