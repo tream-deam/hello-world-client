@@ -68,10 +68,19 @@ export default function About() {
               </div>
               <div className="personal-container">
                 <div className="personal-circle">
-                  <p className="option-title">Personal</p>
-                  <FontAwesomeIcon icon={faUserGroup} size="2x" />
+                  <p className="option-title"></p>
                 </div>
-                <p className="desc">Lorenço Alvarez Navarrete </p>
+                <p className="desc">
+                  Lorenço Alvarez Navarrete
+                  <br/><br/>
+                  Recent grad in Artificial Intelligence (focus: Linguistics) looking to create software that truly improves people's quality of life
+                  <br/><br/>
+                  Web developer hoping to one day create mobile and other native applications
+                  <br/><br/>
+                  <a href="mailto:loralnav@student.ubc.ca">loralnav@student.ubc.ca</a>
+                  <br/>
+                  <a href="https://github.com/ocnerol">github.com/ocnerol</a>
+                </p>
               </div>
             </div>
           </section>
