@@ -22,8 +22,16 @@ This app was originally designed to make digital health appointments more lingui
 
 ## Dependencies
 
+- Axios
+- Classnames
 - Express
-- Node.js 5.10.x or above
-- body-parser
-- chance
-- md5
+- FontAwesome
+- Material UI Core & Icons
+- Normalize.css
+- Jest
+- React
+- React-DOM
+- React-Hook-Speech-To-Text
+- React Router
+- Socket.io
+- Twilio Video
