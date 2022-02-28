@@ -19,6 +19,8 @@ This app was originally designed to make digital health appointments more lingui
 
 # Screenshots
 
+[Walkthrough of the homepage and appointment views](./docs/hello_world_homepage_appointment_views.gif)
+
 
 ## Dependencies
 
