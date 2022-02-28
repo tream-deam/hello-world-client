@@ -2,6 +2,9 @@
 
 _Hello, World!_ is a single-page app where you can meet with others for a one-on-one video call with live captions translated for your co-participant in their preferred language.
 
+This app is a multi-developer project built from start to finish and managed with Git throughout entire lifecycle.
+  - Collaborators: [Karen](https://github.com/careuno), [Sameer](https://github.com/houseofsam), [Lorenço](https://github.com/ocnerol)
+
 # Purpose
 
 This app was originally designed to make digital health appointments more linguistically accessible. As such, only the 'Health' option on the homepage is functional. Nevertheless, we quickly learned the functionality of live translated captions could be useful in virtually any situation where users might meet over a video call. Thus, we decided to name the app with a title that reflect's its ability to help people communicate with anyone around the world.
