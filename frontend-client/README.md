@@ -17,9 +17,10 @@ This app was originally designed to make digital health appointments more lingui
 
 ### Check back soon for new features!
 
-# Screenshots
+# Media
 
-[Walkthrough of the homepage and appointment views](./docs/hello_world_homepage_appointment_views.gif)
+### Walkthrough of typical user interaction from homepage to call room
+![Walkthrough of the homepage and appointment views](./docs/hello_world_homepage_appointment_views.gif)
 
 
 ## Dependencies
