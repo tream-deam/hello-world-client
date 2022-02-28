@@ -26,6 +26,10 @@ This app was originally designed to make digital health appointments more lingui
 ![Walkthrough of the homepage and appointment views](./docs/hello_world_homepage_appointment_views.gif)
 
 
+### Call-view with live-translated subtitles
+https://user-images.githubusercontent.com/92831990/156070070-52040b36-84f6-445e-8cb4-cfecd90b053e.mp4
+
+
 ## Dependencies
 
 - Axios
