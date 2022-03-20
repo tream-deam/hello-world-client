@@ -1,5 +1,4 @@
 //import classNames from "classnames"; will need to install once we get to this point. 
-import "./Button.scss";
 
 function Button(props) {
    //const buttonClass = classNames("button", {
