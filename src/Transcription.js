@@ -1,19 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useTranslationUpdate } from './providers/TranslationContext';
+import { useTranslationUpdate } from "./providers/TranslationContext";
 import io from "socket.io-client";
 import useSpeechToText from "react-hook-speech-to-text";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCommentSlash,faComment } from "@fortawesome/free-solid-svg-icons";
-import { useCoparticipant, useCoparticipantUpdate } from './providers/CoparticipantContext';
-import { useName } from './providers/UsernameProvider';
-import NoLayerLabel from './components/CallView/NoLayerLabel';
-import { useLanguage } from './providers/LanguageContext';
+import { faCommentSlash, faComment } from "@fortawesome/free-solid-svg-icons";
+import {
+  useCoparticipant,
+  useCoparticipantUpdate,
+} from "./providers/CoparticipantContext";
+import { useName } from "./providers/UsernameProvider";
+import NoLayerLabel from "./components/CallView/NoLayerLabel";
+import { useLanguage } from "./providers/LanguageContext";
 import TranscriptMessage from "./components/TranscriptMessage";
 
-
 const Transcription = () => {
-  const messagesEndRef = useRef(null); 
+  const messagesEndRef = useRef(null);
   const userSpokenLanguageCode = useLanguage();
   const {
     error,
@@ -27,8 +29,8 @@ const Transcription = () => {
     useLegacyResults: false,
     speechRecognitionProperties: {
       lang: userSpokenLanguageCode,
-      interimResults: true // allows for displaying real-time speech results
-    }
+      interimResults: true, // allows for displaying real-time speech results
+    },
   });
 
   // Take the socket we initialize in page load useEffect and store it in state so we can reuse it in different useEffects
@@ -44,14 +46,17 @@ const Transcription = () => {
   const userName = useName();
   const setCoparticipant = useCoparticipantUpdate();
   const coparticipant = useCoparticipant();
-  
+
   // Translation state and updater from context
   const updateTranslation = useTranslationUpdate();
-  
+
   // Initialize socket and listeners to respond to whatever is emitted from the server
   useEffect(() => {
     // check if in development or production so appropriate socket url is used
-    const socketURL = process.env.NODE_ENV === "development" ? "/" : "https://hello-doc-lhl.herokuapp.com";
+    const socketURL =
+      process.env.NODE_ENV === "development"
+        ? "/"
+        : "https://hello-doc-lhl.herokuapp.com";
 
     // After initializing socket, save to state to be reused elsewhere
     const socket = io(socketURL);
@@ -63,7 +68,7 @@ const Transcription = () => {
 
     socket.on("connected_user", (roomCount) => {
       console.log(roomCount);
-    })
+    });
 
     // Real time transcription (incoming)
     socket.on("interimListen", (msg) => {
@@ -72,7 +77,7 @@ const Transcription = () => {
 
     // Transcription after a sentence is finished
     socket.on("transcriptionFinish", (msg) => {
-      console.log('incoming message: ', msg)
+      console.log("incoming message: ", msg);
       setTranscriptionResults((prevTranscriptionResults) => [
         ...prevTranscriptionResults,
         msg,
@@ -82,17 +87,17 @@ const Transcription = () => {
     socket.on("disconnect", () => {
       console.log("User disconnected!");
     });
-    
+
     // Ensures we disconnect to avoid memory leaks
     return () => socket.disconnect();
   }, []);
-  
+
   useEffect(() => {
     const socket = socketState;
-    
+
     if (socket) {
       socket.emit("sendName", userName);
-      
+
       socket.on("receiveNameInClient", (users) => {
         console.log(users); //object
         // set other user to coparticipant. Only accomodates 2 people as intended
@@ -105,7 +110,7 @@ const Transcription = () => {
 
       socket.on("disconnected_user", (msg) => {
         // log user who left and room count
-        console.log('user disconnected: ', msg);
+        console.log("user disconnected: ", msg);
 
         // only set coparticipant to null if the existing co-participant leaves
         if (msg.user === coparticipant) {
@@ -114,7 +119,7 @@ const Transcription = () => {
       });
     }
   }, [socketState, userName, setCoparticipant, coparticipant]);
-  
+
   // Whenever a new sentence is transcribed, send it to other client. Only grab the most recent (last) sentence/result
   useEffect(() => {
     const socket = socketState;
@@ -122,7 +127,10 @@ const Transcription = () => {
 
     // This condition prevents transcript from trying to read properties of undefined when there aren't any results
     if (lastResult) {
-      socket.emit("transcriptionFinish", { user: userName, msg: lastResult.transcript });
+      socket.emit("transcriptionFinish", {
+        user: userName,
+        msg: lastResult.transcript,
+      });
     }
   }, [socketState, results, userName]);
 
@@ -146,7 +154,7 @@ const Transcription = () => {
       const newMessage = {
         userName,
         message: newestTranscriptionFromSelf.transcript,
-        timestamp: newestTranscriptionFromSelf.timestamp
+        timestamp: newestTranscriptionFromSelf.timestamp,
       };
       if (newestTranscriptionFromSelf) {
         setTranscript((prev) => [...prev, newMessage]);
@@ -157,18 +165,22 @@ const Transcription = () => {
   useEffect(() => {
     // if there is at least one new transcribed message from other participant
     if (transcriptionResults.length > 0) {
-      const newestTranscriptionFromOther = transcriptionResults[transcriptionResults.length - 1];
+      const newestTranscriptionFromOther =
+        transcriptionResults[transcriptionResults.length - 1];
       const newMessage = {
         userName: newestTranscriptionFromOther.user,
         message: newestTranscriptionFromOther.msg,
-        timestamp: newestTranscriptionFromOther.timestamp
+        timestamp: newestTranscriptionFromOther.timestamp,
       };
 
-      // if we have one new transcription from the other participant, 
+      // if we have one new transcription from the other participant,
       // we want to translate it before we add it to the transcript log
       if (newestTranscriptionFromOther) {
-        const languageCodeWithoutRegion = userSpokenLanguageCode.substring(0, 2);
-        console.log('languageCodeWithoutRegion: ', languageCodeWithoutRegion);
+        const languageCodeWithoutRegion = userSpokenLanguageCode.substring(
+          0,
+          2
+        );
+        console.log("languageCodeWithoutRegion: ", languageCodeWithoutRegion);
         const options = {
           method: "POST",
           url: "https://microsoft-translator-text.p.rapidapi.com/translate",
@@ -191,23 +203,22 @@ const Transcription = () => {
         };
 
         axios
-      .request(options)
-      .then((res) => {
-        const result = res.data[0].translations[0].text;
-        // update incoming transcription message from other with the translated version
-        newMessage.message = result;
-        setTranscript((prev) => [...prev, newMessage]);
-      })
-      .catch((error) => console.error(error));
-
+          .request(options)
+          .then((res) => {
+            const result = res.data[0].translations[0].text;
+            // update incoming transcription message from other with the translated version
+            newMessage.message = result;
+            setTranscript((prev) => [...prev, newMessage]);
+          })
+          .catch((error) => console.error(error));
       }
     }
   }, [transcriptionResults, userName, userSpokenLanguageCode]);
-  
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView();
   }, [transcript]);
-  
+
   // Translation of live subtitles
   useEffect(() => {
     const options = {
@@ -242,44 +253,48 @@ const Transcription = () => {
   }, [updateTranslation, stateInterim.msg, userSpokenLanguageCode]);
 
   const transcriptElements = transcript.map((messageObj, index) => {
-    const { userName, message } = messageObj; 
-    return <TranscriptMessage key={index} sender={userName} message={message} coparticipant={coparticipant}/>
+    const { userName, message } = messageObj;
+    return (
+      <TranscriptMessage
+        key={index}
+        sender={userName}
+        message={message}
+        coparticipant={coparticipant}
+      />
+    );
   });
-  
+
   if (error) {
     return <p> Web Speech API is not available in this browser :( </p>;
   }
 
- 
-
   return (
     <>
-          <div className="header-container">
-            <NoLayerLabel text="Translation Log"/> 
-            <button className="convo-log-toggle" onClick={isRecording ? stopSpeechToText : startSpeechToText}>
-            
-              {isRecording ?  
-                <FontAwesomeIcon
-                className="translate"
-                icon={faComment}
-                size="2x"
-                />
-                :     
-                <FontAwesomeIcon
-                className="translate"
-                icon={faCommentSlash}
-                size="2x"
-                />}
-            </button>
+      <div className="header-container">
+        <NoLayerLabel text="Translation Log" />
+        <button
+          className="convo-log-toggle"
+          onClick={isRecording ? stopSpeechToText : startSpeechToText}
+        >
+          {isRecording ? (
+            <FontAwesomeIcon className="translate" icon={faComment} size="2x" />
+          ) : (
+            <FontAwesomeIcon
+              className="translate"
+              icon={faCommentSlash}
+              size="2x"
+            />
+          )}
+        </button>
+      </div>
+      <div className="convo-log-wrapper">
+        <div className="convo-log">
+          <div id="transcription">
+            {transcriptElements}
+            <div ref={messagesEndRef} />
           </div>
-    <div className="convo-log-wrapper">
-      <div className="convo-log">
-        <div id="transcription">
-          {transcriptElements}
-          <div ref={messagesEndRef}/>
         </div>
       </div>
-    </div>
     </>
   );
 };

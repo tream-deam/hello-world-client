@@ -64,9 +64,9 @@ export default function About() {
                 <div className="designer-name">Sameer Mohamed</div>
                 <br />
                 <br />
-                Full-stack developer with a background in Life Sciences, looking
-                to help businesses grow and make a difference in the Digital
-                Health industry
+                Full-stack developer with a background in HR & Life Sciences,
+                with interests in Digital Health and Wellness. Looking to
+                leverage software to improve lives and help businesses grow.
                 <br />
                 <br />
                 Favourite Tech Stack: React, Javascript, Express, PostgreSQL
